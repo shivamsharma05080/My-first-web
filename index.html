@@ -23,7 +23,10 @@
       border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000;
       flex-wrap: wrap; gap: 10px;
     }
-    .logo-img { height: 40px; cursor: pointer; filter: drop-shadow(0 0 8px var(--accent)); }
+    .logo {
+      font-size: 1.3rem; font-weight: 900; color: var(--accent);
+      text-shadow: var(--glow); cursor: pointer;
+    }
     
     .nav-links { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 3px; }
     .nav-links::-webkit-scrollbar { display: none; }
@@ -90,7 +93,7 @@
 
   <!-- NAVBAR -->
   <nav>
-    <img src="file_0000000083288208bb4d5bb822a15305.png" alt="SOULSMP" class="logo-img" onclick="switchPage('home', document.getElementById('link-home'))" />
+    <div class="logo" onclick="switchPage('home', document.getElementById('link-home'))">🔥 SOULSMP</div>
     <div class="nav-links">
       <a onclick="switchPage('home', this)" class="active" id="link-home">🏠 Home</a>
       <a onclick="switchPage('ranks', this)" id="link-ranks">👑 Ranks</a>
@@ -98,6 +101,7 @@
       <a onclick="switchPage('coins', this)" id="link-coins">🪙 Coins</a>
       <a onclick="switchPage('keys', this)" id="link-keys">🔑 Keys</a>
       <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
+      <a onclick="switchPage('support', this)" id="link-support">🛠️ Support</a>
       <a onclick="switchPage('profile', this)" id="link-profile">👤 Profile</a>
     </div>
     <div class="nav-right-area">
@@ -144,6 +148,27 @@
         <p><b>📧 Email:</b> <span id="profile-email">user@gmail.com</span></p>
         <p><b>🎮 Username:</b> <span id="profile-mc">Player</span></p>
         <p><b>🪙 AFK Coins:</b> <span id="profile-coins" style="color:#55ff55;">0</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORT PAGE -->
+  <div id="support" class="page store-container">
+    <h1>🛠️ CUSTOMER SUPPORT</h1>
+    <p class="subtitle">Need help with your purchase or rank? Contact us!</p>
+    
+    <div class="profile-card" style="text-align: center;">
+      <h3 style="color: #ff5555; margin-top: 0;">Get Instant Help</h3>
+      <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 20px;">
+        If you faced any issues with your payment, items not received, or want to report a bug, open a ticket on our official Discord server.
+      </p>
+      <button class="btn" style="background: #5865F2; margin-bottom: 15px;" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">
+        <i class="fa-brands fa-discord"></i> JOIN DISCORD SUPPORT
+      </button>
+      <div style="background: rgba(0,0,0,0.5); padding: 12px; border-radius: 8px; text-align: left; font-size: 0.85rem;">
+        <p style="margin: 5px 0;"><b>📌 Support Guidelines:</b></p>
+        <p style="margin: 5px 0; color: #aaa;">1. Keep your transaction ID or payment screenshot ready.</p>
+        <p style="margin: 5px 0; color: #aaa;">2. Mention your exact Minecraft username.</p>
       </div>
     </div>
   </div>
@@ -253,7 +278,6 @@
   </div>
 
   <script>
-    // Load and restore all saved user data and coins perfectly
     window.addEventListener('DOMContentLoaded', () => {
       let savedUser = localStorage.getItem('soul_user') || "Player";
       let savedEmail = localStorage.getItem('soul_email') || "user@gmail.com";
@@ -289,7 +313,6 @@
       alert("Profile Saved Successfully!");
     }
 
-    // Compressed Image Uploader for permanent storage without size limit errors
     function updateAvatar(event) {
       let file = event.target.files[0];
       if (file) {
@@ -352,29 +375,4 @@
       let statusText = document.getElementById('afk-status-text');
       if(!active) {
         active = true; 
-        btn.innerText = "STOP AFK"; 
-        btn.style.background = "#cc0000";
-        statusText.innerHTML = 'Status: <b style="color: #ff5555;">Active (Earning...)</b>';
-        
-        interval = setInterval(() => {
-          seconds++;
-          let m = Math.floor(seconds/60), s = seconds%60;
-          document.getElementById('afk-timer-display').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
-          
-          // Every 1 minute, securely increment and store coins permanently
-          if(seconds % 60 === 0) { 
-            let currentCoins = parseInt(localStorage.getItem('soul_coins')) || 0;
-            currentCoins += 1;
-            localStorage.setItem('soul_coins', currentCoins);
-            document.getElementById('user-coins').innerText = currentCoins; 
-            document.getElementById('profile-coins').innerText = currentCoins; 
-          }
-        }, 1000);
-      } else {
-        active = false; 
-        clearInterval(interval); 
-        btn.innerText = "START AFK"; 
-        btn.style.background = "#00aa00";
-        statusText.innerHTML = 'Status: <b style="color: #ff5555;">Paused</b>';
-      }
-   
+        btn.innerTex
