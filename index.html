@@ -12,15 +12,14 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Aapki di hui Minecraft Mesa biome image background mein */
+      /* Aapki di hui Minecraft Mesa image ka direct link */
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                  url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+                  url('https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       margin: 0;
       padding-bottom: 60px;
     }
-    /* Auth Screen (Login/Signup with Email Validation) */
     #auth-screen {
       display: flex;
       justify-content: center;
@@ -58,7 +57,6 @@
       display: none;
     }
 
-    /* Fixed Clean Navbar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -112,14 +110,12 @@
       cursor: pointer;
     }
 
-    /* Pages */
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active { display: block; }
     
     h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
     p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
 
-    /* Grids & Cards */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -158,7 +154,6 @@
     }
     .btn:hover { background: #b30000; }
 
-    /* AFK Container */
     .afk-container {
       background: rgba(0, 30, 0, 0.85);
       border: 2px solid #00ff00;
@@ -171,7 +166,6 @@
     }
     .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 15px 0; font-family: monospace; }
 
-    /* Modal */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
     .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; text-align: center; max-width: 350px; width: 100%; }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.9rem; padding-left: 20px; margin: 15px 0; }
@@ -179,7 +173,6 @@
 </head>
 <body>
 
-  <!-- LOGIN / SIGNUP SCREEN WITH EMAIL CHECK -->
   <div id="auth-screen">
     <div class="auth-box">
       <h2 style="color:var(--accent); margin-top:0;">SOUL SMP LOGIN</h2>
@@ -191,7 +184,6 @@
     </div>
   </div>
 
-  <!-- NAVBAR -->
   <nav>
     <div class="logo" onclick="switchPage('home', document.getElementById('link-home'))">🔥 SOULSMP</div>
     <div class="nav-links">
@@ -205,7 +197,6 @@
     <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
   </nav>
 
-  <!-- HOME PAGE -->
   <div id="home" class="page active">
     <h1>SOUL SMP BATTLEGROUND</h1>
     <p class="subtitle">Server IP: <b>SPICY_ARMY1.aternos.me:40740</b></p>
@@ -215,7 +206,6 @@
     </div>
   </div>
 
-  <!-- RANKS PAGE -->
   <div id="ranks" class="page">
     <h1>👑 PREMIUM RANKS</h1>
     <p class="subtitle">Unlock exclusive in-game perks and commands.</p>
@@ -253,7 +243,6 @@
     </div>
   </div>
 
-  <!-- KITS PAGE -->
   <div id="kits" class="page">
     <h1>⚔️ BATTLE KITS</h1>
     <p class="subtitle">Equip yourself with powerful PvP gear.</p>
@@ -265,7 +254,6 @@
     </div>
   </div>
 
-  <!-- COINS PAGE -->
   <div id="coins" class="page">
     <h1>🪙 COIN BUNDLES</h1>
     <p class="subtitle">Boost your in-game balance instantly.</p>
@@ -277,7 +265,6 @@
     </div>
   </div>
 
-  <!-- KEYS PAGE -->
   <div id="keys" class="page">
     <h1>🔑 CRATE KEYS</h1>
     <p class="subtitle">Open special crates to win rare rewards.</p>
@@ -289,7 +276,6 @@
     </div>
   </div>
 
-  <!-- AFK ZONE PAGE -->
   <div id="afk" class="page">
     <h1>⏳ AFK EARNING ZONE</h1>
     <p class="subtitle">Stay on this page to earn free AFK coins!</p>
@@ -303,7 +289,6 @@
     </div>
   </div>
 
-  <!-- CLAIM MODAL -->
   <div id="claimModal" class="modal">
     <div class="modal-content">
       <h2 id="modalTitle" style="color:var(--accent); margin-top:0;">Claim Coins</h2>
@@ -327,7 +312,6 @@
       }
     };
 
-    // Email verification check function
     function validateEmail(email) {
       let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(email);
@@ -344,7 +328,6 @@
         return;
       }
       
-      // Check if email is valid and fake text is not entered
       if (!validateEmail(email)) {
         errorMsg.innerText = "❌ Faltu text ya galat email mat dalein! Sahi email (jaise name@gmail.com) dalein.";
         errorMsg.style.display = 'block';
@@ -407,5 +390,4 @@
     }
   </script>
 </body>
-      </html>
-  
+</html>
