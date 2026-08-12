@@ -20,7 +20,6 @@
       padding-bottom: 60px;
     }
     
-    /* Auth Screens (Login / Signup Separated) */
     .auth-overlay {
       display: flex;
       justify-content: center;
@@ -68,7 +67,6 @@
       display: none;
     }
 
-    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -153,7 +151,6 @@
       cursor: pointer;
     }
 
-    /* Pages */
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active { display: block; }
     
@@ -198,7 +195,6 @@
     }
     .btn:hover { background: #b30000; }
 
-    /* Profile Page Styling */
     .profile-card {
       background: rgba(20, 0, 0, 0.9);
       border: 2px solid var(--accent);
@@ -269,13 +265,13 @@
   <div id="signup-screen" class="auth-overlay">
     <div class="auth-box">
       <h2 style="color:var(--accent); margin-top:0;">CREATE ACCOUNT</h2>
-      <p style="font-size:0.85rem; color:#aaa;">Register your new account</p>
+      <p style="font-size:0.85rem; color:#aaa;">Register with mixed letters & numbers password</p>
       <input type="text" id="su-username" placeholder="Minecraft Username">
       <input type="email" id="su-email" placeholder="Email Address (e.g. name@gmail.com)">
-      <input type="password" id="su-pass" placeholder="Create Password">
-      <div id="su-error" class="error-msg">❌ Please fill all fields with a valid email!</div>
+      <input type="password" id="su-pass" placeholder="Password (Letters & Numbers)">
+      <div id="su-error" class="error-msg">❌ Please fill all fields correctly! Password must contain letters and numbers.</div>
       <button class="btn" style="margin-top:15px;" onclick="handleSignup()">SIGN UP</button>
-      <div class="auth-switch" onclick="showLogin()">Already have an account? <span>Login here</span></div>
+      <div class="auth-switch" onclick="showLogin()">Already have an account? <span style="color:var(--accent); font-weight:bold; cursor:pointer;">Login here</span></div>
     </div>
   </div>
 
@@ -288,7 +284,7 @@
       <input type="password" id="li-pass" placeholder="Password">
       <div id="li-error" class="error-msg">❌ Invalid username or password!</div>
       <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN</button>
-      <div class="auth-switch" onclick="showSignup()">Don't have an account? <span>Sign up</span></div>
+      <div class="auth-switch" onclick="showSignup()">Don't have an account? <span style="color:var(--accent); font-weight:bold; cursor:pointer;">Sign up</span></div>
     </div>
   </div>
 
@@ -478,14 +474,33 @@
       return re.test(email);
     }
 
+    function validatePassword(pass) {
+      // Must contain at least one letter and one number
+      let hasLetter = /[a-zA-Z]/.test(pass);
+      let hasNumber = /[0-9]/.test(pass);
+      return hasLetter && hasNumber && pass.length >= 6;
+    }
+
     function handleSignup() {
       let username = document.getElementById('su-username').value.trim();
       let email = document.getElementById('su-email').value.trim();
       let pass = document.getElementById('su-pass').value.trim();
       let error = document.getElementById('su-error');
 
-      if (!username || !pass || !validateEmail(email)) {
-        error.innerText = "❌ Please fill all fields with a valid email!";
+      if (!username || !email || !pass) {
+        error.innerText = "❌ Please fill all fields!";
+        error.style.display = 'block';
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        error.innerText = "❌ Invalid email format! Please use a valid email address.";
+        error.style.display = 'block';
+        return;
+      }
+
+      if (!validatePassword(pass)) {
+        error.innerText = "❌ Password must be at least 6 characters and contain both letters and numbers!";
         error.style.display = 'block';
         return;
       }
@@ -504,24 +519,4 @@
       loadUserData(username);
     }
 
-    function handleLogin() {
-      let username = document.getElementById('li-username').value.trim();
-      let pass = document.getElementById('li-pass').value.trim();
-      let error = document.getElementById('li-error');
-
-      let savedData = localStorage.getItem('soul_user_' + username);
-      if (!savedData) {
-        error.innerText = "❌ Account not found! Please sign up first.";
-        error.style.display = 'block';
-        return;
-      }
-
-      let userObj = JSON.parse(savedData);
-      if (userObj.pass !== pass) {
-        error.innerText = "❌ Incorrect password!";
-        error.style.display = 'block';
-        return;
-      }
-
-      error.style.display = 'none';
-      localStor
+    functio
