@@ -12,7 +12,7 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Aapki di hui Minecraft Mesa image ka direct link */
+      /* Minecraft Mesa Biome Background Image */
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
                   url('https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
@@ -67,6 +67,8 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .logo {
       font-size: 1.3rem;
@@ -97,6 +99,22 @@
     .nav-links a:hover, .nav-links a.active {
       background: var(--accent);
       color: white;
+    }
+    
+    .nav-right-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .profile-badge {
+      background: rgba(50, 0, 0, 0.9);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 15px;
+      color: #ff9999;
+      font-weight: bold;
+      font-size: 0.75rem;
+      white-space: nowrap;
     }
     .coin-badge {
       background: #000;
@@ -173,17 +191,19 @@
 </head>
 <body>
 
+  <!-- LOGIN SCREEN -->
   <div id="auth-screen">
     <div class="auth-box">
       <h2 style="color:var(--accent); margin-top:0;">SOUL SMP LOGIN</h2>
       <p style="font-size:0.85rem; color:#aaa;">Enter your Minecraft Name & Valid Email</p>
       <input type="text" id="username" placeholder="Minecraft Username">
       <input type="email" id="email" placeholder="Email Address (e.g. name@gmail.com)">
-      <div id="error-msg">❌ Kripya ek sahi email address dalein! (jaise: @gmail.com)</div>
+      <div id="error-msg">❌ Please enter a valid email address!</div>
       <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN / REGISTER</button>
     </div>
   </div>
 
+  <!-- NAVBAR -->
   <nav>
     <div class="logo" onclick="switchPage('home', document.getElementById('link-home'))">🔥 SOULSMP</div>
     <div class="nav-links">
@@ -194,18 +214,23 @@
       <a onclick="switchPage('keys', this)" id="link-keys">🔑 Keys</a>
       <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
     </div>
-    <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
+    <div class="nav-right-area">
+      <div class="profile-badge"><i class="fa-solid fa-user"></i> <span id="display-user">Player</span></div>
+      <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
+    </div>
   </nav>
 
+  <!-- HOME PAGE -->
   <div id="home" class="page active">
     <h1>SOUL SMP BATTLEGROUND</h1>
     <p class="subtitle">Server IP: <b>SPICY_ARMY1.aternos.me:40740</b></p>
     <div style="text-align: center; margin-top: 30px;">
       <button class="btn" style="width: auto; padding: 10px 25px;" onclick="switchPage('ranks', document.getElementById('link-ranks'))">EXPLORE STORE</button>
-      <button class="btn" style="width: auto; padding: 10px 25px; background:#555; margin-top:10px;" onclick="logout()">LOGOUT</button>
+      <button class="btn" style="width: auto; padding: 10px 25px; background:#555; margin-top:10px;" onclick="confirmLogout()">LOGOUT</button>
     </div>
   </div>
 
+  <!-- RANKS PAGE -->
   <div id="ranks" class="page">
     <h1>👑 PREMIUM RANKS</h1>
     <p class="subtitle">Unlock exclusive in-game perks and commands.</p>
@@ -243,6 +268,7 @@
     </div>
   </div>
 
+  <!-- KITS PAGE -->
   <div id="kits" class="page">
     <h1>⚔️ BATTLE KITS</h1>
     <p class="subtitle">Equip yourself with powerful PvP gear.</p>
@@ -254,6 +280,7 @@
     </div>
   </div>
 
+  <!-- COINS PAGE -->
   <div id="coins" class="page">
     <h1>🪙 COIN BUNDLES</h1>
     <p class="subtitle">Boost your in-game balance instantly.</p>
@@ -265,6 +292,7 @@
     </div>
   </div>
 
+  <!-- KEYS PAGE -->
   <div id="keys" class="page">
     <h1>🔑 CRATE KEYS</h1>
     <p class="subtitle">Open special crates to win rare rewards.</p>
@@ -276,6 +304,7 @@
     </div>
   </div>
 
+  <!-- AFK ZONE PAGE -->
   <div id="afk" class="page">
     <h1>⏳ AFK EARNING ZONE</h1>
     <p class="subtitle">Stay on this page to earn free AFK coins!</p>
@@ -289,6 +318,7 @@
     </div>
   </div>
 
+  <!-- CLAIM MODAL -->
   <div id="claimModal" class="modal">
     <div class="modal-content">
       <h2 id="modalTitle" style="color:var(--accent); margin-top:0;">Claim Coins</h2>
@@ -309,6 +339,7 @@
       let savedUser = localStorage.getItem('soul_smp_user');
       if (savedUser) {
         document.getElementById('auth-screen').style.display = 'none';
+        document.getElementById('display-user').innerText = savedUser;
       }
     };
 
@@ -323,25 +354,29 @@
       let errorMsg = document.getElementById('error-msg');
       
       if (!username) {
-        errorMsg.innerText = "❌ Kripya apna Minecraft username dalein!";
+        errorMsg.innerText = "❌ Please enter your Minecraft username!";
         errorMsg.style.display = 'block';
         return;
       }
       
       if (!validateEmail(email)) {
-        errorMsg.innerText = "❌ Faltu text ya galat email mat dalein! Sahi email (jaise name@gmail.com) dalein.";
+        errorMsg.innerText = "❌ Invalid email format! Please enter a valid email (e.g. name@gmail.com).";
         errorMsg.style.display = 'block';
         return;
       }
       
       errorMsg.style.display = 'none';
       localStorage.setItem('soul_smp_user', username);
+      document.getElementById('display-user').innerText = username;
       document.getElementById('auth-screen').style.display = 'none';
     }
 
-    function logout() {
-      localStorage.removeItem('soul_smp_user');
-      location.reload();
+    function confirmLogout() {
+      let confirmAction = confirm("Are you sure you want to log out of SOUL SMP?");
+      if (confirmAction) {
+        localStorage.removeItem('soul_smp_user');
+        location.reload();
+      }
     }
 
     function switchPage(id, element) {
