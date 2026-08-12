@@ -297,9 +297,10 @@
       <a onclick="switchPage('coins', this)" id="link-coins">🪙 Coins</a>
       <a onclick="switchPage('keys', this)" id="link-keys">🔑 Keys</a>
       <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
+      <a onclick="switchPage('profile', this)" id="link-profile">👤 Profile</a>
     </div>
     <div class="nav-right-area">
-      <div class="profile-pill" onclick="switchPage('profile', null)">
+      <div class="profile-pill" onclick="switchPage('profile', document.getElementById('link-profile'))">
         <img id="nav-avatar" src="https://via.placeholder.com/150" alt="Avatar">
         <span id="nav-username">Player</span>
       </div>
@@ -482,6 +483,8 @@
       localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
       localStorage.setItem('soul_active_user', username);
       
+      document.getElementById('signup-screen').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'none';
       loadUserData(username);
     }
 
@@ -496,12 +499,13 @@
 
       let savedData = localStorage.getItem('soul_user_' + username);
       if (!savedData) {
-        // Auto register if user doesn't exist to prevent login block
         let userData = { username, email: "user@gmail.com", pass: pass || "12345", avatar: "https://via.placeholder.com/150" };
         localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
       }
 
       localStorage.setItem('soul_active_user', username);
+      document.getElementById('signup-screen').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'none';
       loadUserData(username);
     }
 
@@ -510,9 +514,4 @@
       if (savedData) {
         let userObj = JSON.parse(savedData);
         document.getElementById('nav-username').innerText = userObj.username;
-        document.getElementById('profile-name').innerText = userObj.username;
-        document.getElementById('profile-mc').innerText = userObj.username;
-        document.getElementById('profile-email').innerText = userObj.email;
-        if(userObj.avatar) {
-          document.getElementById('nav-avatar').src = userObj.avatar;
-          document.getElementById('profile-img-preview').src = us
+        document.getElementById('profile-name').innerText = userObj
