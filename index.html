@@ -6,212 +6,44 @@
   <title>SOUL SMP | Official Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --accent: #ff3333;
-      --glow: 0 0 15px #ff3333;
-    }
-    
+    :root { --accent: #ff3333; --glow: 0 0 15px #ff3333; }
     body {
-      margin: 0;
-      min-height: 100vh;
+      margin: 0; min-height: 100vh;
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)),
-                  url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop")
-                  center center / cover no-repeat fixed;
-      font-family: Arial, sans-serif;
-      color: #fff;
-      padding-bottom: 60px;
+                  url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop") center center / cover no-repeat fixed;
+      font-family: Arial, sans-serif; color: #fff; padding-bottom: 60px;
     }
-
-    .container, .store-container, .profile-card, .card, .afk-container {
-      background: rgba(10, 0, 0, 0.65);
-      backdrop-filter: blur(6px);
-    }
-    
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 15px;
-      background: rgba(10, 0, 0, 0.95);
-      backdrop-filter: blur(5px);
-      border-bottom: 3px solid var(--accent);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--accent);
-      text-shadow: var(--glow);
-      cursor: pointer;
-    }
-    .nav-links {
-      display: flex;
-      gap: 5px;
-      overflow-x: auto;
-      padding-bottom: 3px;
-    }
+    .container, .store-container, .profile-card, .card, .afk-container { background: rgba(10, 0, 0, 0.7); backdrop-filter: blur(6px); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: rgba(10, 0, 0, 0.95); border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; flex-wrap: wrap; gap: 10px; }
+    .logo { font-size: 1.3rem; font-weight: 900; color: var(--accent); text-shadow: var(--glow); cursor: pointer; }
+    .nav-links { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 3px; }
     .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      padding: 5px 8px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      transition: 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      background: var(--accent);
-      color: white;
-    }
-    
-    .nav-right-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .profile-pill {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(40, 0, 0, 0.9);
-      border: 1px solid var(--accent);
-      padding: 3px 10px 3px 3px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .profile-pill:hover { background: rgba(70, 0, 0, 0.9); }
-    .profile-pill img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid #fff;
-    }
-    .profile-pill span {
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: #ff9999;
-    }
-    .coin-badge {
-      background: #000;
-      border: 1px solid #55ff55;
-      padding: 5px 12px;
-      border-radius: 15px;
-      color: #55ff55;
-      font-weight: bold;
-      font-size: 0.8rem;
-      cursor: pointer;
-    }
-
+    .nav-links a { color: #fff; text-decoration: none; padding: 5px 8px; background: rgba(255,255,255,0.06); border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 0.75rem; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { background: var(--accent); color: white; }
+    .profile-pill { display: flex; align-items: center; gap: 8px; background: rgba(40, 0, 0, 0.9); border: 1px solid var(--accent); padding: 3px 10px 3px 3px; border-radius: 20px; cursor: pointer; }
+    .profile-pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
+    .profile-pill span { font-size: 0.8rem; font-weight: bold; color: #ff9999; }
+    .coin-badge { background: #000; border: 1px solid #55ff55; padding: 5px 12px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active { display: block; }
-    
     h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
     p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-    }
-    .card {
-      border: 2px solid #550000;
-      border-radius: 10px;
-      padding: 15px 10px;
-      text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
-      box-shadow: var(--glow);
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+    .card { border: 2px solid #550000; border-radius: 10px; padding: 15px 10px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
     .card h3 { margin: 8px 0; font-size: 1.1rem; }
     .price { font-size: 1.1rem; color: #55ff55; font-weight: bold; margin: 10px 0; }
     .features-list { text-align: left; color: #bbb; font-size: 0.75rem; margin: 8px 0; padding-left: 12px; }
     .features-list li { margin: 3px 0; }
-
-    .btn {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-      font-weight: bold;
-      font-size: 0.85rem;
-      transition: 0.2s;
-    }
+    .btn { background: var(--accent); color: #fff; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 0.85rem; }
     .btn:hover { background: #b30000; }
-
-    .profile-card {
-      border: 2px solid var(--accent);
-      border-radius: 15px;
-      padding: 30px;
-      max-width: 450px;
-      margin: auto;
-      text-align: center;
-      box-shadow: var(--glow);
-    }
-    .profile-avatar-container {
-      position: relative;
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 15px auto;
-    }
-    .profile-avatar-container img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-    }
-    .upload-btn-label {
-      position: absolute;
-      bottom: 0; right: 0;
-      background: var(--accent);
-      color: white;
-      border-radius: 50%;
-      width: 30px; height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.8rem;
-      border: 2px solid #000;
-    }
-    .profile-info {
-      text-align: left;
-      background: rgba(0,0,0,0.5);
-      padding: 15px;
-      border-radius: 8px;
-      margin: 20px 0;
-      font-size: 0.95rem;
-    }
+    .profile-card { border: 2px solid var(--accent); border-radius: 15px; padding: 30px; max-width: 450px; margin: auto; text-align: center; box-shadow: var(--glow); }
+    .profile-avatar-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px auto; }
+    .profile-avatar-container img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+    .upload-btn-label { position: absolute; bottom: 0; right: 0; background: var(--accent); color: white; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.8rem; border: 2px solid #000; }
+    .profile-info { text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 0.95rem; }
     .profile-info p { margin: 8px 0; }
-
-    .afk-container {
-      border: 2px solid #00ff00;
-      padding: 30px 20px;
-      text-align: center;
-      border-radius: 15px;
-      max-width: 400px;
-      margin: 20px auto;
-      box-shadow: 0 0 20px rgba(0,255,0,0.3);
-    }
+    .afk-container { border: 2px solid #00ff00; padding: 30px 20px; text-align: center; border-radius: 15px; max-width: 400px; margin: 20px auto; box-shadow: 0 0 20px rgba(0,255,0,0.3); }
     .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 15px 0; font-family: monospace; }
-
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
     .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; text-align: center; max-width: 350px; width: 100%; }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.9rem; padding-left: 20px; margin: 15px 0; }
@@ -219,7 +51,6 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav>
     <div class="logo" onclick="switchPage('home', document.getElementById('link-home'))">🔥 SOULSMP</div>
     <div class="nav-links">
@@ -240,7 +71,6 @@
     </div>
   </nav>
 
-  <!-- HOME PAGE -->
   <div id="home" class="page active container">
     <h1>SOUL SMP BATTLEGROUND</h1>
     <p class="subtitle">Server IP: <b>SPICY_ARMY1.aternos.me:40740</b></p>
@@ -249,7 +79,6 @@
     </div>
   </div>
 
-  <!-- PROFILE PAGE -->
   <div id="profile" class="page store-container">
     <h1>USER PROFILE</h1>
     <p class="subtitle">Customize your profile name, email, and picture.</p>
@@ -279,45 +108,18 @@
     </div>
   </div>
 
-  <!-- RANKS PAGE -->
   <div id="ranks" class="page store-container">
     <h1>👑 PREMIUM RANKS</h1>
     <p class="subtitle">Unlock exclusive in-game perks and commands.</p>
     <div class="grid">
-      <div class="card">
-        <h3>🟢 VIP 💎</h3>
-        <div class="price">₹99</div>
-        <ul class="features-list"><li>Warrior Kit</li><li>VIP Prefix</li><li>3 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🔵 MVP 🔱</h3>
-        <div class="price">₹199</div>
-        <ul class="features-list"><li>Archer Kit</li><li>MVP Prefix</li><li>5 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🟣 ELITE ⚡</h3>
-        <div class="price">₹399</div>
-        <ul class="features-list"><li>Inferno Kit</li><li>ELITE Prefix</li><li>8 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🔴 TITAN ⚔️</h3>
-        <div class="price">₹699</div>
-        <ul class="features-list"><li>Thunder Kit</li><li>TITAN Prefix</li><li>12 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card" style="border-color: #ffcc00;">
-        <h3 style="color:#ffcc00;">🟡 LEGEND 👑</h3>
-        <div class="price">₹999</div>
-        <ul class="features-list"><li>Dragon Kit</li><li>LEGEND Prefix</li><li>20 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
+      <div class="card"><h3>🟢 VIP 💎</h3><div class="price">₹99</div><ul class="features-list"><li>Warrior Kit</li><li>VIP Prefix</li><li>3 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🔵 MVP 🔱</h3><div class="price">₹199</div><ul class="features-list"><li>Archer Kit</li><li>MVP Prefix</li><li>5 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🟣 ELITE ⚡</h3><div class="price">₹399</div><ul class="features-list"><li>Inferno Kit</li><li>ELITE Prefix</li><li>8 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🔴 TITAN ⚔️</h3><div class="price">₹699</div><ul class="features-list"><li>Thunder Kit</li><li>TITAN Prefix</li><li>12 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card" style="border-color: #ffcc00;"><h3 style="color:#ffcc00;">🟡 LEGEND 👑</h3><div class="price">₹999</div><ul class="features-list"><li>Dragon Kit</li><li>LEGEND Prefix</li><li>20 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
     </div>
   </div>
 
-  <!-- KITS PAGE -->
   <div id="kits" class="page store-container">
     <h1>⚔️ BATTLE KITS</h1>
     <p class="subtitle">Equip yourself with powerful PvP gear.</p>
@@ -329,7 +131,6 @@
     </div>
   </div>
 
-  <!-- COINS PAGE -->
   <div id="coins" class="page store-container">
     <h1>🪙 COIN BUNDLES</h1>
     <p class="subtitle">Boost your in-game balance instantly.</p>
@@ -341,7 +142,6 @@
     </div>
   </div>
 
-  <!-- KEYS PAGE -->
   <div id="keys" class="page store-container">
     <h1>🔑 CRATE KEYS</h1>
     <p class="subtitle">Open special crates to win rare rewards.</p>
@@ -353,11 +153,9 @@
     </div>
   </div>
 
-  <!-- AFK ZONE PAGE -->
   <div id="afk" class="page store-container">
     <h1>⏳ AFK EARNING ZONE</h1>
     <p class="subtitle">Stay on this page to earn free AFK coins!</p>
-    
     <div class="afk-container">
       <h3 style="margin-top:0; color:#55ff55;">AFK Status</h3>
       <p id="afk-status-text" style="color: #ccc; font-size:0.85rem;">Status: <b style="color: #ff5555;">Inactive</b></p>
@@ -367,7 +165,6 @@
     </div>
   </div>
 
-  <!-- CLAIM MODAL -->
   <div id="claimModal" class="modal">
     <div class="modal-content store-container">
       <h2 id="modalTitle" style="color:var(--accent); margin-top:0;">Claim Coins</h2>
@@ -384,8 +181,8 @@
   </div>
 
   <script>
-    // Load saved user data instantly when page opens
-    window.onload = function() {
+    // Load Data instantly when page opens
+    window.addEventListener('DOMContentLoaded', () => {
       let savedUser = localStorage.getItem('soul_user') || "Player";
       let savedEmail = localStorage.getItem('soul_email') || "user@gmail.com";
       let savedAvatar = localStorage.getItem('soul_avatar') || "https://via.placeholder.com/150";
@@ -401,23 +198,28 @@
       document.getElementById('user-coins').innerText = savedCoins;
       document.getElementById('profile-coins').innerText = savedCoins;
 
-      document.getElementById('input-username').value = savedUser === "Player" ? "" : savedUser;
-      document.getElementById('input-email').value = savedEmail === "user@gmail.com" ? "" : savedEmail;
-    };
+      if(savedUser !== "Player") document.getElementById('input-username').value = savedUser;
+      if(savedEmail !== "user@gmail.com") document.getElementById('input-email').value = savedEmail;
+    });
 
     function saveProfileData() {
-      let username = document.getElementById('input-username').value.trim() || "Player";
-      let email = document.getElementById('input-email').value.trim() || "user@gmail.com";
+      let username = document.getElementById('input-username').value.trim();
+      let email = document.getElementById('input-email').value.trim();
+
+      if(!username) {
+        alert("Please enter a username!");
+        return;
+      }
 
       localStorage.setItem('soul_user', username);
-      localStorage.setItem('soul_email', email);
+      if(email) localStorage.setItem('soul_email', email);
 
       document.getElementById('nav-username').innerText = username;
       document.getElementById('profile-name').innerText = username;
       document.getElementById('profile-mc').innerText = username;
-      document.getElementById('profile-email').innerText = email;
+      if(email) document.getElementById('profile-email').innerText = email;
 
-      alert("Profile updated and saved permanently!");
+      alert("Profile Saved Successfully!");
     }
 
     function updateAvatar(event) {
@@ -466,7 +268,6 @@
           let m = Math.floor(seconds/60), s = seconds%60;
           document.getElementById('afk-timer-display').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
           
-          // Har 1 minute par coins update aur permanent save honge
           if(seconds % 60 === 0) { 
             let currentCoins = parseInt(localStorage.getItem('soul_coins') || "0") + 1;
             localStorage.setItem('soul_coins', currentCoins);
@@ -484,5 +285,5 @@
     }
   </script>
 </body>
-          </html>
+                                                                       </html>
   
