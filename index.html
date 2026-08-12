@@ -71,6 +71,7 @@
       font-weight: bold;
       font-size: 0.75rem;
       white-space: nowrap;
+      cursor: pointer;
     }
 
     /* Pages */
@@ -151,7 +152,8 @@
       <a onclick="switchPage('keys', this)" id="link-keys">🔑 Keys</a>
       <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
     </div>
-    <div class="coin-badge">AFK: <span id="user-coins">0</span></div>
+    <!-- Upar coin icon par click karne se AFK coins claim honge -->
+    <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
   </nav>
 
   <!-- HOME PAGE -->
@@ -213,15 +215,15 @@
     </div>
   </div>
 
-  <!-- COINS PAGE -->
+  <!-- COINS PAGE (Store Purchase) -->
   <div id="coins" class="page">
     <h1>🪙 COIN BUNDLES</h1>
     <p class="subtitle">Boost your in-game balance instantly.</p>
     <div class="grid">
-      <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
-      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price">₹149</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
-      <div class="card"><h3>🪙 15,000 Coins</h3><div class="price">₹299</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
-      <div class="card"><h3>🪙 75,000 Coins</h3><div class="price">₹999</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
+      <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><button class="btn" onclick="showClaimModal('Purchased Coins')">BUY</button></div>
+      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price">₹149</div><button class="btn" onclick="showClaimModal('Purchased Coins')">BUY</button></div>
+      <div class="card"><h3>🪙 15,000 Coins</h3><div class="price">₹299</div><button class="btn" onclick="showClaimModal('Purchased Coins')">BUY</button></div>
+      <div class="card"><h3>🪙 75,000 Coins</h3><div class="price">₹999</div><button class="btn" onclick="showClaimModal('Purchased Coins')">BUY</button></div>
     </div>
   </div>
 
@@ -254,12 +256,12 @@
   <!-- CLAIM MODAL -->
   <div id="claimModal" class="modal">
     <div class="modal-content">
-      <h2 style="color:var(--accent); margin-top:0;">Claim Your Coins</h2>
-      <p style="font-size:0.85rem; color:#ccc;">To receive your purchased coins, please follow these steps:</p>
+      <h2 id="modalTitle" style="color:var(--accent); margin-top:0;">Claim Coins</h2>
+      <p style="font-size:0.85rem; color:#ccc;">To receive your coins, please follow these steps:</p>
       <ol>
         <li>Join our Discord server.</li>
         <li>Open a support ticket.</li>
-        <li>Upload a screenshot of your payment.</li>
+        <li>Upload a screenshot of your payment or AFK time.</li>
         <li>Staff will add coins instantly!</li>
       </ol>
       <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">JOIN DISCORD</button>
@@ -279,7 +281,10 @@
       window.scrollTo(0, 0);
     }
 
-    function showClaimModal() { document.getElementById('claimModal').style.display = 'flex'; }
+    function showClaimModal(type) { 
+      document.getElementById('modalTitle').innerText = "Claim " + type;
+      document.getElementById('claimModal').style.display = 'flex'; 
+    }
     function closeModal() { document.getElementById('claimModal').style.display = 'none'; }
 
     let coins = 0, seconds = 0, active = false, interval;
@@ -311,5 +316,6 @@
     }
   </script>
 </body>
-      </html>
+        </html>
+
       
