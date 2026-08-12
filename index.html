@@ -20,22 +20,20 @@
       min-height: 100vh;
       transition: background 0.5s ease;
     }
-    /* Navbar */
+    /* Clean Navbar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
-      background: rgba(10, 0, 10, 0.95);
+      padding: 15px 20px;
+      background: rgba(10, 0, 10, 0.98);
       border-bottom: 3px solid var(--accent);
       position: sticky;
       top: 0;
       z-index: 1000;
-      flex-wrap: wrap;
-      gap: 10px;
     }
     .logo-text {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: bold;
       color: var(--accent);
       text-shadow: 0 0 10px var(--accent);
@@ -43,64 +41,70 @@
     }
     .nav-links {
       display: flex;
-      gap: 15px;
+      gap: 10px;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .nav-links a {
       color: #cccccc;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       cursor: pointer;
+      padding: 5px 8px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 4px;
       transition: 0.2s;
     }
     .nav-links a:hover, .nav-links a.active {
-      color: var(--accent);
-      text-shadow: 0 0 8px var(--accent);
+      color: white;
+      background: var(--accent);
+      text-shadow: 0 0 5px #000;
     }
     .btn-nav {
-      background: var(--accent);
+      background: #5865F2;
       color: white;
       border: none;
-      padding: 8px 15px;
+      padding: 8px 12px;
       border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s;
       text-decoration: none;
       display: inline-block;
+      font-size: 0.85rem;
     }
     .btn-nav:hover { transform: scale(1.05); }
 
     /* Page Sections */
-    .page { display: none; padding: 40px 20px; max-width: 1100px; margin: auto; }
+    .page { display: none; padding: 30px 15px; max-width: 1100px; margin: auto; }
     .page.active { display: block; }
 
     h1.page-title {
       text-align: center;
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: var(--accent);
       text-shadow: 0 0 15px var(--accent);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
     p.page-subtitle {
       text-align: center;
       color: #aaa;
-      font-size: 1.1rem;
-      margin-bottom: 40px;
+      font-size: 1rem;
+      margin-bottom: 30px;
     }
 
     /* Grids & Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
     }
     .card {
-      background: rgba(20, 0, 20, 0.7);
+      background: rgba(20, 0, 20, 0.8);
       border: 2px solid #440044;
       border-radius: 12px;
-      padding: 25px;
+      padding: 20px;
       text-align: center;
       transition: 0.3s;
       box-shadow: 0 4px 10px rgba(0,0,0,0.5);
@@ -110,10 +114,10 @@
       transform: translateY(-5px);
       box-shadow: 0 0 20px var(--accent-glow);
     }
-    .card h3 { color: #fff; font-size: 1.4rem; margin: 10px 0; }
-    .price { color: #55ff55; font-size: 1.3rem; font-weight: bold; margin: 15px 0; }
-    .features-list { text-align: left; color: #ccc; font-size: 0.9rem; margin: 15px 0; padding-left: 20px; }
-    .features-list li { margin: 5px 0; }
+    .card h3 { color: #fff; font-size: 1.3rem; margin: 10px 0; }
+    .price { color: #55ff55; font-size: 1.2rem; font-weight: bold; margin: 10px 0; }
+    .features-list { text-align: left; color: #ccc; font-size: 0.85rem; margin: 10px 0; padding-left: 15px; }
+    .features-list li { margin: 4px 0; }
 
     .action-btn {
       display: block;
@@ -121,7 +125,7 @@
       background: var(--accent);
       color: white;
       border: none;
-      padding: 12px;
+      padding: 10px;
       border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
@@ -135,40 +139,33 @@
     /* Home Specific Styles */
     .hero {
       text-align: center;
-      padding: 60px 20px;
+      padding: 40px 10px;
     }
-    .hero h1 { font-size: 3.8rem; color: #ff3333; text-shadow: 0 0 20px #ff0000; margin: 0; }
-    .hero p { color: #ddd; font-size: 1.3rem; margin: 15px 0 30px; }
-    .ip-box { background: rgba(0,0,0,0.6); display: inline-block; padding: 10px 20px; border-radius: 8px; border: 1px dashed var(--accent); font-family: monospace; font-size: 1.2rem; color: #55ff55; margin-bottom: 30px; }
+    .hero h1 { font-size: 2.8rem; color: #ff3333; text-shadow: 0 0 20px #ff0000; margin: 0; }
+    .hero p { color: #ddd; font-size: 1.1rem; margin: 15px 0 20px; }
+    .ip-box { background: rgba(0,0,0,0.6); display: inline-block; padding: 8px 15px; border-radius: 8px; border: 1px dashed var(--accent); font-family: monospace; font-size: 1.1rem; color: #55ff55; margin-bottom: 25px; }
     
     .features-row {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 15px;
       flex-wrap: wrap;
-      margin-top: 40px;
+      margin-top: 30px;
     }
-    .feature-badge { background: rgba(0,0,0,0.5); padding: 15px 25px; border-radius: 8px; border: 1px solid #333; font-weight: bold; }
-
-    /* Cosmetics Tabs */
-    .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
-    .tab-btn { background: #222; color: #fff; border: 1px solid #440044; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; }
-    .tab-btn.active, .tab-btn:hover { background: var(--accent); border-color: var(--accent); }
-    .cosmetic-section { display: none; }
-    .cosmetic-section.active { display: grid; }
+    .feature-badge { background: rgba(0,0,0,0.5); padding: 10px 15px; border-radius: 8px; border: 1px solid #333; font-size: 0.9rem; font-weight: bold; }
 
     /* Support / FAQ */
-    .support-box { background: rgba(15,0,15,0.8); padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid var(--accent); }
+    .support-box { background: rgba(15,0,15,0.8); padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid var(--accent); font-size: 0.95rem; }
     .support-box h3 { margin-top: 0; color: var(--accent); }
 
     /* Footer */
-    footer { background: #050005; border-top: 2px solid #220022; padding: 40px 20px; margin-top: 60px; color: #888; }
-    .footer-container { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-    .footer-col h4 { color: #fff; margin-bottom: 15px; }
+    footer { background: #050005; border-top: 2px solid #220022; padding: 30px 15px; margin-top: 40px; color: #888; font-size: 0.9rem; }
+    .footer-container { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+    .footer-col h4 { color: #fff; margin-bottom: 10px; }
     .footer-col ul { list-style: none; padding: 0; margin: 0; }
-    .footer-col ul li { margin-bottom: 8px; cursor: pointer; }
+    .footer-col ul li { margin-bottom: 6px; cursor: pointer; }
     .footer-col ul li:hover { color: var(--accent); }
-    .copyright { text-align: center; margin-top: 30px; font-size: 0.9rem; border-top: 1px solid #1a001a; padding-top: 20px; }
+    .copyright { text-align: center; margin-top: 25px; font-size: 0.8rem; border-top: 1px solid #1a001a; padding-top: 15px; }
   </style>
 </head>
 <body>
@@ -177,13 +174,12 @@
   <nav>
     <div class="logo-text" onclick="switchPage('home', this)">🔥 SOULSMP</div>
     <div class="nav-links">
-      <a onclick="switchPage('home', this)" class="active">🏠 HOME</a>
-      <a onclick="switchPage('ranks', this)">👑 RANKS</a>
-      <a onclick="switchPage('kits', this)">⚔️ KITS</a>
-      <a onclick="switchPage('coins', this)">🪙 COINS</a>
-      <a onclick="switchPage('crates', this)">🎁 CRATES</a>
-      <a onclick="switchPage('cosmetics', this)">✨ COSMETICS</a>
-      <a onclick="switchPage('support', this)">🎧 SUPPORT</a>
+      <a onclick="switchPage('home', this)" class="active" id="nav-home">HOME</a>
+      <a onclick="switchPage('ranks', this)" id="nav-ranks">RANKS</a>
+      <a onclick="switchPage('kits', this)" id="nav-kits">KITS</a>
+      <a onclick="switchPage('coins', this)" id="nav-coins">COINS</a>
+      <a onclick="switchPage('keys', this)" id="nav-keys">KEYS</a>
+      <a onclick="switchPage('support', this)" id="nav-support">SUPPORT</a>
     </div>
     <div>
       <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="btn-nav"><i class="fa-brands fa-discord"></i> DISCORD</a>
@@ -197,35 +193,35 @@
       <p>The ultimate Minecraft survival experience awaits you.</p>
       <div class="ip-box">play.soulsmp.com</div>
       <div>
-        <button class="btn-nav" style="padding: 12px 30px; font-size: 1.1rem; margin-right: 10px;" onclick="switchPage('ranks')">SHOP NOW</button>
-        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="btn-nav" style="padding: 12px 30px; font-size: 1.1rem; background: #5865F2;">JOIN SERVER</a>
+        <button class="action-btn" style="display:inline-block; width:auto; padding: 10px 25px; margin-right: 10px;" onclick="switchPage('ranks', document.getElementById('nav-ranks'))">SHOP NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="btn-nav" style="padding: 10px 20px; font-size: 1rem;">JOIN SERVER</a>
       </div>
     </div>
 
-    <h2 style="text-align:center; color:#ff3333; margin-top: 40px;">Featured Items</h2>
+    <h2 style="text-align:center; color:#ff3333; margin-top: 30px;">Featured Items</h2>
     <div class="grid">
       <div class="card">
         <h3>👑 Featured Rank</h3>
-        <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">LEGEND</p>
+        <p style="color:#ffcc00; font-weight:bold; font-size:1.1rem;">LEGEND</p>
         <div class="price">₹999</div>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>⚔️ Featured Kit</h3>
-        <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">DRAGON KIT</p>
+        <p style="color:#ffcc00; font-weight:bold; font-size:1.1rem;">DRAGON KIT</p>
         <div class="price">₹299</div>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>🪙 Featured Coins</h3>
-        <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">15,000 Coins</p>
+        <p style="color:#ffcc00; font-weight:bold; font-size:1.1rem;">15,000 Coins</p>
         <div class="price">₹299</div>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
-        <h3>🎁 Featured Crate</h3>
-        <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">Legendary Crate</p>
-        <div class="price">₹599</div>
+        <h3>🔑 Featured Key</h3>
+        <p style="color:#ffcc00; font-weight:bold; font-size:1.1rem;">Xiavien Key</p>
+        <div class="price">₹200</div>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
     </div>
@@ -251,7 +247,6 @@
           <li>VIP Prefix</li>
           <li>3 Homes</li>
           <li>VIP Chat Color</li>
-          <li>Basic Cosmetics</li>
         </ul>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
@@ -263,7 +258,6 @@
           <li>MVP Prefix</li>
           <li>5 Homes</li>
           <li>Special Chat Color</li>
-          <li>Extra Cosmetics</li>
         </ul>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
@@ -275,7 +269,6 @@
           <li>ELITE Prefix</li>
           <li>8 Homes</li>
           <li>Special Particles</li>
-          <li>ELITE Effects</li>
         </ul>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
@@ -287,7 +280,6 @@
           <li>TITAN Prefix</li>
           <li>12 Homes</li>
           <li>Premium Particles</li>
-          <li>Join Effect</li>
         </ul>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
@@ -299,7 +291,6 @@
           <li>LEGEND Prefix</li>
           <li>20 Homes</li>
           <li>Exclusive Cosmetics</li>
-          <li>Legendary Join Effect</li>
         </ul>
         <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
@@ -329,70 +320,86 @@
     <div class="grid">
       <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
       <div class="card"><h3>🪙 2,500 Coins</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card" style="border-color:#55ff55;"><h3>🪙 6,000 Coins</h3><p style="color:#55ff55; font-size:0.85rem; font-weight:bold;">⭐ BEST VALUE</p><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card" style="border-color:#ff3333;"><h3>🪙 15,000 Coins</h3><p style="color:#ff3333; font-size:0.85rem; font-weight:bold;">🔥 POPULAR</p><div class="price">₹299</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card" style="border-color:#55ff55;"><h3>🪙 6,000 Coins</h3><p style="color:#55ff55; font-size:0.8rem; font-weight:bold;">⭐ BEST VALUE</p><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card" style="border-color:#ff3333;"><h3>🪙 15,000 Coins</h3><p style="color:#ff3333; font-size:0.8rem; font-weight:bold;">🔥 POPULAR</p><div class="price">₹299</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
       <div class="card"><h3>🪙 35,000 Coins</h3><div class="price">₹599</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card" style="border-color:#ffcc00;"><h3>🪙 75,000 Coins</h3><p style="color:#ffcc00; font-size:0.85rem; font-weight:bold;">👑 MEGA</p><div class="price">₹999</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card" style="border-color:#ffcc00;"><h3>🪙 75,000 Coins</h3><p style="color:#ffcc00; font-size:0.8rem; font-weight:bold;">👑 MEGA</p><div class="price">₹999</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
   </div>
 
-  <!-- 6. CRATES PAGE -->
-  <div id="crates" class="page" style="--bg-current: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);">
-    <h1 class="page-title">OPEN THE CRATES</h1>
-    <p class="page-subtitle">Test your luck and win rare items.</p>
+  <!-- 6. KEYS PAGE (Replaced Crates) -->
+  <div id="keys" class="page" style="--bg-current: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);">
+    <h1 class="page-title">SERVER KEYS</h1>
+    <p class="page-subtitle">Open special crates with unique keys.</p>
     <div class="grid">
-      <div class="card"><h3>🔒 Basic Crate</h3><div class="price">₹49</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>⚔️ Warrior Crate</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>🔥 Inferno Crate</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>💎 Diamond Crate</h3><div class="price">₹349</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>👑 Legendary Crate</h3><div class="price">₹599</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🔑 Common Key</h3><div class="price">₹20</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🔑 Prime Key</h3><div class="price">₹100</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🔑 Xiavien Key</h3><div class="price">₹200</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🔑 Party Key</h3><div class="price">₹50</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
   </div>
 
-  <!-- 7. COSMETICS PAGE -->
-  <div id="cosmetics" class="page" style="--bg-current: radial-gradient(circle at center, #002b33 0%, #000b11 100%);">
-    <h1 class="page-title">COSMETICS</h1>
-    <p class="page-subtitle">Stand out from the crowd with unique styles.</p>
-    
-    <div class="tabs">
-      <button class="tab-btn active" onclick="switchCosmetic('pets', this)">🐾 PETS</button>
-      <button class="tab-btn" onclick="switchCosmetic('effects', this)">⚡ EFFECTS</button>
-      <button class="tab-btn" onclick="switchCosmetic('titles', this)">🏷️ TITLES</button>
-    </div>
-
-    <div id="pets" class="cosmetic-section active grid">
-      <div class="card"><h3>Mini Dragon</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Wolf Pet</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Blaze Pet</h3><div class="price">₹129</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Allay Pet</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Enderman Pet</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-    </div>
-
-    <div id="effects" class="cosmetic-section grid">
-      <div class="card"><h3>Flame Trail</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Lightning Trail</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Heart Trail</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Smoke Trail</h3><div class="price">₹59</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>Ender Trail</h3><div class="price">₹119</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-    </div>
-
-    <div id="titles" class="cosmetic-section grid">
-      <div class="card"><h3>[Warrior] Title</h3><div class="price">₹49</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>[Slayer] Title</h3><div class="price">₹49</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>[Champion] Title</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>[Destroyer] Title</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>[Immortal] Title</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-      <div class="card"><h3>[Legend] Title</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
-    </div>
-  </div>
-
-  <!-- 8. SUPPORT PAGE -->
+  <!-- 7. SUPPORT PAGE -->
   <div id="support" class="page" style="--bg-current: radial-gradient(circle at center, #1f1f1f 0%, #0a0a0a 100%);">
     <h1 class="page-title">SUPPORT CENTER</h1>
     <p class="page-subtitle">We are here to help you out.</p>
     
     <div class="support-box">
-      <h3>❓ FAQ (Frequently Asked Questions)</h3>
-      <p><b>Q: Payment ke baad rank kab milti hai?</b><br>A: Payment successful hote hi server automated system 1-2 minute ke andar rank deliver kar deta hai.</p>
-      <p><b>Q: Item na mile toh kya karein?</b><br>A: Turant hamare Discord server par ticket banayein ya admin se contact karein.</p>
+      <h3>❓ FAQ</h3>
+      <p><b>Q: Payment ke baad rank kab milti hai?</b><br>A: Payment successful hote hi server automated system delivery kar deta hai.</p>
+    </div>
+    
+    <div class="support-box">
+      <h3>💬 CONTACT & HELP</h3>
+      <p>Support ke liye Discord join karein: <a href="https://discord.gg/BHHU8mDvh7" target="_blank" style="color:#5865F2;">discord.gg/BHHU8mDvh7</a></p>
+    </div>
   </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>SOULSMP</h4>
+        <ul>
+          <li onclick="switchPage('home', document.getElementById('nav-home'))">Home</li>
+          <li onclick="switchPage('support', document.getElementById('nav-support'))">Rules</li>
+          <li onclick="window.open('https://discord.gg/BHHU8mDvh7','_blank')">Discord</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>STORE</h4>
+        <ul>
+          <li onclick="switchPage('ranks', document.getElementById('nav-ranks'))">Ranks</li>
+          <li onclick="switchPage('kits', document.getElementById('nav-kits'))">Kits</li>
+          <li onclick="switchPage('coins', document.getElementById('nav-coins'))">Coins</li>
+          <li onclick="switchPage('keys', document.getElementById('nav-keys'))">Keys</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li onclick="switchPage('support', document.getElementById('nav-support'))">FAQ & Contact</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      © 2026 SOULSMP — All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function switchPage(pageId, element) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      
+      if(element) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        element.classList.add('active');
+      }
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+          </html>
+        
