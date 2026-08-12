@@ -11,27 +11,18 @@
       --glow: 0 0 15px #ff3333;
     }
     
-    /* Gamer Style Dark Background */
     body {
       margin: 0;
       min-height: 100vh;
-      background:
-          linear-gradient(
-              rgba(0, 0, 0, 0.5),
-              rgba(0, 0, 0, 0.85)
-          ),
-          url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop")
-          center center / cover no-repeat fixed;
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.85)),
+                  url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop")
+                  center center / cover no-repeat fixed;
       font-family: Arial, sans-serif;
       color: #fff;
       padding-bottom: 60px;
     }
 
-    .container,
-    .store-container,
-    .profile-card,
-    .card,
-    .afk-container {
+    .container, .store-container, .profile-card, .card, .afk-container {
       background: rgba(10, 0, 0, 0.65);
       backdrop-filter: blur(6px);
     }
@@ -393,6 +384,7 @@
   </div>
 
   <script>
+    // Load saved user data instantly when page opens
     window.onload = function() {
       let savedUser = localStorage.getItem('soul_user') || "Player";
       let savedEmail = localStorage.getItem('soul_email') || "user@gmail.com";
@@ -405,6 +397,7 @@
       document.getElementById('profile-email').innerText = savedEmail;
       document.getElementById('nav-avatar').src = savedAvatar;
       document.getElementById('profile-img-preview').src = savedAvatar;
+      
       document.getElementById('user-coins').innerText = savedCoins;
       document.getElementById('profile-coins').innerText = savedCoins;
 
@@ -424,7 +417,7 @@
       document.getElementById('profile-mc').innerText = username;
       document.getElementById('profile-email').innerText = email;
 
-      alert("Profile updated successfully!");
+      alert("Profile updated and saved permanently!");
     }
 
     function updateAvatar(event) {
@@ -472,6 +465,8 @@
           seconds++;
           let m = Math.floor(seconds/60), s = seconds%60;
           document.getElementById('afk-timer-display').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
+          
+          // Har 1 minute par coins update aur permanent save honge
           if(seconds % 60 === 0) { 
             let currentCoins = parseInt(localStorage.getItem('soul_coins') || "0") + 1;
             localStorage.setItem('soul_coins', currentCoins);
@@ -489,5 +484,5 @@
     }
   </script>
 </body>
-  </html>
+          </html>
   
