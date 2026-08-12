@@ -269,7 +269,6 @@
       <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">CREATE ACCOUNT</p>
       <input type="text" id="su-username" placeholder="Minecraft Username">
       <input type="email" id="su-email" placeholder="Email Address">
-      <input type="password" id="su-pass" placeholder="Password">
       <button class="btn" style="margin-top:15px;" onclick="handleSignup()">SIGN UP</button>
       <div class="auth-switch" onclick="showLogin()">Already have an account? <span>Login here</span></div>
     </div>
@@ -281,7 +280,7 @@
       <h2 style="font-size: 1.4rem; color: #ff5555; margin-bottom: 5px;">SOULSMP SECURITY</h2>
       <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">USER LOGIN</p>
       <input type="text" id="li-username" placeholder="Minecraft Username">
-      <input type="password" id="li-pass" placeholder="Password">
+      <input type="email" id="li-email" placeholder="Email Address">
       <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN</button>
       <div class="auth-switch" onclick="showSignup()">Don't have an account? <span>Sign up</span></div>
     </div>
@@ -448,11 +447,11 @@
 
   <script>
     window.onload = function() {
-      let activeUser = localStorage.getItem('soul_active_user');
+      let activeUser = localStorage.getItem('soul_user');
       if (activeUser) {
-        document.getElementById('signup-screen').style.display = 'none';
+        document.getElementById('auth-screen').style.display = 'none';
         document.getElementById('login-screen').style.display = 'none';
-        loadUserData(activeUser);
+        loadUserData();
       } else {
         document.getElementById('signup-screen').style.display = 'flex';
         document.getElementById('login-screen').style.display = 'none';
@@ -472,46 +471,57 @@
     function handleSignup() {
       let username = document.getElementById('su-username').value.trim();
       let email = document.getElementById('su-email').value.trim();
-      let pass = document.getElementById('su-pass').value.trim();
 
-      if (!username) {
-        alert("Please enter a username!");
+      if (!username || !email) {
+        alert("Please enter both username and email!");
         return;
       }
 
-      let userData = { username, email: email || "user@gmail.com", pass: pass || "12345", avatar: "https://via.placeholder.com/150" };
-      localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
-      localStorage.setItem('soul_active_user', username);
+      localStorage.setItem('soul_user', username);
+      localStorage.setItem('soul_email', email);
       
       document.getElementById('signup-screen').style.display = 'none';
       document.getElementById('login-screen').style.display = 'none';
-      loadUserData(username);
+      loadUserData();
     }
 
     function handleLogin() {
       let username = document.getElementById('li-username').value.trim();
-      let pass = document.getElementById('li-pass').value.trim();
+      let email = document.getElementById('li-email').value.trim();
 
-      if (!username) {
-        alert("Please enter your username!");
+      if (!username || !email) {
+        alert("Please enter both username and email!");
         return;
       }
 
-      let savedData = localStorage.getItem('soul_user_' + username);
-      if (!savedData) {
-        let userData = { username, email: "user@gmail.com", pass: pass || "12345", avatar: "https://via.placeholder.com/150" };
-        localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
-      }
+      localStorage.setItem('soul_user', username);
+      localStorage.setItem('soul_email', email);
 
-      localStorage.setItem('soul_active_user', username);
       document.getElementById('signup-screen').style.display = 'none';
       document.getElementById('login-screen').style.display = 'none';
-      loadUserData(username);
+      loadUserData();
     }
 
-    function loadUserData(username) {
-      let savedData = localStorage.getItem('soul_user_' + username);
-      if (savedData) {
-        let userObj = JSON.parse(savedData);
-        document.getElementById('nav-username').innerText = userObj.username;
-        document.getElementById('profile-name').innerText = userObj
+    function loadUserData() {
+      let username = localStorage.getItem('soul_user');
+      let email = localStorage.getItem('soul_email');
+      let avatar = localStorage.getItem('soul_avatar');
+
+      if (username) {
+        document.getElementById('nav-username').innerText = username;
+        document.getElementById('profile-name').innerText = username;
+        document.getElementById('profile-mc').innerText = username;
+        document.getElementById('profile-email').innerText = email || "user@gmail.com";
+      }
+      if (avatar) {
+        document.getElementById('nav-avatar').src = avatar;
+        document.getElementById('profile-img-preview').src = avatar;
+      }
+    }
+
+    function updateAvatar(event) {
+      let file = event.target.files[0];
+      if (file) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+          let url = e.
