@@ -8,23 +8,39 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(circle at center, #2b0000 0%, #0a0000 100%);
+      /* Minecraft style dark red soul background pattern */
+      background: linear-gradient(rgba(10, 0, 0, 0.85), rgba(20, 0, 0, 0.9)), 
+                  url('https://minecraft.wiki/images/Nether_Wart_Block_JE2_BE2.png');
+      background-size: cover;
+      background-attachment: fixed;
       color: #ffffff;
       margin: 0;
       padding: 0;
       min-height: 100vh;
     }
-    /* Top Navigation bar for Discord */
+    /* Top Navigation bar */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: rgba(15, 0, 0, 0.8);
-      border-bottom: 2px solid #ff1a1a;
+      padding: 15px 40px;
+      background: rgba(10, 0, 0, 0.95);
+      border-bottom: 3px solid #ff0000;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-container img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #ff0000;
+      object-fit: cover;
     }
     .logo-text {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: bold;
       color: #ff3333;
       text-shadow: 0 0 10px #ff0000;
@@ -51,7 +67,7 @@
     /* Header Section */
     header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px 20px 20px;
     }
     header h1 {
       font-size: 3.5rem;
@@ -60,7 +76,7 @@
       margin: 0;
     }
     header p {
-      color: #bbbbbb;
+      color: #cccccc;
       font-size: 1.2rem;
       margin-top: 10px;
     }
@@ -82,45 +98,41 @@
     /* Grid layout for Ranks */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
     }
     .rank-box {
-      background: rgba(40, 0, 0, 0.6);
-      border: 1px solid #660000;
-      border-radius: 10px;
-      padding: 20px;
+      background: rgba(30, 0, 0, 0.75);
+      border: 2px solid #550000;
+      border-radius: 12px;
+      padding: 25px 15px;
       text-align: center;
       cursor: pointer;
       transition: 0.3s;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
     .rank-box:hover {
       border-color: #ff3333;
-      background: rgba(70, 0, 0, 0.8);
+      background: rgba(60, 0, 0, 0.9);
       transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
     }
     .rank-box img {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
-      margin-bottom: 10px;
-      image-rendering: pixelated; /* Minecraft ke pixel look ke liye */
+      margin-bottom: 12px;
+      image-rendering: pixelated;
     }
     .rank-box h3 {
-      margin: 10px 0 0 0;
-      font-size: 1.1rem;
+      margin: 10px 0 5px 0;
+      font-size: 1.2rem;
       color: #ffffff;
     }
-
-    /* Premium Ranks specific grid */
-    .premium-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-    .premium-box {
-      background: linear-gradient(135deg, rgba(80, 0, 0, 0.8), rgba(20, 0, 0, 0.9));
-      border: 2px solid #ff0000;
+    .rank-price {
+      color: #ff5555;
+      font-weight: bold;
+      font-size: 1.1rem;
     }
 
     /* Popup Modal Styles */
@@ -132,22 +144,23 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
     }
     .modal-content {
-      background: #1a0000;
+      background: #150000;
       border: 2px solid #ff3333;
       padding: 30px;
-      border-radius: 12px;
+      border-radius: 14px;
       text-align: center;
-      max-width: 350px;
+      max-width: 380px;
       width: 90%;
-      box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
     }
-    .modal-content h2 { color: #ff3333; margin-top: 0; }
-    .modal-content p { color: #ccc; }
+    .modal-content h2 { color: #ff3333; margin-top: 0; font-size: 2rem; }
+    .modal-content .modal-price { color: #55ff55; font-size: 1.4rem; font-weight: bold; margin: 10px 0; }
+    .modal-content p { color: #cccccc; font-size: 1rem; }
     .buy-btn {
       display: inline-block;
       background: #ff0000;
@@ -156,25 +169,29 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
-      margin-top: 15px;
+      margin-top: 20px;
+      font-size: 1.1rem;
       transition: 0.2s;
     }
     .buy-btn:hover { background: #cc0000; transform: scale(1.05); }
     .close-btn {
       display: block;
       margin-top: 15px;
-      color: #aaa;
+      color: #aaaaaa;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     .close-btn:hover { color: white; }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation with Discord Button -->
+  <!-- Top Navigation with Logo and Discord Button -->
   <nav>
-    <div class="logo-text">🔥 SOUL SMP</div>
+    <div class="logo-container">
+      <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE1.png" alt="Soul SMP Logo">
+      <div class="logo-text">SOUL SMP</div>
+    </div>
     <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="discord-icon-btn">
       <i class="fa-brands fa-discord"></i> Discord
     </a>
@@ -183,34 +200,84 @@
   <!-- Header -->
   <header>
     <h1>SERVER STORE</h1>
-    <p>Apni manpasand rank chunein aur server ko support karein!</p>
+    <p>Apni favorite rank kharidein aur SOUL SMP ke ultimate warrior banein!</p>
   </header>
 
   <div class="container">
     
-    <!-- Player Ranks Section -->
-    <h2 class="section-title">Player Ranks</h2>
+    <!-- Pro Ranks Section -->
+    <h2 class="section-title">⚡ Pro Ranks</h2>
     <div class="grid">
-      <div class="rank-box" onclick="openModal('Member', 'Free Rank', 'Server join karte hi milti hai!')"><img src="https://minecraft.wiki/images/Leather_Tunic_JE2_BE2.png" alt="Member"><h3>Member</h3></div>
-      <div class="rank-box" onclick="openModal('Rookie', 'In-game Money', 'Starting package aur basic permissions.')"><img src="https://minecraft.wiki/images/Wooden_Sword_JE2_BE2.png" alt="Rookie"><h3>Rookie</h3></div>
-      <div class="rank-box" onclick="openModal('Knight', 'In-game Money', 'Iron kit aur /kit tools ka access.')"><img src="https://minecraft.wiki/images/Iron_Sword_JE2_BE2.png" alt="Knight"><h3>Knight</h3></div>
-      <div class="rank-box" onclick="openModal('Warrior', 'In-game Money', 'Enchanted weapons aur /sethome 2.')"><img src="https://minecraft.wiki/images/Iron_Chestplate_JE2_BE2.png" alt="Warrior"><h3>Warrior</h3></div>
-      <div class="rank-box" onclick="openModal('Elite', 'In-game Money', 'Diamond tools aur special chat tag.')"><img src="https://minecraft.wiki/images/Diamond_Sword_JE1_BE1.png" alt="Elite"><h3>Elite</h3></div>
-      <div class="rank-box" onclick="openModal('Hero', 'In-game Money', 'Advanced commands aur kit access.')"><img src="https://minecraft.wiki/images/Diamond_Chestplate_JE1_BE1.png" alt="Hero"><h3>Hero</h3></div>
-      <div class="rank-box" onclick="openModal('Titan', 'In-game Money', 'Netherite gear aur special perks.')"><img src="https://minecraft.wiki/images/Netherite_Sword_JE1_BE1.png" alt="Titan"><h3>Titan</h3></div>
-      <div class="rank-box" onclick="openModal('Legend', 'In-game Money', 'Legendary kit aur extra homes.')"><img src="https://minecraft.wiki/images/Netherite_Chestplate_JE1.png" alt="Legend"><h3>Legend</h3></div>
-      <div class="rank-box" onclick="openModal('Mythic', 'In-game Money', 'Mythic items aur special particle effects.')"><img src="https://minecraft.wiki/images/Nether_Star.png" alt="Mythic"><h3>Mythic</h3></div>
-      <div class="rank-box" onclick="openModal('Immortal', 'In-game Money', 'Sabhi regular ranks ka peak version!')"><img src="https://minecraft.wiki/images/Dragon_Head.png" alt="Immortal"><h3>Immortal</h3></div>
+      <div class="rank-box" onclick="openModal('Knight', '₹99', 'Iron kit, /kit tools, aur basic server perks.')">
+        <img src="https://minecraft.wiki/images/Iron_Sword_JE2_BE2.png" alt="Knight">
+        <h3>Knight</h3>
+        <div class="rank-price">₹99</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Warrior', '₹149', 'Enchanted weapons, /sethome 2, aur special tag.')">
+        <img src="https://minecraft.wiki/images/Iron_Chestplate_JE2_BE2.png" alt="Warrior">
+        <h3>Warrior</h3>
+        <div class="rank-price">₹149</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Elite', '₹199', 'Diamond tools, /heal command, aur custom chat color.')">
+        <img src="https://minecraft.wiki/images/Diamond_Sword_JE1_BE1.png" alt="Elite">
+        <h3>Elite</h3>
+        <div class="rank-price">₹199</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Hero', '₹249', 'Diamond armor set, 3 set homes, aur kit access.')">
+        <img src="https://minecraft.wiki/images/Diamond_Chestplate_JE1_BE1.png" alt="Hero">
+        <h3>Hero</h3>
+        <div class="rank-price">₹249</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Titan', '₹299', 'Netherite sword, particle effects, aur extra claims.')">
+        <img src="https://minecraft.wiki/images/Netherite_Sword_JE1_BE1.png" alt="Titan">
+        <h3>Titan</h3>
+        <div class="rank-price">₹299</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Legend', '₹349', 'Full Netherite tools + special legendary kit.')">
+        <img src="https://minecraft.wiki/images/Netherite_Chestplate_JE1.png" alt="Legend">
+        <h3>Legend</h3>
+        <div class="rank-price">₹349</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Mythic', '₹399', 'Mythic items, /feed command, aur unique particle aura.')">
+        <img src="https://minecraft.wiki/images/Nether_Star.png" alt="Mythic">
+        <h3>Mythic</h3>
+        <div class="rank-price">₹399</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Immortal', '₹449', 'Server ki sabse powerful regular rank + special permissions.')">
+        <img src="https://minecraft.wiki/images/Dragon_Head.png" alt="Immortal">
+        <h3>Immortal</h3>
+        <div class="rank-price">₹449</div>
+      </div>
     </div>
 
-    <!-- Premium Ranks Section -->
-    <h2 class="section-title">👑 Premium Ranks</h2>
-    <div class="grid premium-grid">
-      <div class="rank-box premium-box" onclick="openModal('VIP', '₹99 / month', 'Special prefix, /fly command, aur 3 set homes!')"><img src="https://minecraft.wiki/images/Gold_Ingot_JE3_BE3.png" alt="VIP"><h3>VIP</h3></div>
-      <div class="rank-box premium-box" onclick="openModal('MVP', '₹199 / month', 'VIP sabhi features + /heal, /feed access!')"><img src="https://minecraft.wiki/images/Diamond_JE3_BE3.png" alt="MVP"><h3>MVP</h3></div>
-      <div class="rank-box premium-box" onclick="openModal('MVP+', '₹299 / month', 'MVP features + Custom chat colors & kits!')"><img src="https://minecraft.wiki/images/Emerald_JE3_BE3.png" alt="MVP+"><h3>MVP+</h3></div>
-      <div class="rank-box premium-box" onclick="openModal('Elite+', '₹399 / month', 'Exclusive elite perks aur server priority!')"><img src="https://minecraft.wiki/images/Enchanted_Golden_Apple_JE2_BE2.gif" alt="Elite+"><h3>Elite+</h3></div>
-      <div class="rank-box premium-box" onclick="openModal('Legend+', '₹499 / month', 'Ultimate server power, custom commands & tags!')"><img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE1.png" alt="Legend+"><h3>Legend+</h3></div>
+    <!-- Ultimate Premium Ranks Section -->
+    <h2 class="section-title">👑 Ultimate Premium Ranks</h2>
+    <div class="grid">
+      <div class="rank-box" onclick="openModal('VIP', '₹499', 'Special prefix, /fly command, aur 3 set homes!')">
+        <img src="https://minecraft.wiki/images/Gold_Ingot_JE3_BE3.png" alt="VIP">
+        <h3>VIP</h3>
+        <div class="rank-price">₹499</div>
+      </div>
+      <div class="rank-box" onclick="openModal('MVP', '₹599', 'VIP sabhi features + /heal, /feed & custom kit access!')">
+        <img src="https://minecraft.wiki/images/Diamond_JE3_BE3.png" alt="MVP">
+        <h3>MVP</h3>
+        <div class="rank-price">₹599</div>
+      </div>
+      <div class="rank-box" onclick="openModal('MVP+', '₹699', 'MVP features + Custom chat colors & exclusive server kits!')">
+        <img src="https://minecraft.wiki/images/Emerald_JE3_BE3.png" alt="MVP+">
+        <h3>MVP+</h3>
+        <div class="rank-price">₹699</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Elite+', '₹799', 'Exclusive elite perks, fly in safezone & priority entry!')">
+        <img src="https://minecraft.wiki/images/Enchanted_Golden_Apple_JE2_BE2.gif" alt="Elite+">
+        <h3>Elite+</h3>
+        <div class="rank-price">₹799</div>
+      </div>
+      <div class="rank-box" onclick="openModal('Legend+', '₹999', 'Ultimate server power, custom tags, OP commands & maximum perks!')">
+        <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE1.png" alt="Legend+">
+        <h3>Legend+</h3>
+        <div class="rank-price">₹999</div>
+      </div>
     </div>
 
   </div>
@@ -219,7 +286,7 @@
   <div id="rankModal" class="modal">
     <div class="modal-content">
       <h2 id="modalTitle">Rank Name</h2>
-      <p id="modalPrice" style="color: #ff3333; font-weight: bold; font-size: 1.2rem;"></p>
+      <div id="modalPrice" class="modal-price">₹99</div>
       <p id="modalDesc">Description here</p>
       <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="buy-btn">BUY NOW VIA DISCORD</a>
       <span class="close-btn" onclick="closeModal()">Close Window</span>
@@ -245,4 +312,5 @@
   </script>
 
 </body>
-</html>
+  </html>
+  
