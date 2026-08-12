@@ -269,9 +269,9 @@
       <input type="text" id="su-username" placeholder="Minecraft Username">
       <input type="email" id="su-email" placeholder="Email Address (e.g. name@gmail.com)">
       <input type="password" id="su-pass" placeholder="Password (Letters & Numbers)">
-      <div id="su-error" class="error-msg">❌ Please fill all fields correctly! Password must contain letters and numbers.</div>
+      <div id="su-error" class="error-msg">❌ Please fill all fields correctly!</div>
       <button class="btn" style="margin-top:15px;" onclick="handleSignup()">SIGN UP</button>
-      <div class="auth-switch" onclick="showLogin()">Already have an account? <span style="color:var(--accent); font-weight:bold; cursor:pointer;">Login here</span></div>
+      <div class="auth-switch" onclick="showLogin()">Already have an account? <span>Login here</span></div>
     </div>
   </div>
 
@@ -284,7 +284,7 @@
       <input type="password" id="li-pass" placeholder="Password">
       <div id="li-error" class="error-msg">❌ Invalid username or password!</div>
       <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN</button>
-      <div class="auth-switch" onclick="showSignup()">Don't have an account? <span style="color:var(--accent); font-weight:bold; cursor:pointer;">Sign up</span></div>
+      <div class="auth-switch" onclick="showSignup()">Don't have an account? <span>Sign up</span></div>
     </div>
   </div>
 
@@ -475,7 +475,6 @@
     }
 
     function validatePassword(pass) {
-      // Must contain at least one letter and one number
       let hasLetter = /[a-zA-Z]/.test(pass);
       let hasNumber = /[0-9]/.test(pass);
       return hasLetter && hasNumber && pass.length >= 6;
@@ -519,4 +518,9 @@
       loadUserData(username);
     }
 
-    functio
+    function handleLogin() {
+      let username = document.getElementById('li-username').value.trim();
+      let pass = document.getElementById('li-pass').value.trim();
+      let error = document.getElementById('li-error');
+
+      if (!u
