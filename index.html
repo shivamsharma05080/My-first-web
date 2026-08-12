@@ -8,8 +8,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Minecraft style dark red soul background pattern */
-      background: linear-gradient(rgba(10, 0, 0, 0.85), rgba(20, 0, 0, 0.9)), 
+      background: linear-gradient(rgba(10, 0, 0, 0.88), rgba(20, 0, 0, 0.92)), 
                   url('https://minecraft.wiki/images/Nether_Wart_Block_JE2_BE2.png');
       background-size: cover;
       background-attachment: fixed;
@@ -33,17 +32,17 @@
       gap: 12px;
     }
     .logo-container img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      border: 2px solid #ff0000;
-      object-fit: cover;
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      image-rendering: pixelated;
+      filter: drop-shadow(0 0 8px #ff0000);
     }
     .logo-text {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: bold;
       color: #ff3333;
-      text-shadow: 0 0 10px #ff0000;
+      text-shadow: 0 0 12px #ff0000;
       letter-spacing: 2px;
     }
     .discord-icon-btn {
@@ -102,8 +101,8 @@
       gap: 20px;
     }
     .rank-box {
-      background: rgba(30, 0, 0, 0.75);
-      border: 2px solid #550000;
+      background: rgba(35, 0, 0, 0.8);
+      border: 2px solid #660000;
       border-radius: 12px;
       padding: 25px 15px;
       text-align: center;
@@ -113,9 +112,9 @@
     }
     .rank-box:hover {
       border-color: #ff3333;
-      background: rgba(60, 0, 0, 0.9);
+      background: rgba(70, 0, 0, 0.95);
       transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
     }
     .rank-box img {
       width: 56px;
@@ -186,10 +185,10 @@
 </head>
 <body>
 
-  <!-- Top Navigation with Logo and Discord Button -->
+  <!-- Top Navigation with Custom Logo and Discord Button -->
   <nav>
     <div class="logo-container">
-      <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE1.png" alt="Soul SMP Logo">
+      <img src="https://minecraft.wiki/images/Diamond_JE3_BE3.png" alt="Soul SMP Logo">
       <div class="logo-text">SOUL SMP</div>
     </div>
     <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="discord-icon-btn">
@@ -199,84 +198,69 @@
 
   <!-- Header -->
   <header>
-    <h1>SERVER STORE</h1>
-    <p>Apni favorite rank kharidein aur SOUL SMP ke ultimate warrior banein!</p>
+    <h1>ENCHANTED RANKS STORE</h1>
+    <p>Apni OP enchanted rank chunein aur server ke supreme warrior banein!</p>
   </header>
 
   <div class="container">
     
-    <!-- Pro Ranks Section -->
-    <h2 class="section-title">⚡ Pro Ranks</h2>
+    <!-- Enchanted & Premium Ranks Section -->
+    <h2 class="section-title">⚡ Enchanted Ranks</h2>
     <div class="grid">
-      <div class="rank-box" onclick="openModal('Knight', '₹99', 'Iron kit, /kit tools, aur basic server perks.')">
-        <img src="https://minecraft.wiki/images/Iron_Sword_JE2_BE2.png" alt="Knight">
-        <h3>Knight</h3>
-        <div class="rank-price">₹99</div>
-      </div>
-      <div class="rank-box" onclick="openModal('Warrior', '₹149', 'Enchanted weapons, /sethome 2, aur special tag.')">
-        <img src="https://minecraft.wiki/images/Iron_Chestplate_JE2_BE2.png" alt="Warrior">
-        <h3>Warrior</h3>
-        <div class="rank-price">₹149</div>
-      </div>
-      <div class="rank-box" onclick="openModal('Elite', '₹199', 'Diamond tools, /heal command, aur custom chat color.')">
+      <div class="rank-box" onclick="openModal('Elite', '₹99', 'Diamond tools, /heal command, aur custom chat color.')">
         <img src="https://minecraft.wiki/images/Diamond_Sword_JE1_BE1.png" alt="Elite">
         <h3>Elite</h3>
-        <div class="rank-price">₹199</div>
+        <div class="rank-price">₹99</div>
       </div>
-      <div class="rank-box" onclick="openModal('Hero', '₹249', 'Diamond armor set, 3 set homes, aur kit access.')">
+      <div class="rank-box" onclick="openModal('Hero', '₹149', 'Diamond armor set, 3 set homes, aur kit access.')">
         <img src="https://minecraft.wiki/images/Diamond_Chestplate_JE1_BE1.png" alt="Hero">
         <h3>Hero</h3>
-        <div class="rank-price">₹249</div>
+        <div class="rank-price">₹149</div>
       </div>
-      <div class="rank-box" onclick="openModal('Titan', '₹299', 'Netherite sword, particle effects, aur extra claims.')">
+      <div class="rank-box" onclick="openModal('Titan', '₹199', 'Netherite sword, particle effects, aur extra claims.')">
         <img src="https://minecraft.wiki/images/Netherite_Sword_JE1_BE1.png" alt="Titan">
         <h3>Titan</h3>
-        <div class="rank-price">₹299</div>
+        <div class="rank-price">₹199</div>
       </div>
-      <div class="rank-box" onclick="openModal('Legend', '₹349', 'Full Netherite tools + special legendary kit.')">
+      <div class="rank-box" onclick="openModal('Legend', '₹249', 'Full Netherite tools + special legendary kit.')">
         <img src="https://minecraft.wiki/images/Netherite_Chestplate_JE1.png" alt="Legend">
         <h3>Legend</h3>
-        <div class="rank-price">₹349</div>
+        <div class="rank-price">₹249</div>
       </div>
-      <div class="rank-box" onclick="openModal('Mythic', '₹399', 'Mythic items, /feed command, aur unique particle aura.')">
+      <div class="rank-box" onclick="openModal('Mythic', '₹299', 'Mythic items, /feed command, aur unique particle aura.')">
         <img src="https://minecraft.wiki/images/Nether_Star.png" alt="Mythic">
         <h3>Mythic</h3>
-        <div class="rank-price">₹399</div>
+        <div class="rank-price">₹299</div>
       </div>
-      <div class="rank-box" onclick="openModal('Immortal', '₹449', 'Server ki sabse powerful regular rank + special permissions.')">
+      <div class="rank-box" onclick="openModal('Immortal', '₹349', 'Server ki sabse powerful regular rank + special permissions.')">
         <img src="https://minecraft.wiki/images/Dragon_Head.png" alt="Immortal">
         <h3>Immortal</h3>
-        <div class="rank-price">₹449</div>
+        <div class="rank-price">₹349</div>
       </div>
-    </div>
-
-    <!-- Ultimate Premium Ranks Section -->
-    <h2 class="section-title">👑 Ultimate Premium Ranks</h2>
-    <div class="grid">
-      <div class="rank-box" onclick="openModal('VIP', '₹499', 'Special prefix, /fly command, aur 3 set homes!')">
+      <div class="rank-box" onclick="openModal('VIP', '₹399', 'Special prefix, /fly command, aur 3 set homes!')">
         <img src="https://minecraft.wiki/images/Gold_Ingot_JE3_BE3.png" alt="VIP">
         <h3>VIP</h3>
-        <div class="rank-price">₹499</div>
+        <div class="rank-price">₹399</div>
       </div>
-      <div class="rank-box" onclick="openModal('MVP', '₹599', 'VIP sabhi features + /heal, /feed & custom kit access!')">
+      <div class="rank-box" onclick="openModal('MVP', '₹499', 'VIP sabhi features + /heal, /feed & custom kit access!')">
         <img src="https://minecraft.wiki/images/Diamond_JE3_BE3.png" alt="MVP">
         <h3>MVP</h3>
-        <div class="rank-price">₹599</div>
+        <div class="rank-price">₹499</div>
       </div>
-      <div class="rank-box" onclick="openModal('MVP+', '₹699', 'MVP features + Custom chat colors & exclusive server kits!')">
+      <div class="rank-box" onclick="openModal('MVP+', '₹599', 'MVP features + Custom chat colors & exclusive server kits!')">
         <img src="https://minecraft.wiki/images/Emerald_JE3_BE3.png" alt="MVP+">
         <h3>MVP+</h3>
-        <div class="rank-price">₹699</div>
+        <div class="rank-price">₹599</div>
       </div>
-      <div class="rank-box" onclick="openModal('Elite+', '₹799', 'Exclusive elite perks, fly in safezone & priority entry!')">
+      <div class="rank-box" onclick="openModal('Elite+', '₹699', 'Exclusive elite perks, fly in safezone & priority entry!')">
         <img src="https://minecraft.wiki/images/Enchanted_Golden_Apple_JE2_BE2.gif" alt="Elite+">
         <h3>Elite+</h3>
-        <div class="rank-price">₹799</div>
+        <div class="rank-price">₹699</div>
       </div>
-      <div class="rank-box" onclick="openModal('Legend+', '₹999', 'Ultimate server power, custom tags, OP commands & maximum perks!')">
+      <div class="rank-box" onclick="openModal('Legend+', '₹899', 'Ultimate server power, custom tags, OP commands & maximum perks!')">
         <img src="https://minecraft.wiki/images/Netherite_Ingot_JE1_BE1.png" alt="Legend+">
         <h3>Legend+</h3>
-        <div class="rank-price">₹999</div>
+        <div class="rank-price">₹899</div>
       </div>
     </div>
 
@@ -312,5 +296,4 @@
   </script>
 
 </body>
-  </html>
-  
+</html>
