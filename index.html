@@ -12,20 +12,22 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Minecraft Mesa Biome Background Image */
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                  url('https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+      /* Guaranteed direct Minecraft background image URL */
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+                  url('https://images.unsplash.com/photo-1627856013091-fed6e4e30cca?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       margin: 0;
       padding-bottom: 60px;
     }
-    #auth-screen {
+    
+    /* Auth Screens (Login / Signup Separated) */
+    .auth-overlay {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.9);
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 3000;
@@ -50,13 +52,24 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    #error-msg {
+    .auth-switch {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .auth-switch span {
+      color: var(--accent);
+      font-weight: bold;
+    }
+    .error-msg {
       color: #ff5555;
       font-size: 0.8rem;
       margin-top: 5px;
       display: none;
     }
 
+    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -104,30 +117,44 @@
     .nav-right-area {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
-    .profile-badge {
-      background: rgba(50, 0, 0, 0.9);
+    .profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(40, 0, 0, 0.9);
       border: 1px solid var(--accent);
-      padding: 4px 10px;
-      border-radius: 15px;
-      color: #ff9999;
+      padding: 3px 10px 3px 3px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .profile-pill:hover { background: rgba(70, 0, 0, 0.9); }
+    .profile-pill img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #fff;
+    }
+    .profile-pill span {
+      font-size: 0.8rem;
       font-weight: bold;
-      font-size: 0.75rem;
-      white-space: nowrap;
+      color: #ff9999;
     }
     .coin-badge {
       background: #000;
       border: 1px solid #55ff55;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 15px;
       color: #55ff55;
       font-weight: bold;
-      font-size: 0.75rem;
-      white-space: nowrap;
+      font-size: 0.8rem;
       cursor: pointer;
     }
 
+    /* Pages */
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active { display: block; }
     
@@ -172,6 +199,54 @@
     }
     .btn:hover { background: #b30000; }
 
+    /* Profile Page Styling */
+    .profile-card {
+      background: rgba(20, 0, 0, 0.9);
+      border: 2px solid var(--accent);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 450px;
+      margin: auto;
+      text-align: center;
+      box-shadow: var(--glow);
+    }
+    .profile-avatar-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px auto;
+    }
+    .profile-avatar-container img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+    }
+    .upload-btn-label {
+      position: absolute;
+      bottom: 0; right: 0;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      width: 30px; height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      border: 2px solid #000;
+    }
+    .profile-info {
+      text-align: left;
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    .profile-info p { margin: 8px 0; }
+
     .afk-container {
       background: rgba(0, 30, 0, 0.85);
       border: 2px solid #00ff00;
@@ -191,15 +266,30 @@
 </head>
 <body>
 
+  <!-- SIGNUP SCREEN -->
+  <div id="signup-screen" class="auth-overlay">
+    <div class="auth-box">
+      <h2 style="color:var(--accent); margin-top:0;">CREATE ACCOUNT</h2>
+      <p style="font-size:0.85rem; color:#aaa;">Register your new account</p>
+      <input type="text" id="su-username" placeholder="Minecraft Username">
+      <input type="email" id="su-email" placeholder="Email Address (e.g. name@gmail.com)">
+      <input type="password" id="su-pass" placeholder="Create Password">
+      <div id="su-error" class="error-msg">❌ Please fill all fields with a valid email!</div>
+      <button class="btn" style="margin-top:15px;" onclick="handleSignup()">SIGN UP</button>
+      <div class="auth-switch" onclick="showLogin()">Already have an account? <span>Login here</span></div>
+    </div>
+  </div>
+
   <!-- LOGIN SCREEN -->
-  <div id="auth-screen">
+  <div id="login-screen" class="auth-overlay" style="display: none;">
     <div class="auth-box">
       <h2 style="color:var(--accent); margin-top:0;">SOUL SMP LOGIN</h2>
-      <p style="font-size:0.85rem; color:#aaa;">Enter your Minecraft Name & Valid Email</p>
-      <input type="text" id="username" placeholder="Minecraft Username">
-      <input type="email" id="email" placeholder="Email Address (e.g. name@gmail.com)">
-      <div id="error-msg">❌ Please enter a valid email address!</div>
-      <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN / REGISTER</button>
+      <p style="font-size:0.85rem; color:#aaa;">Log in with your existing account</p>
+      <input type="text" id="li-username" placeholder="Minecraft Username">
+      <input type="password" id="li-pass" placeholder="Password">
+      <div id="li-error" class="error-msg">❌ Invalid username or password!</div>
+      <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN</button>
+      <div class="auth-switch" onclick="showSignup()">Don't have an account? <span>Sign up</span></div>
     </div>
   </div>
 
@@ -215,7 +305,10 @@
       <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
     </div>
     <div class="nav-right-area">
-      <div class="profile-badge"><i class="fa-solid fa-user"></i> <span id="display-user">Player</span></div>
+      <div class="profile-pill" onclick="switchPage('profile', null)">
+        <img id="nav-avatar" src="https://via.placeholder.com/150" alt="Avatar">
+        <span id="nav-username">Player</span>
+      </div>
       <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
     </div>
   </nav>
@@ -227,6 +320,30 @@
     <div style="text-align: center; margin-top: 30px;">
       <button class="btn" style="width: auto; padding: 10px 25px;" onclick="switchPage('ranks', document.getElementById('link-ranks'))">EXPLORE STORE</button>
       <button class="btn" style="width: auto; padding: 10px 25px; background:#555; margin-top:10px;" onclick="confirmLogout()">LOGOUT</button>
+    </div>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div id="profile" class="page">
+    <h1>USER PROFILE</h1>
+    <p class="subtitle">Manage your account details and picture.</p>
+    
+    <div class="profile-card">
+      <div class="profile-avatar-container">
+        <img id="profile-img-preview" src="https://via.placeholder.com/150" alt="Profile Picture">
+        <label for="avatar-input" class="upload-btn-label"><i class="fa-solid fa-camera"></i></label>
+        <input type="file" id="avatar-input" accept="image/*" style="display: none;" onchange="updateAvatar(event)">
+      </div>
+      <h2 id="profile-name" style="margin: 5px 0; color: #ff9999;">Player</h2>
+      <p style="font-size: 0.85rem; color: #888; margin-top:0;">Verified Member</p>
+
+      <div class="profile-info">
+        <p><b>📧 Email:</b> <span id="profile-email">user@gmail.com</span></p>
+        <p><b>🎮 Minecraft Username:</b> <span id="profile-mc">Player</span></p>
+        <p><b>🪙 AFK Coins Balance:</b> <span id="profile-coins" style="color:#55ff55;">0</span></p>
+      </div>
+
+      <button class="btn" style="background:#cc0000;" onclick="confirmLogout()">LOGOUT</button>
     </div>
   </div>
 
@@ -336,93 +453,75 @@
 
   <script>
     window.onload = function() {
-      let savedUser = localStorage.getItem('soul_smp_user');
-      if (savedUser) {
-        document.getElementById('auth-screen').style.display = 'none';
-        document.getElementById('display-user').innerText = savedUser;
+      let activeUser = localStorage.getItem('soul_active_user');
+      if (activeUser) {
+        loadUserData(activeUser);
       }
     };
+
+    function showLogin() {
+      document.getElementById('signup-screen').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'flex';
+    }
+
+    function showSignup() {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('signup-screen').style.display = 'flex';
+    }
 
     function validateEmail(email) {
       let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return re.test(email);
     }
 
+    function handleSignup() {
+      let username = document.getElementById('su-username').value.trim();
+      let email = document.getElementById('su-email').value.trim();
+      let pass = document.getElementById('su-pass').value.trim();
+      let error = document.getElementById('su-error');
+
+      if (!username || !pass || !validateEmail(email)) {
+        error.style.display = 'block';
+        return;
+      }
+
+      let userData = { username, email, pass, avatar: "https://via.placeholder.com/150" };
+      localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
+      localStorage.setItem('soul_active_user', username);
+      
+      error.style.display = 'none';
+      loadUserData(username);
+    }
+
     function handleLogin() {
-      let username = document.getElementById('username').value.trim();
-      let email = document.getElementById('email').value.trim();
-      let errorMsg = document.getElementById('error-msg');
-      
-      if (!username) {
-        errorMsg.innerText = "❌ Please enter your Minecraft username!";
-        errorMsg.style.display = 'block';
+      let username = document.getElementById('li-username').value.trim();
+      let pass = document.getElementById('li-pass').value.trim();
+      let error = document.getElementById('li-error');
+
+      let savedData = localStorage.getItem('soul_user_' + username);
+      if (!savedData) {
+        error.innerText = "❌ Account not found! Please sign up first.";
+        error.style.display = 'block';
         return;
       }
-      
-      if (!validateEmail(email)) {
-        errorMsg.innerText = "❌ Invalid email format! Please enter a valid email (e.g. name@gmail.com).";
-        errorMsg.style.display = 'block';
+
+      let userObj = JSON.parse(savedData);
+      if (userObj.pass !== pass) {
+        error.innerText = "❌ Incorrect password!";
+        error.style.display = 'block';
         return;
       }
-      
-      errorMsg.style.display = 'none';
-      localStorage.setItem('soul_smp_user', username);
-      document.getElementById('display-user').innerText = username;
-      document.getElementById('auth-screen').style.display = 'none';
+
+      error.style.display = 'none';
+      localStorage.setItem('soul_active_user', username);
+      loadUserData(username);
     }
 
-    function confirmLogout() {
-      let confirmAction = confirm("Are you sure you want to log out of SOUL SMP?");
-      if (confirmAction) {
-        localStorage.removeItem('soul_smp_user');
-        location.reload();
-      }
-    }
-
-    function switchPage(id, element) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      
-      if(element) {
-        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-        element.classList.add('active');
-      }
-      window.scrollTo(0, 0);
-    }
-
-    function showClaimModal(type) { 
-      document.getElementById('modalTitle').innerText = "Claim " + type;
-      document.getElementById('claimModal').style.display = 'flex'; 
-    }
-    function closeModal() { document.getElementById('claimModal').style.display = 'none'; }
-
-    let coins = 0, seconds = 0, active = false, interval;
-    function toggleAfk() {
-      let btn = document.getElementById('afk-toggle-btn');
-      let statusText = document.getElementById('afk-status-text');
-      if(!active) {
-        active = true; 
-        btn.innerText = "STOP AFK"; 
-        btn.style.background = "#cc0000";
-        statusText.innerHTML = 'Status: <b style="color: #55ff55;">Active (Earning...)</b>';
-        
-        interval = setInterval(() => {
-          seconds++;
-          let m = Math.floor(seconds/60), s = seconds%60;
-          document.getElementById('afk-timer-display').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
-          if(seconds % 60 === 0) { 
-            coins++; 
-            document.getElementById('user-coins').innerText = coins; 
-          }
-        }, 1000);
-      } else {
-        active = false; 
-        clearInterval(interval); 
-        btn.innerText = "START AFK"; 
-        btn.style.background = "#00aa00";
-        statusText.innerHTML = 'Status: <b style="color: #ff5555;">Paused</b>';
-      }
-    }
-  </script>
-</body>
-</html>
+    function loadUserData(username) {
+      let savedData = localStorage.getItem('soul_user_' + username);
+      if (savedData) {
+        let userObj = JSON.parse(savedData);
+        document.getElementById('nav-username').innerText = userObj.username;
+        document.getElementById('profile-name').innerText = userObj.username;
+        document.getElementById('profile-mc').innerText = userObj.username;
+        document.getElementById('profile-email').
