@@ -58,10 +58,6 @@
       color: var(--accent);
       text-shadow: 0 0 8px var(--accent);
     }
-    .nav-right {
-      display: flex;
-      gap: 10px;
-    }
     .btn-nav {
       background: var(--accent);
       color: white;
@@ -71,6 +67,8 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s;
+      text-decoration: none;
+      display: inline-block;
     }
     .btn-nav:hover { transform: scale(1.05); }
 
@@ -123,14 +121,16 @@
       background: var(--accent);
       color: white;
       border: none;
-      padding: 10px;
+      padding: 12px;
       border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
       margin-top: 15px;
+      text-decoration: none;
+      text-align: center;
       transition: 0.2s;
     }
-    .action-btn:hover { opacity: 0.9; transform: scale(1.02); }
+    .action-btn:hover { background: #cc0000; transform: scale(1.02); color: white; }
 
     /* Home Specific Styles */
     .hero {
@@ -161,11 +161,6 @@
     .support-box { background: rgba(15,0,15,0.8); padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid var(--accent); }
     .support-box h3 { margin-top: 0; color: var(--accent); }
 
-    /* Cart & Checkout */
-    .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: rgba(10,0,10,0.6); }
-    .cart-table th, .cart-table td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
-    .checkout-form input, .checkout-form select { width: 100%; padding: 12px; margin: 10px 0 20px; background: #111; border: 1px solid #444; color: #fff; border-radius: 6px; }
-
     /* Footer */
     footer { background: #050005; border-top: 2px solid #220022; padding: 40px 20px; margin-top: 60px; color: #888; }
     .footer-container { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
@@ -190,8 +185,8 @@
       <a onclick="switchPage('cosmetics', this)">✨ COSMETICS</a>
       <a onclick="switchPage('support', this)">🎧 SUPPORT</a>
     </div>
-    <div class="nav-right">
-      <button class="btn-nav" onclick="switchPage('cart', this)"><i class="fa-solid fa-cart-shopping"></i> CART (<span id="cart-count">0</span>)</button>
+    <div>
+      <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="btn-nav"><i class="fa-brands fa-discord"></i> DISCORD</a>
     </div>
   </nav>
 
@@ -203,7 +198,7 @@
       <div class="ip-box">play.soulsmp.com</div>
       <div>
         <button class="btn-nav" style="padding: 12px 30px; font-size: 1.1rem; margin-right: 10px;" onclick="switchPage('ranks')">SHOP NOW</button>
-        <button class="btn-nav" style="padding: 12px 30px; font-size: 1.1rem; background: #5865F2;" onclick="window.open('https://discord.gg/BHHU8mDvh7','_blank')">JOIN SERVER</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="btn-nav" style="padding: 12px 30px; font-size: 1.1rem; background: #5865F2;">JOIN SERVER</a>
       </div>
     </div>
 
@@ -213,25 +208,25 @@
         <h3>👑 Featured Rank</h3>
         <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">LEGEND</p>
         <div class="price">₹999</div>
-        <button class="action-btn" onclick="addToCart('LEGEND Rank', 999)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>⚔️ Featured Kit</h3>
         <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">DRAGON KIT</p>
         <div class="price">₹299</div>
-        <button class="action-btn" onclick="addToCart('Dragon Kit', 299)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>🪙 Featured Coins</h3>
         <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">15,000 Coins</p>
         <div class="price">₹299</div>
-        <button class="action-btn" onclick="addToCart('15,000 Coins', 299)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>🎁 Featured Crate</h3>
         <p style="color:#ffcc00; font-weight:bold; font-size:1.2rem;">Legendary Crate</p>
         <div class="price">₹599</div>
-        <button class="action-btn" onclick="addToCart('Legendary Crate', 599)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
     </div>
 
@@ -258,7 +253,7 @@
           <li>VIP Chat Color</li>
           <li>Basic Cosmetics</li>
         </ul>
-        <button class="action-btn" onclick="addToCart('VIP Rank', 99)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>🔵 MVP</h3>
@@ -270,7 +265,7 @@
           <li>Special Chat Color</li>
           <li>Extra Cosmetics</li>
         </ul>
-        <button class="action-btn" onclick="addToCart('MVP Rank', 199)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>🟣 ELITE</h3>
@@ -282,7 +277,7 @@
           <li>Special Particles</li>
           <li>ELITE Effects</li>
         </ul>
-        <button class="action-btn" onclick="addToCart('ELITE Rank', 399)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card">
         <h3>🔴 TITAN</h3>
@@ -294,7 +289,7 @@
           <li>Premium Particles</li>
           <li>Join Effect</li>
         </ul>
-        <button class="action-btn" onclick="addToCart('TITAN Rank', 699)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
       <div class="card" style="border-color: #ffcc00;">
         <h3 style="color:#ffcc00;">🟡 LEGEND ⭐</h3>
@@ -306,7 +301,7 @@
           <li>Exclusive Cosmetics</li>
           <li>Legendary Join Effect</li>
         </ul>
-        <button class="action-btn" onclick="addToCart('LEGEND Rank', 999)">BUY NOW</button>
+        <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a>
       </div>
     </div>
   </div>
@@ -316,14 +311,14 @@
     <h1 class="page-title">CHOOSE YOUR KIT</h1>
     <p class="page-subtitle">Equip yourself with powerful gear instantly.</p>
     <div class="grid">
-      <div class="card"><h3>⚔️ Warrior</h3><div class="price">₹59</div><button class="action-btn" onclick="addToCart('Warrior Kit', 59)">BUY NOW</button></div>
-      <div class="card"><h3>🏹 Archer</h3><div class="price">₹79</div><button class="action-btn" onclick="addToCart('Archer Kit', 79)">BUY NOW</button></div>
-      <div class="card"><h3>⛏️ Miner</h3><div class="price">₹99</div><button class="action-btn" onclick="addToCart('Miner Kit', 99)">BUY NOW</button></div>
-      <div class="card"><h3>🔥 Inferno</h3><div class="price">₹149</div><button class="action-btn" onclick="addToCart('Inferno Kit', 149)">BUY NOW</button></div>
-      <div class="card"><h3>⚡ Thunder</h3><div class="price">₹199</div><button class="action-btn" onclick="addToCart('Thunder Kit', 199)">BUY NOW</button></div>
-      <div class="card"><h3>👹 Demon</h3><div class="price">₹249</div><button class="action-btn" onclick="addToCart('Demon Kit', 249)">BUY NOW</button></div>
-      <div class="card"><h3>🐉 Dragon</h3><div class="price">₹299</div><button class="action-btn" onclick="addToCart('Dragon Kit', 299)">BUY NOW</button></div>
-      <div class="card"><h3>👑 Legend</h3><div class="price">₹399</div><button class="action-btn" onclick="addToCart('Legend Kit', 399)">BUY NOW</button></div>
+      <div class="card"><h3>⚔️ Warrior</h3><div class="price">₹59</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🏹 Archer</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>⛏️ Miner</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🔥 Inferno</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>⚡ Thunder</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>👹 Demon</h3><div class="price">₹249</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🐉 Dragon</h3><div class="price">₹299</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>👑 Legend</h3><div class="price">₹399</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
   </div>
 
@@ -332,12 +327,12 @@
     <h1 class="page-title">COINS STORE</h1>
     <p class="page-subtitle">Boost your balance and buy items in-game.</p>
     <div class="grid">
-      <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><button class="action-btn" onclick="addToCart('500 Coins', 29)">BUY COINS</button></div>
-      <div class="card"><h3>🪙 2,500 Coins</h3><div class="price">₹79</div><button class="action-btn" onclick="addToCart('2,500 Coins', 79)">BUY COINS</button></div>
-      <div class="card" style="border-color:#55ff55;"><h3>🪙 6,000 Coins</h3><p style="color:#55ff55; font-size:0.85rem; font-weight:bold;">⭐ BEST VALUE</p><div class="price">₹149</div><button class="action-btn" onclick="addToCart('6,000 Coins', 149)">BUY COINS</button></div>
-      <div class="card" style="border-color:#ff3333;"><h3>🪙 15,000 Coins</h3><p style="color:#ff3333; font-size:0.85rem; font-weight:bold;">🔥 POPULAR</p><div class="price">₹299</div><button class="action-btn" onclick="addToCart('15,000 Coins', 299)">BUY COINS</button></div>
-      <div class="card"><h3>🪙 35,000 Coins</h3><div class="price">₹599</div><button class="action-btn" onclick="addToCart('35,000 Coins', 599)">BUY COINS</button></div>
-      <div class="card" style="border-color:#ffcc00;"><h3>🪙 75,000 Coins</h3><p style="color:#ffcc00; font-size:0.85rem; font-weight:bold;">👑 MEGA</p><div class="price">₹999</div><button class="action-btn" onclick="addToCart('75,000 Coins', 999)">BUY COINS</button></div>
+      <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🪙 2,500 Coins</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card" style="border-color:#55ff55;"><h3>🪙 6,000 Coins</h3><p style="color:#55ff55; font-size:0.85rem; font-weight:bold;">⭐ BEST VALUE</p><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card" style="border-color:#ff3333;"><h3>🪙 15,000 Coins</h3><p style="color:#ff3333; font-size:0.85rem; font-weight:bold;">🔥 POPULAR</p><div class="price">₹299</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🪙 35,000 Coins</h3><div class="price">₹599</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card" style="border-color:#ffcc00;"><h3>🪙 75,000 Coins</h3><p style="color:#ffcc00; font-size:0.85rem; font-weight:bold;">👑 MEGA</p><div class="price">₹999</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
   </div>
 
@@ -346,11 +341,11 @@
     <h1 class="page-title">OPEN THE CRATES</h1>
     <p class="page-subtitle">Test your luck and win rare items.</p>
     <div class="grid">
-      <div class="card"><h3>🔒 Basic Crate</h3><div class="price">₹49</div><button class="action-btn" onclick="addToCart('Basic Crate', 49)">BUY NOW</button></div>
-      <div class="card"><h3>⚔️ Warrior Crate</h3><div class="price">₹99</div><button class="action-btn" onclick="addToCart('Warrior Crate', 99)">BUY NOW</button></div>
-      <div class="card"><h3>🔥 Inferno Crate</h3><div class="price">₹199</div><button class="action-btn" onclick="addToCart('Inferno Crate', 199)">BUY NOW</button></div>
-      <div class="card"><h3>💎 Diamond Crate</h3><div class="price">₹349</div><button class="action-btn" onclick="addToCart('Diamond Crate', 349)">BUY NOW</button></div>
-      <div class="card"><h3>👑 Legendary Crate</h3><div class="price">₹599</div><button class="action-btn" onclick="addToCart('Legendary Crate', 599)">BUY NOW</button></div>
+      <div class="card"><h3>🔒 Basic Crate</h3><div class="price">₹49</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>⚔️ Warrior Crate</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>🔥 Inferno Crate</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>💎 Diamond Crate</h3><div class="price">₹349</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>👑 Legendary Crate</h3><div class="price">₹599</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
   </div>
 
@@ -366,28 +361,28 @@
     </div>
 
     <div id="pets" class="cosmetic-section active grid">
-      <div class="card"><h3>Mini Dragon</h3><div class="price">₹149</div><button class="action-btn" onclick="addToCart('Pet: Mini Dragon', 149)">BUY NOW</button></div>
-      <div class="card"><h3>Wolf Pet</h3><div class="price">₹99</div><button class="action-btn" onclick="addToCart('Pet: Wolf', 99)">BUY NOW</button></div>
-      <div class="card"><h3>Blaze Pet</h3><div class="price">₹129</div><button class="action-btn" onclick="addToCart('Pet: Blaze', 129)">BUY NOW</button></div>
-      <div class="card"><h3>Allay Pet</h3><div class="price">₹149</div><button class="action-btn" onclick="addToCart('Pet: Allay', 149)">BUY NOW</button></div>
-      <div class="card"><h3>Enderman Pet</h3><div class="price">₹199</div><button class="action-btn" onclick="addToCart('Pet: Enderman', 199)">BUY NOW</button></div>
+      <div class="card"><h3>Mini Dragon</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Wolf Pet</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Blaze Pet</h3><div class="price">₹129</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Allay Pet</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Enderman Pet</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
 
     <div id="effects" class="cosmetic-section grid">
-      <div class="card"><h3>Flame Trail</h3><div class="price">₹79</div><button class="action-btn" onclick="addToCart('Effect: Flame Trail', 79)">BUY NOW</button></div>
-      <div class="card"><h3>Lightning Trail</h3><div class="price">₹99</div><button class="action-btn" onclick="addToCart('Effect: Lightning', 99)">BUY NOW</button></div>
-      <div class="card"><h3>Heart Trail</h3><div class="price">₹79</div><button class="action-btn" onclick="addToCart('Effect: Heart Trail', 79)">BUY NOW</button></div>
-      <div class="card"><h3>Smoke Trail</h3><div class="price">₹59</div><button class="action-btn" onclick="addToCart('Effect: Smoke Trail', 59)">BUY NOW</button></div>
-      <div class="card"><h3>Ender Trail</h3><div class="price">₹119</div><button class="action-btn" onclick="addToCart('Effect: Ender Trail', 119)">BUY NOW</button></div>
+      <div class="card"><h3>Flame Trail</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Lightning Trail</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Heart Trail</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Smoke Trail</h3><div class="price">₹59</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>Ender Trail</h3><div class="price">₹119</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
 
     <div id="titles" class="cosmetic-section grid">
-      <div class="card"><h3>[Warrior] Title</h3><div class="price">₹49</div><button class="action-btn" onclick="addToCart('Title: Warrior', 49)">BUY NOW</button></div>
-      <div class="card"><h3>[Slayer] Title</h3><div class="price">₹49</div><button class="action-btn" onclick="addToCart('Title: Slayer', 49)">BUY NOW</button></div>
-      <div class="card"><h3>[Champion] Title</h3><div class="price">₹79</div><button class="action-btn" onclick="addToCart('Title: Champion', 79)">BUY NOW</button></div>
-      <div class="card"><h3>[Destroyer] Title</h3><div class="price">₹99</div><button class="action-btn" onclick="addToCart('Title: Destroyer', 99)">BUY NOW</button></div>
-      <div class="card"><h3>[Immortal] Title</h3><div class="price">₹149</div><button class="action-btn" onclick="addToCart('Title: Immortal', 149)">BUY NOW</button></div>
-      <div class="card"><h3>[Legend] Title</h3><div class="price">₹199</div><button class="action-btn" onclick="addToCart('Title: Legend', 199)">BUY NOW</button></div>
+      <div class="card"><h3>[Warrior] Title</h3><div class="price">₹49</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>[Slayer] Title</h3><div class="price">₹49</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>[Champion] Title</h3><div class="price">₹79</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>[Destroyer] Title</h3><div class="price">₹99</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>[Immortal] Title</h3><div class="price">₹149</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
+      <div class="card"><h3>[Legend] Title</h3><div class="price">₹199</div><a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="action-btn">BUY VIA DISCORD</a></div>
     </div>
   </div>
 
@@ -400,6 +395,4 @@
       <h3>❓ FAQ (Frequently Asked Questions)</h3>
       <p><b>Q: Payment ke baad rank kab milti hai?</b><br>A: Payment successful hote hi server automated system 1-2 minute ke andar rank deliver kar deta hai.</p>
       <p><b>Q: Item na mile toh kya karein?</b><br>A: Turant hamare Discord server par ticket banayein ya admin se contact karein.</p>
-    </div>
-    
-    <div cl
+  </div>
