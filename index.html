@@ -20,34 +20,34 @@
       padding-bottom: 60px;
     }
     
-    .auth-overlay {
+    .entry-overlay {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.95);
       position: fixed;
       top: 0; left: 0; width: 100%;
-      z-index: 3000;
+      z-index: 5000;
     }
-    .auth-box {
+    .entry-box {
       background: rgba(20, 0, 0, 0.95);
       border: 2px solid var(--accent);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 40px;
+      border-radius: 15px;
       text-align: center;
-      max-width: 350px;
+      max-width: 320px;
       width: 90%;
       box-shadow: var(--glow);
     }
-    .auth-box h2 {
-      font-size: 1.2rem;
+    .entry-box h2 {
+      font-size: 1.3rem;
       letter-spacing: 2px;
-      color: #fff;
-      margin-bottom: 5px;
+      color: var(--accent);
+      margin-bottom: 15px;
       text-shadow: 0 0 10px var(--accent);
     }
-    .auth-box input {
+    .entry-box input {
       width: 100%;
       padding: 12px;
       margin: 10px 0;
@@ -57,17 +57,7 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    .auth-switch {
-      margin-top: 15px;
-      font-size: 0.85rem;
-      color: #aaa;
-      cursor: pointer;
-    }
-    .auth-switch span {
-      color: var(--accent);
-      font-weight: bold;
-    }
-
+    
     nav {
       display: flex;
       justify-content: space-between;
@@ -186,7 +176,7 @@
       background: var(--accent);
       color: #fff;
       border: none;
-      padding: 8px;
+      padding: 10px;
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
@@ -262,27 +252,14 @@
 </head>
 <body>
 
-  <!-- SIGNUP SCREEN -->
-  <div id="signup-screen" class="auth-overlay">
-    <div class="auth-box">
-      <h2 style="font-size: 1.4rem; color: #ff5555; margin-bottom: 5px;">SOULSMP SECURITY</h2>
-      <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">CREATE ACCOUNT</p>
-      <input type="text" id="su-username" placeholder="Minecraft Username">
-      <input type="email" id="su-email" placeholder="Email Address">
-      <button class="btn" style="margin-top:15px;" onclick="handleSignup()">SIGN UP</button>
-      <div class="auth-switch" onclick="showLogin()">Already have an account? <span>Login here</span></div>
-    </div>
-  </div>
-
-  <!-- LOGIN SCREEN -->
-  <div id="login-screen" class="auth-overlay" style="display: none;">
-    <div class="auth-box">
-      <h2 style="font-size: 1.4rem; color: #ff5555; margin-bottom: 5px;">SOULSMP SECURITY</h2>
-      <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">USER LOGIN</p>
-      <input type="text" id="li-username" placeholder="Minecraft Username">
-      <input type="email" id="li-email" placeholder="Email Address">
-      <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN</button>
-      <div class="auth-switch" onclick="showSignup()">Don't have an account? <span>Sign up</span></div>
+  <!-- SIMPLE DIRECT ENTRY SCREEN (No Password Needed) -->
+  <div id="entry-screen" class="entry-overlay">
+    <div class="entry-box">
+      <h2>SOULSMP SECURITY</h2>
+      <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">Enter details to enter store</p>
+      <input type="text" id="username" placeholder="Minecraft Username">
+      <input type="email" id="email" placeholder="Email Address">
+      <button class="btn" style="margin-top:15px;" onclick="enterStore()">ENTER STORE</button>
     </div>
   </div>
 
@@ -449,56 +426,24 @@
     window.onload = function() {
       let activeUser = localStorage.getItem('soul_user');
       if (activeUser) {
-        document.getElementById('auth-screen').style.display = 'none';
-        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('entry-screen').style.display = 'none';
         loadUserData();
-      } else {
-        document.getElementById('signup-screen').style.display = 'flex';
-        document.getElementById('login-screen').style.display = 'none';
       }
     };
 
-    function showLogin() {
-      document.getElementById('signup-screen').style.display = 'none';
-      document.getElementById('login-screen').style.display = 'flex';
-    }
-
-    function showSignup() {
-      document.getElementById('login-screen').style.display = 'none';
-      document.getElementById('signup-screen').style.display = 'flex';
-    }
-
-    function handleSignup() {
-      let username = document.getElementById('su-username').value.trim();
-      let email = document.getElementById('su-email').value.trim();
+    function enterStore() {
+      let username = document.getElementById('username').value.trim();
+      let email = document.getElementById('email').value.trim();
 
       if (!username || !email) {
-        alert("Please enter both username and email!");
+        alert("Please enter both Minecraft Username and Email!");
         return;
       }
 
       localStorage.setItem('soul_user', username);
       localStorage.setItem('soul_email', email);
       
-      document.getElementById('signup-screen').style.display = 'none';
-      document.getElementById('login-screen').style.display = 'none';
-      loadUserData();
-    }
-
-    function handleLogin() {
-      let username = document.getElementById('li-username').value.trim();
-      let email = document.getElementById('li-email').value.trim();
-
-      if (!username || !email) {
-        alert("Please enter both username and email!");
-        return;
-      }
-
-      localStorage.setItem('soul_user', username);
-      localStorage.setItem('soul_email', email);
-
-      document.getElementById('signup-screen').style.display = 'none';
-      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('entry-screen').style.display = 'none';
       loadUserData();
     }
 
@@ -524,4 +469,62 @@
       if (file) {
         let reader = new FileReader();
         reader.onload = function(e) {
-          let url = e.
+          let url = e.target.result;
+          localStorage.setItem('soul_avatar', url);
+          document.getElementById('nav-avatar').src = url;
+          document.getElementById('profile-img-preview').src = url;
+        }
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function confirmLogout() {
+      let confirmAction = confirm("Do you really want to log out of your account?");
+      if (confirmAction) {
+        localStorage.clear();
+        location.reload();
+      }
+    }
+
+    function switchPage(id, element) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      
+      if(element) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        element.classList.add('active');
+      }
+      window.scrollTo(0, 0);
+    }
+
+    function showClaimModal(type) { 
+      document.getElementById('modalTitle').innerText = "Claim " + type;
+      document.getElementById('claimModal').style.display = 'flex'; 
+    }
+    function closeModal() { document.getElementById('claimModal').style.display = 'none'; }
+
+    let coins = 0, seconds = 0, active = false, interval;
+    function toggleAfk() {
+      let btn = document.getElementById('afk-toggle-btn');
+      let statusText = document.getElementById('afk-status-text');
+      if(!active) {
+        active = true; 
+        btn.innerText = "STOP AFK"; 
+        btn.style.background = "#cc0000";
+        statusText.innerHTML = 'Status: <b style="color: #ff5555;">Active (Earning...)</b>';
+        
+        interval = setInterval(() => {
+          seconds++;
+          let m = Math.floor(seconds/60), s = seconds%60;
+          document.getElementById('afk-timer-display').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
+          if(seconds % 60 === 0) { 
+            coins++; 
+            document.getElementById('user-coins').innerText = coins; 
+            document.getElementById('profile-coins').innerText = coins; 
+          }
+        }, 1000);
+      } else {
+        active = false; 
+        clearInterval(interval); 
+        btn.innerText = "START AFK"; 
+        btn.style.backgroun
