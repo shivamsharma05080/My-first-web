@@ -25,7 +25,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.92);
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 3000;
@@ -40,9 +40,16 @@
       width: 90%;
       box-shadow: var(--glow);
     }
+    .auth-box h2 {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px var(--accent);
+    }
     .auth-box input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
       background: #000;
       border: 1px solid #550000;
@@ -59,12 +66,6 @@
     .auth-switch span {
       color: var(--accent);
       font-weight: bold;
-    }
-    .error-msg {
-      color: #ff5555;
-      font-size: 0.8rem;
-      margin-top: 5px;
-      display: none;
     }
 
     nav {
@@ -264,12 +265,11 @@
   <!-- SIGNUP SCREEN -->
   <div id="signup-screen" class="auth-overlay">
     <div class="auth-box">
-      <h2 style="color:var(--accent); margin-top:0;">CREATE ACCOUNT</h2>
-      <p style="font-size:0.85rem; color:#aaa;">Register with mixed letters & numbers password</p>
+      <h2 style="font-size: 1.4rem; color: #ff5555; margin-bottom: 5px;">SOULSMP SECURITY</h2>
+      <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">CREATE ACCOUNT</p>
       <input type="text" id="su-username" placeholder="Minecraft Username">
-      <input type="email" id="su-email" placeholder="Email Address (e.g. name@gmail.com)">
-      <input type="password" id="su-pass" placeholder="Password (Letters & Numbers)">
-      <div id="su-error" class="error-msg">❌ Please fill all fields correctly!</div>
+      <input type="email" id="su-email" placeholder="Email Address">
+      <input type="password" id="su-pass" placeholder="Password">
       <button class="btn" style="margin-top:15px;" onclick="handleSignup()">SIGN UP</button>
       <div class="auth-switch" onclick="showLogin()">Already have an account? <span>Login here</span></div>
     </div>
@@ -278,11 +278,10 @@
   <!-- LOGIN SCREEN -->
   <div id="login-screen" class="auth-overlay" style="display: none;">
     <div class="auth-box">
-      <h2 style="color:var(--accent); margin-top:0;">SOUL SMP LOGIN</h2>
-      <p style="font-size:0.85rem; color:#aaa;">Log in with your existing account</p>
+      <h2 style="font-size: 1.4rem; color: #ff5555; margin-bottom: 5px;">SOULSMP SECURITY</h2>
+      <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">USER LOGIN</p>
       <input type="text" id="li-username" placeholder="Minecraft Username">
       <input type="password" id="li-pass" placeholder="Password">
-      <div id="li-error" class="error-msg">❌ Invalid username or password!</div>
       <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN</button>
       <div class="auth-switch" onclick="showSignup()">Don't have an account? <span>Sign up</span></div>
     </div>
@@ -469,58 +468,51 @@
       document.getElementById('signup-screen').style.display = 'flex';
     }
 
-    function validateEmail(email) {
-      let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
-
-    function validatePassword(pass) {
-      let hasLetter = /[a-zA-Z]/.test(pass);
-      let hasNumber = /[0-9]/.test(pass);
-      return hasLetter && hasNumber && pass.length >= 6;
-    }
-
     function handleSignup() {
       let username = document.getElementById('su-username').value.trim();
       let email = document.getElementById('su-email').value.trim();
       let pass = document.getElementById('su-pass').value.trim();
-      let error = document.getElementById('su-error');
 
-      if (!username || !email || !pass) {
-        error.innerText = "❌ Please fill all fields!";
-        error.style.display = 'block';
+      if (!username) {
+        alert("Please enter a username!");
         return;
       }
 
-      if (!validateEmail(email)) {
-        error.innerText = "❌ Invalid email format! Please use a valid email address.";
-        error.style.display = 'block';
-        return;
-      }
-
-      if (!validatePassword(pass)) {
-        error.innerText = "❌ Password must be at least 6 characters and contain both letters and numbers!";
-        error.style.display = 'block';
-        return;
-      }
-
-      if (localStorage.getItem('soul_user_' + username)) {
-        error.innerText = "❌ Username already exists! Try logging in.";
-        error.style.display = 'block';
-        return;
-      }
-
-      let userData = { username, email, pass, avatar: "https://via.placeholder.com/150" };
+      let userData = { username, email: email || "user@gmail.com", pass: pass || "12345", avatar: "https://via.placeholder.com/150" };
       localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
       localStorage.setItem('soul_active_user', username);
       
-      error.style.display = 'none';
       loadUserData(username);
     }
 
     function handleLogin() {
       let username = document.getElementById('li-username').value.trim();
       let pass = document.getElementById('li-pass').value.trim();
-      let error = document.getElementById('li-error');
 
-      if (!u
+      if (!username) {
+        alert("Please enter your username!");
+        return;
+      }
+
+      let savedData = localStorage.getItem('soul_user_' + username);
+      if (!savedData) {
+        // Auto register if user doesn't exist to prevent login block
+        let userData = { username, email: "user@gmail.com", pass: pass || "12345", avatar: "https://via.placeholder.com/150" };
+        localStorage.setItem('soul_user_' + username, JSON.stringify(userData));
+      }
+
+      localStorage.setItem('soul_active_user', username);
+      loadUserData(username);
+    }
+
+    function loadUserData(username) {
+      let savedData = localStorage.getItem('soul_user_' + username);
+      if (savedData) {
+        let userObj = JSON.parse(savedData);
+        document.getElementById('nav-username').innerText = userObj.username;
+        document.getElementById('profile-name').innerText = userObj.username;
+        document.getElementById('profile-mc').innerText = userObj.username;
+        document.getElementById('profile-email').innerText = userObj.email;
+        if(userObj.avatar) {
+          document.getElementById('nav-avatar').src = userObj.avatar;
+          document.getElementById('profile-img-preview').src = us
