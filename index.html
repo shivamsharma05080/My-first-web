@@ -7,32 +7,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --accent: #ff0000;
-      --glow: 0 0 15px #ff0000;
+      --accent: #ff3333;
+      --glow: 0 0 15px #ff3333;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), 
-                  url('https://wallpaperaccess.com/full/2222718.jpg');
+      /* Aapki di hui Minecraft Mesa biome image background mein */
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
       color: #fff;
       margin: 0;
       padding-bottom: 60px;
     }
-    /* Auth Screen (Login/Signup) */
+    /* Auth Screen (Login/Signup with Email Validation) */
     #auth-screen {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.85);
       position: fixed;
       top: 0; left: 0; width: 100%;
       z-index: 3000;
     }
     .auth-box {
-      background: #1a0000;
+      background: rgba(20, 0, 0, 0.95);
       border: 2px solid var(--accent);
       padding: 30px;
       border-radius: 12px;
@@ -50,6 +50,12 @@
       color: #fff;
       border-radius: 5px;
       box-sizing: border-box;
+    }
+    #error-msg {
+      color: #ff5555;
+      font-size: 0.8rem;
+      margin-top: 5px;
+      display: none;
     }
 
     /* Fixed Clean Navbar */
@@ -173,14 +179,15 @@
 </head>
 <body>
 
-  <!-- LOGIN / SIGNUP SCREEN (Agar pehle se logged-in nahi hai toh dikhega) -->
+  <!-- LOGIN / SIGNUP SCREEN WITH EMAIL CHECK -->
   <div id="auth-screen">
     <div class="auth-box">
       <h2 style="color:var(--accent); margin-top:0;">SOUL SMP LOGIN</h2>
-      <p style="font-size:0.85rem; color:#aaa;">Enter your Minecraft Name & Email to continue</p>
+      <p style="font-size:0.85rem; color:#aaa;">Enter your Minecraft Name & Valid Email</p>
       <input type="text" id="username" placeholder="Minecraft Username">
-      <input type="email" id="email" placeholder="Email Address">
-      <button class="btn" onclick="handleLogin()">LOGIN / REGISTER</button>
+      <input type="email" id="email" placeholder="Email Address (e.g. name@gmail.com)">
+      <div id="error-msg">❌ Kripya ek sahi email address dalein! (jaise: @gmail.com)</div>
+      <button class="btn" style="margin-top:15px;" onclick="handleLogin()">LOGIN / REGISTER</button>
     </div>
   </div>
 
@@ -313,7 +320,6 @@
   </div>
 
   <script>
-    // Check if user is already logged in
     window.onload = function() {
       let savedUser = localStorage.getItem('soul_smp_user');
       if (savedUser) {
@@ -321,16 +327,31 @@
       }
     };
 
+    // Email verification check function
+    function validateEmail(email) {
+      let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+
     function handleLogin() {
       let username = document.getElementById('username').value.trim();
       let email = document.getElementById('email').value.trim();
+      let errorMsg = document.getElementById('error-msg');
       
-      if (!username || !email) {
-        alert("Please enter both username and email!");
+      if (!username) {
+        errorMsg.innerText = "❌ Kripya apna Minecraft username dalein!";
+        errorMsg.style.display = 'block';
         return;
       }
       
-      // Save user to browser local storage so it never asks again
+      // Check if email is valid and fake text is not entered
+      if (!validateEmail(email)) {
+        errorMsg.innerText = "❌ Faltu text ya galat email mat dalein! Sahi email (jaise name@gmail.com) dalein.";
+        errorMsg.style.display = 'block';
+        return;
+      }
+      
+      errorMsg.style.display = 'none';
       localStorage.setItem('soul_smp_user', username);
       document.getElementById('auth-screen').style.display = 'none';
     }
@@ -386,4 +407,5 @@
     }
   </script>
 </body>
-</html>
+      </html>
+  
