@@ -12,7 +12,6 @@
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      /* Guaranteed direct Minecraft background image URL */
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
                   url('https://images.unsplash.com/photo-1627856013091-fed6e4e30cca?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
       background-size: cover;
@@ -415,7 +414,7 @@
     <p class="subtitle">Open special crates to win rare rewards.</p>
     <div class="grid">
       <div class="card"><h3>🗝️ Common Key</h3><div class="price">₹20</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
-      <div class="card"><h3>🗝️ Prime Key</h3><div class="price">₹100</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🗝️ Prime Key</h3><div class="price" style="color:#55ff55;">₹100</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
       <div class="card"><h3>🗝️ Xiavien Key</h3><div class="price">₹200</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
       <div class="card"><h3>🗝️ Party Key</h3><div class="price">₹50</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
     </div>
@@ -455,7 +454,12 @@
     window.onload = function() {
       let activeUser = localStorage.getItem('soul_active_user');
       if (activeUser) {
+        document.getElementById('signup-screen').style.display = 'none';
+        document.getElementById('login-screen').style.display = 'none';
         loadUserData(activeUser);
+      } else {
+        document.getElementById('signup-screen').style.display = 'flex';
+        document.getElementById('login-screen').style.display = 'none';
       }
     };
 
@@ -481,6 +485,13 @@
       let error = document.getElementById('su-error');
 
       if (!username || !pass || !validateEmail(email)) {
+        error.innerText = "❌ Please fill all fields with a valid email!";
+        error.style.display = 'block';
+        return;
+      }
+
+      if (localStorage.getItem('soul_user_' + username)) {
+        error.innerText = "❌ Username already exists! Try logging in.";
         error.style.display = 'block';
         return;
       }
@@ -513,15 +524,4 @@
       }
 
       error.style.display = 'none';
-      localStorage.setItem('soul_active_user', username);
-      loadUserData(username);
-    }
-
-    function loadUserData(username) {
-      let savedData = localStorage.getItem('soul_user_' + username);
-      if (savedData) {
-        let userObj = JSON.parse(savedData);
-        document.getElementById('nav-username').innerText = userObj.username;
-        document.getElementById('profile-name').innerText = userObj.username;
-        document.getElementById('profile-mc').innerText = userObj.username;
-        document.getElementById('profile-email').
+      localStor
