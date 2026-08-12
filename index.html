@@ -20,6 +20,38 @@
       margin: 0;
       padding-bottom: 60px;
     }
+    /* Auth Screen (Login/Signup) */
+    #auth-screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: rgba(0,0,0,0.9);
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      z-index: 3000;
+    }
+    .auth-box {
+      background: #1a0000;
+      border: 2px solid var(--accent);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 350px;
+      width: 90%;
+      box-shadow: var(--glow);
+    }
+    .auth-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background: #000;
+      border: 1px solid #550000;
+      color: #fff;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
     /* Fixed Clean Navbar */
     nav {
       display: flex;
@@ -141,6 +173,17 @@
 </head>
 <body>
 
+  <!-- LOGIN / SIGNUP SCREEN (Agar pehle se logged-in nahi hai toh dikhega) -->
+  <div id="auth-screen">
+    <div class="auth-box">
+      <h2 style="color:var(--accent); margin-top:0;">SOUL SMP LOGIN</h2>
+      <p style="font-size:0.85rem; color:#aaa;">Enter your Minecraft Name & Email to continue</p>
+      <input type="text" id="username" placeholder="Minecraft Username">
+      <input type="email" id="email" placeholder="Email Address">
+      <button class="btn" onclick="handleLogin()">LOGIN / REGISTER</button>
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <nav>
     <div class="logo" onclick="switchPage('home', document.getElementById('link-home'))">🔥 SOULSMP</div>
@@ -152,7 +195,6 @@
       <a onclick="switchPage('keys', this)" id="link-keys">🔑 Keys</a>
       <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
     </div>
-    <!-- Upar coin icon par click karne se AFK coins claim honge -->
     <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
   </nav>
 
@@ -162,6 +204,7 @@
     <p class="subtitle">Server IP: <b>SPICY_ARMY1.aternos.me:40740</b></p>
     <div style="text-align: center; margin-top: 30px;">
       <button class="btn" style="width: auto; padding: 10px 25px;" onclick="switchPage('ranks', document.getElementById('link-ranks'))">EXPLORE STORE</button>
+      <button class="btn" style="width: auto; padding: 10px 25px; background:#555; margin-top:10px;" onclick="logout()">LOGOUT</button>
     </div>
   </div>
 
@@ -215,7 +258,7 @@
     </div>
   </div>
 
-  <!-- COINS PAGE (Store Purchase) -->
+  <!-- COINS PAGE -->
   <div id="coins" class="page">
     <h1>🪙 COIN BUNDLES</h1>
     <p class="subtitle">Boost your in-game balance instantly.</p>
@@ -270,6 +313,33 @@
   </div>
 
   <script>
+    // Check if user is already logged in
+    window.onload = function() {
+      let savedUser = localStorage.getItem('soul_smp_user');
+      if (savedUser) {
+        document.getElementById('auth-screen').style.display = 'none';
+      }
+    };
+
+    function handleLogin() {
+      let username = document.getElementById('username').value.trim();
+      let email = document.getElementById('email').value.trim();
+      
+      if (!username || !email) {
+        alert("Please enter both username and email!");
+        return;
+      }
+      
+      // Save user to browser local storage so it never asks again
+      localStorage.setItem('soul_smp_user', username);
+      document.getElementById('auth-screen').style.display = 'none';
+    }
+
+    function logout() {
+      localStorage.removeItem('soul_smp_user');
+      location.reload();
+    }
+
     function switchPage(id, element) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
@@ -316,6 +386,4 @@
     }
   </script>
 </body>
-        </html>
-
-      
+</html>
