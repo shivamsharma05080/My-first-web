@@ -6,98 +6,310 @@
   <title>SOUL SMP | Official Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root { --accent: #ff0000; }
-    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)), url('https://wallpaperaccess.com/full/2222718.jpg'); background-size: cover; color: #fff; margin: 0; padding-bottom: 50px; }
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 25px; background: rgba(10,0,0,0.95); border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 1000; }
-    .logo { font-size: 1.5rem; font-weight: 900; color: var(--accent); cursor: pointer; }
-    .nav-links a { color: #fff; text-decoration: none; padding: 6px 12px; margin: 0 5px; background: rgba(255,255,255,0.05); border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 0.85rem; }
-    .nav-links a:hover { background: var(--accent); }
-    .coin-box { background: #000; border: 1px solid #55ff55; padding: 5px 15px; border-radius: 20px; color: #55ff55; font-weight: bold; }
-    .page { display: none; padding: 40px 20px; max-width: 1000px; margin: auto; }
+    :root {
+      --accent: #ff0000;
+      --glow: 0 0 15px #ff0000;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.92)), 
+                  url('https://wallpaperaccess.com/full/2222718.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+      margin: 0;
+      padding-bottom: 60px;
+    }
+    /* Fixed Clean Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 15px;
+      background: rgba(10, 0, 0, 0.98);
+      border-bottom: 3px solid var(--accent);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      padding-bottom: 3px;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 8px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      transition: 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: var(--accent);
+      color: white;
+    }
+    .coin-badge {
+      background: #000;
+      border: 1px solid #55ff55;
+      padding: 4px 10px;
+      border-radius: 15px;
+      color: #55ff55;
+      font-weight: bold;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+
+    /* Pages */
+    .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active { display: block; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
-    .card { background: rgba(30,0,0,0.85); border: 2px solid #550000; padding: 20px; text-align: center; border-radius: 12px; }
-    .price { font-size: 1.3rem; color: #55ff55; font-weight: bold; margin: 10px 0; }
-    .btn { background: var(--accent); color: #fff; border: none; padding: 10px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; margin-top: 10px; }
-    .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 2000; }
-    .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 30px; border-radius: 15px; text-align: center; max-width: 400px; }
+    
+    h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
+    p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
+
+    /* Grids & Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      background: rgba(30, 0, 0, 0.85);
+      border: 2px solid #550000;
+      border-radius: 10px;
+      padding: 15px 10px;
+      text-align: center;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
+    .card h3 { margin: 8px 0; font-size: 1.1rem; }
+    .price { font-size: 1.1rem; color: #55ff55; font-weight: bold; margin: 10px 0; }
+    .features-list { text-align: left; color: #bbb; font-size: 0.75rem; margin: 8px 0; padding-left: 12px; }
+    .features-list li { margin: 3px 0; }
+
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      font-size: 0.85rem;
+      transition: 0.2s;
+    }
+    .btn:hover { background: #b30000; }
+
+    /* AFK Container */
+    .afk-container {
+      background: rgba(0, 30, 0, 0.85);
+      border: 2px solid #00ff00;
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 15px;
+      max-width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 0 20px rgba(0,255,0,0.3);
+    }
+    .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 15px 0; font-family: monospace; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
+    .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; text-align: center; max-width: 350px; width: 100%; }
+    .modal-content ol { text-align: left; color: #ccc; font-size: 0.9rem; padding-left: 20px; margin: 15px 0; }
   </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
   <nav>
-    <div class="logo" onclick="switchPage('home')">🔥 SOULSMP</div>
+    <div class="logo" onclick="switchPage('home', document.getElementById('link-home'))">🔥 SOULSMP</div>
     <div class="nav-links">
-      <a onclick="switchPage('home')">🏠 Home</a>
-      <a onclick="switchPage('ranks')">👑 Ranks</a>
-      <a onclick="switchPage('kits')">⚔️ Kits</a>
-      <a onclick="switchPage('coins')">🪙 Coins</a>
-      <a onclick="switchPage('keys')">🔑 Keys</a>
-      <a onclick="switchPage('afk')">⏳ AFK</a>
+      <a onclick="switchPage('home', this)" class="active" id="link-home">🏠 Home</a>
+      <a onclick="switchPage('ranks', this)" id="link-ranks">👑 Ranks</a>
+      <a onclick="switchPage('kits', this)" id="link-kits">⚔️ Kits</a>
+      <a onclick="switchPage('coins', this)" id="link-coins">🪙 Coins</a>
+      <a onclick="switchPage('keys', this)" id="link-keys">🔑 Keys</a>
+      <a onclick="switchPage('afk', this)" id="link-afk">⏳ AFK</a>
     </div>
-    <div class="coin-box">AFK Coins: <span id="user-coins">0</span></div>
+    <div class="coin-badge">AFK: <span id="user-coins">0</span></div>
   </nav>
 
   <!-- HOME PAGE -->
   <div id="home" class="page active">
     <h1>SOUL SMP BATTLEGROUND</h1>
-    <p style="text-align:center;">Server IP: <b>SPICY_ARMY1.aternos.me:40740</b></p>
+    <p class="subtitle">Server IP: <b>SPICY_ARMY1.aternos.me:40740</b></p>
+    <div style="text-align: center; margin-top: 30px;">
+      <button class="btn" style="width: auto; padding: 10px 25px;" onclick="switchPage('ranks', document.getElementById('link-ranks'))">EXPLORE STORE</button>
+    </div>
+  </div>
+
+  <!-- RANKS PAGE -->
+  <div id="ranks" class="page">
+    <h1>👑 PREMIUM RANKS</h1>
+    <p class="subtitle">Unlock exclusive in-game perks and commands.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>🟢 VIP 💎</h3>
+        <div class="price">₹99</div>
+        <ul class="features-list"><li>Warrior Kit</li><li>VIP Prefix</li><li>3 Homes</li></ul>
+        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
+      </div>
+      <div class="card">
+        <h3>🔵 MVP 🔱</h3>
+        <div class="price">₹199</div>
+        <ul class="features-list"><li>Archer Kit</li><li>MVP Prefix</li><li>5 Homes</li></ul>
+        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
+      </div>
+      <div class="card">
+        <h3>🟣 ELITE ⚡</h3>
+        <div class="price">₹399</div>
+        <ul class="features-list"><li>Inferno Kit</li><li>ELITE Prefix</li><li>8 Homes</li></ul>
+        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
+      </div>
+      <div class="card">
+        <h3>🔴 TITAN ⚔️</h3>
+        <div class="price">₹699</div>
+        <ul class="features-list"><li>Thunder Kit</li><li>TITAN Prefix</li><li>12 Homes</li></ul>
+        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
+      </div>
+      <div class="card" style="border-color: #ffcc00;">
+        <h3 style="color:#ffcc00;">🟡 LEGEND 👑</h3>
+        <div class="price">₹999</div>
+        <ul class="features-list"><li>Dragon Kit</li><li>LEGEND Prefix</li><li>20 Homes</li></ul>
+        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KITS PAGE -->
+  <div id="kits" class="page">
+    <h1>⚔️ BATTLE KITS</h1>
+    <p class="subtitle">Equip yourself with powerful PvP gear.</p>
+    <div class="grid">
+      <div class="card"><h3>⚔️ Warrior</h3><div class="price">₹59</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🏹 Archer</h3><div class="price">₹79</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🔥 Inferno</h3><div class="price">₹149</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🐉 Dragon</h3><div class="price">₹299</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+    </div>
   </div>
 
   <!-- COINS PAGE -->
   <div id="coins" class="page">
-    <h1>🪙 PURCHASE COINS</h1>
+    <h1>🪙 COIN BUNDLES</h1>
+    <p class="subtitle">Boost your in-game balance instantly.</p>
     <div class="grid">
-      <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><button class="btn" onclick="showClaimModal()">CLAIM YOUR COINS</button></div>
-      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price">₹149</div><button class="btn" onclick="showClaimModal()">CLAIM YOUR COINS</button></div>
+      <div class="card"><h3>🪙 500 Coins</h3><div class="price">₹29</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
+      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price">₹149</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
+      <div class="card"><h3>🪙 15,000 Coins</h3><div class="price">₹299</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
+      <div class="card"><h3>🪙 75,000 Coins</h3><div class="price">₹999</div><button class="btn" onclick="showClaimModal()">CLAIM COINS</button></div>
     </div>
   </div>
 
-  <!-- AFK ZONE -->
+  <!-- KEYS PAGE -->
+  <div id="keys" class="page">
+    <h1>🔑 CRATE KEYS</h1>
+    <p class="subtitle">Open special crates to win rare rewards.</p>
+    <div class="grid">
+      <div class="card"><h3>🗝️ Common Key</h3><div class="price">₹20</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🗝️ Prime Key</h3><div class="price">₹100</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🗝️ Xiavien Key</h3><div class="price">₹200</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🗝️ Party Key</h3><div class="price">₹50</div><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+    </div>
+  </div>
+
+  <!-- AFK ZONE PAGE -->
   <div id="afk" class="page">
     <h1>⏳ AFK EARNING ZONE</h1>
-    <div style="background: rgba(0,30,0,0.8); padding: 30px; text-align: center; border-radius: 15px;">
-      <h2 id="afk-timer">00:00</h2>
-      <button class="btn" style="background:#00aa00; width:auto;" id="afk-btn" onclick="toggleAfk()">START AFK</button>
+    <p class="subtitle">Stay on this page to earn free AFK coins!</p>
+    
+    <div class="afk-container">
+      <h3 style="margin-top:0; color:#55ff55;">AFK Status</h3>
+      <p id="afk-status-text" style="color: #ccc; font-size:0.85rem;">Status: <b style="color: #ff5555;">Inactive</b></p>
+      <div class="afk-timer" id="afk-timer-display">00:00</div>
+      <p style="font-size: 0.8rem; color: #88ff88;">Rate: 1 Coin every 1 Minute!</p>
+      <button class="btn" style="background: #00aa00; margin-top: 10px;" id="afk-toggle-btn" onclick="toggleAfk()">START AFK</button>
     </div>
   </div>
 
   <!-- CLAIM MODAL -->
   <div id="claimModal" class="modal">
     <div class="modal-content">
-      <h2>Claim Purchased Coins</h2>
-      <p>To receive your purchased coins:</p>
-      <ul style="text-align:left;">
-        <li>1. Join our Discord server.</li>
-        <li>2. Open a support ticket.</li>
-        <li>3. Upload a screenshot of your payment.</li>
-        <li>4. Our staff will add coins to your account!</li>
-      </ul>
-      <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7')">JOIN DISCORD</button>
-      <button class="btn" style="background:#555;" onclick="closeModal()">Close</button>
+      <h2 style="color:var(--accent); margin-top:0;">Claim Your Coins</h2>
+      <p style="font-size:0.85rem; color:#ccc;">To receive your purchased coins, please follow these steps:</p>
+      <ol>
+        <li>Join our Discord server.</li>
+        <li>Open a support ticket.</li>
+        <li>Upload a screenshot of your payment.</li>
+        <li>Staff will add coins instantly!</li>
+      </ol>
+      <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">JOIN DISCORD</button>
+      <button class="btn" style="background:#555; margin-top:8px;" onclick="closeModal()">Close</button>
     </div>
   </div>
 
   <script>
-    function switchPage(id) { document.querySelectorAll('.page').forEach(p => p.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+    function switchPage(id, element) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      
+      if(element) {
+        document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+        element.classList.add('active');
+      }
+      window.scrollTo(0, 0);
+    }
+
     function showClaimModal() { document.getElementById('claimModal').style.display = 'flex'; }
     function closeModal() { document.getElementById('claimModal').style.display = 'none'; }
-    
+
     let coins = 0, seconds = 0, active = false, interval;
     function toggleAfk() {
-      let btn = document.getElementById('afk-btn');
+      let btn = document.getElementById('afk-toggle-btn');
+      let statusText = document.getElementById('afk-status-text');
       if(!active) {
-        active = true; btn.innerText = "STOP AFK"; btn.style.background = "#cc0000";
+        active = true; 
+        btn.innerText = "STOP AFK"; 
+        btn.style.background = "#cc0000";
+        statusText.innerHTML = 'Status: <b style="color: #55ff55;">Active (Earning...)</b>';
+        
         interval = setInterval(() => {
           seconds++;
           let m = Math.floor(seconds/60), s = seconds%60;
-          document.getElementById('afk-timer').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
-          if(seconds % 60 === 0) { coins++; document.getElementById('user-coins').innerText = coins; }
+          document.getElementById('afk-timer-display').innerText = (m<10?"0":"")+m + ":" + (s<10?"0":"")+s;
+          if(seconds % 60 === 0) { 
+            coins++; 
+            document.getElementById('user-coins').innerText = coins; 
+          }
         }, 1000);
       } else {
-        active = false; clearInterval(interval); btn.innerText = "START AFK"; btn.style.background = "#00aa00";
+        active = false; 
+        clearInterval(interval); 
+        btn.innerText = "START AFK"; 
+        btn.style.background = "#00aa00";
+        statusText.innerHTML = 'Status: <b style="color: #ff5555;">Paused</b>';
       }
     }
   </script>
 </body>
-</html>
+      </html>
+      
