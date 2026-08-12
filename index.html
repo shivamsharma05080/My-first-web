@@ -20,24 +20,19 @@
       padding-bottom: 60px;
     }
     
-    .entry-overlay {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: rgba(0,0,0,0.95);
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      z-index: 5000;
+    /* ENTRY OVERLAY */
+    #entry-screen {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.98); z-index: 9999;
+      display: flex; justify-content: center; align-items: center;
     }
     .entry-box {
       background: rgba(20, 0, 0, 0.95);
       border: 2px solid var(--accent);
-      padding: 40px;
+      padding: 30px;
       border-radius: 15px;
+      width: 300px;
       text-align: center;
-      max-width: 320px;
-      width: 90%;
       box-shadow: var(--glow);
     }
     .entry-box h2 {
@@ -57,7 +52,8 @@
       border-radius: 5px;
       box-sizing: border-box;
     }
-    
+
+    /* NAVBAR */
     nav {
       display: flex;
       justify-content: space-between;
@@ -142,12 +138,14 @@
       cursor: pointer;
     }
 
+    /* PAGES */
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active { display: block; }
     
     h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
     p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
 
+    /* GRIDS & CARDS */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -186,6 +184,7 @@
     }
     .btn:hover { background: #b30000; }
 
+    /* PROFILE PAGE */
     .profile-card {
       background: rgba(20, 0, 0, 0.9);
       border: 2px solid var(--accent);
@@ -233,6 +232,7 @@
     }
     .profile-info p { margin: 8px 0; }
 
+    /* AFK ZONE */
     .afk-container {
       background: rgba(0, 30, 0, 0.85);
       border: 2px solid #00ff00;
@@ -245,6 +245,7 @@
     }
     .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 15px 0; font-family: monospace; }
 
+    /* MODAL */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
     .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; text-align: center; max-width: 350px; width: 100%; }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.9rem; padding-left: 20px; margin: 15px 0; }
@@ -252,8 +253,8 @@
 </head>
 <body>
 
-  <!-- SIMPLE DIRECT ENTRY SCREEN (No Password Needed) -->
-  <div id="entry-screen" class="entry-overlay">
+  <!-- DIRECT ENTRY SCREEN -->
+  <div id="entry-screen">
     <div class="entry-box">
       <h2>SOULSMP SECURITY</h2>
       <p style="font-size: 0.8rem; color: #aaa; margin-top:0;">Enter details to enter store</p>
@@ -526,5 +527,4 @@
       } else {
         active = false; 
         clearInterval(interval); 
-        btn.innerText = "START AFK"; 
-        btn.style.backgroun
+        btn.innerText = "START AFK
