@@ -3,142 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SASTA SMP - Store</title>
+  <title>SOUL SMP | Official Store</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a0000, #000000);
       color: #ffffff;
       margin: 0;
       padding: 20px;
     }
     header {
       text-align: center;
-      padding: 40px 20px;
-      background: #1f1f1f;
-      border-bottom: 4px solid #55ff55;
-      margin-bottom: 30px;
-      border-radius: 8px;
+      padding: 50px 20px;
+      border-bottom: 3px solid #ff0000;
     }
-    header h1 {
-      color: #55ff55;
-      margin: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      color: #aaaaaa;
-      font-size: 1.1rem;
-    }
-    .container {
-      max-width: 1000px;
-      margin: auto;
+    h1 { color: #ff3333; font-size: 3rem; text-shadow: 0 0 10px #ff0000; }
+    
+    .container { max-width: 900px; margin: auto; }
+    
+    .section-title { color: #ff5555; text-align: center; margin-top: 40px; font-size: 1.8rem; }
+    
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 0 10px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
     }
-    .card {
-      background: #1e1e1e;
-      border: 2px solid #333;
-      border-radius: 10px;
-      padding: 25px;
+    
+    .rank-card {
+      background: rgba(255, 0, 0, 0.1);
+      border: 1px solid #440000;
+      padding: 15px;
       text-align: center;
-      transition: 0.3s;
-    }
-    .card:hover {
-      border-color: #55ff55;
-      transform: translateY(-5px);
-    }
-    .card h3 {
-      color: #ffff55;
-      font-size: 1.5rem;
-      margin-top: 0;
-    }
-    .price {
-      font-size: 1.3rem;
-      color: #55ff55;
-      font-weight: bold;
-      margin: 15px 0;
-    }
-    .card p {
-      color: #cccccc;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
-    .buy-btn {
-      display: inline-block;
-      background-color: #ff5555;
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    .buy-btn:hover {
-      background-color: #ff3333;
-    }
-    .discord-section {
-      text-align: center;
-      margin-top: 50px;
-      padding: 20px;
-      background: #1f1f1f;
       border-radius: 8px;
     }
-    .discord-btn {
-      display: inline-block;
-      background-color: #5865F2;
+
+    .premium-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    
+    .btn {
+      display: block;
+      background: #ff0000;
       color: white;
       text-decoration: none;
-      padding: 12px 25px;
-      border-radius: 6px;
-      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
       margin-top: 10px;
+      font-weight: bold;
     }
-    .discord-btn:hover {
-      background-color: #4752C4;
-    }
+    .btn:hover { background: #cc0000; }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>⚡ SASTA SMP STORE ⚡</h1>
-    <p>Apne favorite Ranks aur Items kharidein aur server ko support karein!</p>
+    <h1>SOUL SMP</h1>
+    <p>The Darkest Survival Experience</p>
   </header>
 
   <div class="container">
-    <!-- Rank 1 -->
-    <div class="card">
-      <h3>VIP Rank</h3>
-      <div class="price">₹99 / month</div>
-      <p>Special prefix, /fly command, aur 3 set homes ki suvidha!</p>
-      <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="buy-btn">Buy Now</a>
+    <h2 class="section-title">Player Ranks</h2>
+    <div class="grid">
+      <div class="rank-card">Member</div><div class="rank-card">Rookie</div>
+      <div class="rank-card">Knight</div><div class="rank-card">Warrior</div>
+      <div class="rank-card">Elite</div><div class="rank-card">Hero</div>
+      <div class="rank-card">Titan</div><div class="rank-card">Legend</div>
+      <div class="rank-card">Mythic</div><div class="rank-card">Immortal</div>
     </div>
 
-    <!-- Rank 2 -->
-    <div class="card">
-      <h3>MVP Rank</h3>
-      <div class="price">₹199 / month</div>
-      <p>VIP sabhi features + /heal, /feed, aur custom kit access!</p>
-      <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="buy-btn">Buy Now</a>
+    <h2 class="section-title">👑 Premium Ranks</h2>
+    <div class="grid premium-grid">
+      <div class="rank-card"><h3>VIP</h3><a href="https://discord.gg/BHHU8mDvh7" class="btn">Buy</a></div>
+      <div class="rank-card"><h3>MVP</h3><a href="https://discord.gg/BHHU8mDvh7" class="btn">Buy</a></div>
+      <div class="rank-card"><h3>MVP+</h3><a href="https://discord.gg/BHHU8mDvh7" class="btn">Buy</a></div>
+      <div class="rank-card"><h3>Elite+</h3><a href="https://discord.gg/BHHU8mDvh7" class="btn">Buy</a></div>
+      <div class="rank-card"><h3>Legend+</h3><a href="https://discord.gg/BHHU8mDvh7" class="btn">Buy</a></div>
     </div>
-
-    <!-- Item 3 -->
-    <div class="card">
-      <h3>Diamond Kit</h3>
-      <div class="price">₹49</div>
-      <p>Full Diamond Armor (Protection IV) + Tools aur 64 Enchanted Golden Apples!</p>
-      <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="buy-btn">Buy Now</a>
-    </div>
-  </div>
-
-  <div class="discord-section">
-    <h3>Koi problem hai ya payment karni hai?</h3>
-    <p>Hamare Discord server par join karke admin se contact karein!</p>
-    <a href="https://discord.gg/BHHU8mDvh7" target="_blank" class="discord-btn">Join Discord Server</a>
   </div>
 
 </body>
-  </html>
-  
+</html>
