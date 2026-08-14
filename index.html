@@ -31,9 +31,9 @@
     .nav-links { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 3px; }
     .nav-links::-webkit-scrollbar { display: none; }
     .nav-links a {
-      color: #fff; text-decoration: none; padding: 6px 10px;
+      color: #fff; text-decoration: none; padding: 8px 12px;
       background: rgba(255,255,255,0.06); border-radius: 4px;
-      font-weight: bold; cursor: pointer; font-size: 0.75rem; white-space: nowrap;
+      font-weight: bold; cursor: pointer; font-size: 0.8rem; white-space: nowrap;
       transition: 0.2s;
     }
     .nav-links a:hover, .nav-links a.active { background: var(--accent); color: white; }
@@ -48,8 +48,8 @@
     .profile-pill span { font-size: 0.8rem; font-weight: bold; color: #ff9999; }
     .coin-badge { background: #000; border: 1px solid #55ff55; padding: 5px 12px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
 
+    /* Default sab pages hide rahenge, home wala dikhega */
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
-    .page.active { display: block; }
     
     h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
     p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
@@ -115,7 +115,7 @@
   </nav>
 
   <!-- HOME PAGE -->
-  <div id="home" class="page active container">
+  <div id="home" class="page" style="display: block;">
     <h1>SOUL SMP BATTLEGROUND</h1>
     <p class="subtitle">Server IP: <b>SoulSMP12.aternos.me:40740</b></p>
     <div style="text-align: center; margin-top: 30px;">
@@ -173,78 +173,18 @@
     <h1>👑 PREMIUM RANKS</h1>
     <p class="subtitle">Unlock exclusive in-game perks and commands.</p>
     <div class="grid">
-      <div class="card">
-        <h3>🟢 VIP</h3>
-        <div class="price">₹99</div>
-        <ul class="features-list"><li><b>Perk:</b> Emerald</li><li>VIP Prefix</li><li>3 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🟡 ELITE</h3>
-        <div class="price">₹149</div>
-        <ul class="features-list"><li><b>Perk:</b> Gold Ingot</li><li>ELITE Prefix</li><li>4 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🔵 HERO</h3>
-        <div class="price">₹199</div>
-        <ul class="features-list"><li><b>Perk:</b> Diamond</li><li>HERO Prefix</li><li>5 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>💎 LEGEND</h3>
-        <div class="price">₹299</div>
-        <ul class="features-list"><li><b>Perk:</b> Diamond Block</li><li>LEGEND Prefix</li><li>7 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>⚫ TITAN</h3>
-        <div class="price">₹399</div>
-        <ul class="features-list"><li><b>Perk:</b> Netherite Ingot</li><li>TITAN Prefix</li><li>9 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🌟 IMMORTAL</h3>
-        <div class="price">₹499</div>
-        <ul class="features-list"><li><b>Perk:</b> Nether Star</li><li>IMMORTAL Prefix</li><li>11 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🍎 MASTER</h3>
-        <div class="price">₹599</div>
-        <ul class="features-list"><li><b>Perk:</b> Enchanted G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>👑 KING</h3>
-        <div class="price">₹699</div>
-        <ul class="features-list"><li><b>Perk:</b> Netherite Helmet</li><li>KING Prefix</li><li>15 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>🔮 CELESTIAL</h3>
-        <div class="price">₹799</div>
-        <ul class="features-list"><li><b>Perk:</b> End Crystal</li><li>CELESTIAL Prefix</li><li>18 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>⚔️ WARLORD</h3>
-        <div class="price">₹999</div>
-        <ul class="features-list"><li><b>Perk:</b> Netherite Sword</li><li>WARLORD Prefix</li><li>22 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card">
-        <h3>❇️ EMPEROR</h3>
-        <div class="price">₹1,299</div>
-        <ul class="features-list"><li><b>Perk:</b> Beacon</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
-      <div class="card" style="border-color: #ffcc00;">
-        <h3 style="color:#ffcc00;">🐉 SUPREME</h3>
-        <div class="price">₹1,499</div>
-        <ul class="features-list"><li><b>Perk:</b> Dragon Egg</li><li>SUPREME Prefix</li><li>30 Homes</li></ul>
-        <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button>
-      </div>
+      <div class="card"><h3>🟢 VIP</h3><div class="price">₹99</div><ul class="features-list"><li><b>Perk:</b> Emerald</li><li>VIP Prefix</li><li>3 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🟡 ELITE</h3><div class="price">₹149</div><ul class="features-list"><li><b>Perk:</b> Gold Ingot</li><li>ELITE Prefix</li><li>4 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🔵 HERO</h3><div class="price">₹199</div><ul class="features-list"><li><b>Perk:</b> Diamond</li><li>HERO Prefix</li><li>5 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>💎 LEGEND</h3><div class="price">₹299</div><ul class="features-list"><li><b>Perk:</b> Diamond Block</li><li>LEGEND Prefix</li><li>7 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>⚫ TITAN</h3><div class="price">₹399</div><ul class="features-list"><li><b>Perk:</b> Netherite Ingot</li><li>TITAN Prefix</li><li>9 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🌟 IMMORTAL</h3><div class="price">₹499</div><ul class="features-list"><li><b>Perk:</b> Nether Star</li><li>IMMORTAL Prefix</li><li>11 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🍎 MASTER</h3><div class="price">₹599</div><ul class="features-list"><li><b>Perk:</b> Enchanted G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>👑 KING</h3><div class="price">₹699</div><ul class="features-list"><li><b>Perk:</b> Netherite Helmet</li><li>KING Prefix</li><li>15 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>🔮 CELESTIAL</h3><div class="price">₹799</div><ul class="features-list"><li><b>Perk:</b> End Crystal</li><li>CELESTIAL Prefix</li><li>18 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>⚔️ WARLORD</h3><div class="price">₹999</div><ul class="features-list"><li><b>Perk:</b> Netherite Sword</li><li>WARLORD Prefix</li><li>22 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card"><h3>❇️ EMPEROR</h3><div class="price">₹1,299</div><ul class="features-list"><li><b>Perk:</b> Beacon</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
+      <div class="card" style="border-color: #ffcc00;"><h3 style="color:#ffcc00;">🐉 SUPREME</h3><div class="price">₹1,499</div><ul class="features-list"><li><b>Perk:</b> Dragon Egg</li><li>SUPREME Prefix</li><li>30 Homes</li></ul><button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">BUY</button></div>
     </div>
   </div>
 
@@ -360,4 +300,15 @@
             let ctx = canvas.getContext('2d');
             let MAX_WIDTH = 250;
             let MAX_HEIGHT = 250;
-            let width = img.widt
+            let width = img.width;
+            let height = img.height;
+
+            if (width > height) {
+              if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
+            } else {
+              if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
+            }
+            canvas.width = width;
+            canvas.height = height;
+            ctx.drawImage(img, 0, 0, width, height);
+            let compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8)
