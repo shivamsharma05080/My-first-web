@@ -3,325 +3,1139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>SOUL SMP | Official Store</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+
   <style>
-    :root { 
-      --accent: #ff3333; 
-      --glow: 0 0 15px rgba(255, 51, 51, 0.6); 
+    :root {
+      --accent: #ff3333;
+      --accent-dark: #b30000;
+      --green: #55ff55;
+      --bg: #080000;
+      --card: rgba(15, 0, 0, 0.90);
+      --border: #550000;
+      --glow: 0 0 15px rgba(255, 51, 51, 0.6);
     }
-    
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-    
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0; min-height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.95)),
-                  url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop") center center / cover no-repeat fixed;
-      font-family: Arial, sans-serif; color: #fff; padding-bottom: 80px;
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.68),
+          rgba(0, 0, 0, 0.96)
+        ),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop")
+        center center / cover no-repeat fixed;
+      font-family: Arial, sans-serif;
+      color: #fff;
+      padding-bottom: 60px;
     }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
 
     nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 15px; background: rgba(10, 0, 0, 0.98);
-      border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 9999;
-      flex-wrap: wrap; gap: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+
+      background: rgba(10, 0, 0, 0.98);
+      border-bottom: 3px solid var(--accent);
+
+      position: sticky;
+      top: 0;
+      z-index: 9999;
     }
+
     .logo {
-      font-size: 1.2rem; font-weight: 900; color: var(--accent);
-      text-shadow: var(--glow); cursor: pointer; padding: 5px;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--accent);
+      text-shadow: var(--glow);
+      cursor: pointer;
+      padding: 5px;
+      white-space: nowrap;
     }
-    
-    .nav-links { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      justify-content: center;
+      flex: 1;
+    }
+
     .nav-links button {
-      color: #fff; border: none; padding: 10px 14px;
-      background: rgba(255,255,255,0.08); border-radius: 6px;
-      font-weight: bold; cursor: pointer; font-size: 0.85rem;
-      pointer-events: auto;
+      color: #fff;
+      border: none;
+      padding: 9px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: 0.2s;
     }
-    .nav-links button.active { background: var(--accent); color: white; box-shadow: var(--glow); }
-    
-    .nav-right-area { display: flex; align-items: center; gap: 8px; }
+
+    .nav-links button:hover {
+      background: rgba(255, 51, 51, 0.35);
+    }
+
+    .nav-links button.active {
+      background: var(--accent);
+      color: white;
+      box-shadow: var(--glow);
+    }
+
+    .nav-right-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     .profile-pill {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(40, 0, 0, 0.9); border: 1px solid var(--accent);
-      padding: 4px 10px 4px 4px; border-radius: 20px; cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      background: rgba(40, 0, 0, 0.9);
+      border: 1px solid var(--accent);
+
+      padding: 4px 10px 4px 4px;
+      border-radius: 20px;
+
+      cursor: pointer;
     }
-    .profile-pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
-    .profile-pill span { font-size: 0.8rem; font-weight: bold; color: #ff9999; }
-    .coin-badge { background: #000; border: 1px solid #55ff55; padding: 6px 12px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
 
-    .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
-    .page.active-page { display: block !important; }
-    
-    h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
-    p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
-    .card {
-      border: 2px solid #550000; border-radius: 10px; padding: 18px 12px;
-      text-align: center; background: rgba(15, 0, 0, 0.85);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5); position: relative;
+    .profile-pill img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #fff;
     }
-    .card h3 { margin: 8px 0; font-size: 1.05rem; }
-    .price { font-size: 1.1rem; color: #55ff55; font-weight: bold; margin: 10px 0; }
-    .old-price { text-decoration: line-through; color: #888; font-size: 0.85rem; margin-right: 5px; }
-    .features-list { text-align: left; color: #bbb; font-size: 0.75rem; margin: 8px 0; padding-left: 12px; list-style: none; }
-    .features-list li { margin: 4px 0; }
 
-    .btn {
-      background: var(--accent); color: #fff; border: none; padding: 12px;
-      border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; font-size: 0.9rem;
-      pointer-events: auto;
+    .profile-pill span {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: #ff9999;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .btn:hover { background: #b30000; }
 
-    .profile-card { border: 2px solid var(--accent); border-radius: 15px; padding: 25px; max-width: 400px; margin: auto; text-align: center; background: rgba(15, 0, 0, 0.85); box-shadow: var(--glow); }
-    .profile-avatar-container { position: relative; width: 90px; height: 90px; margin: 0 auto 15px auto; }
-    .profile-avatar-container img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
-    .upload-btn-label {
-      position: absolute; bottom: 0; right: 0; background: var(--accent); color: white;
-      border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center;
-      justify-content: center; cursor: pointer; font-size: 0.8rem; border: 2px solid #000;
+    .coin-badge {
+      background: #000;
+      border: 1px solid var(--green);
+
+      padding: 6px 12px;
+      border-radius: 15px;
+
+      color: var(--green);
+      font-weight: bold;
+      font-size: 0.8rem;
+
+      cursor: pointer;
+      white-space: nowrap;
     }
-    .profile-info { text-align: left; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; margin: 15px 0; font-size: 0.9rem; }
-    .profile-info p { margin: 6px 0; }
 
-    .afk-container { border: 2px solid #00ff00; padding: 30px 20px; text-align: center; border-radius: 15px; max-width: 380px; margin: 20px auto; background: rgba(15, 0, 0, 0.85); box-shadow: 0 0 20px rgba(0,255,0,0.3); }
-    .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 15px 0; font-family: monospace; }
+    /* =========================
+       PAGES
+    ========================= */
 
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 99999; padding: 20px; box-sizing: border-box; }
-    .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; text-align: center; max-width: 340px; width: 100%; }
-    .modal-content ol { text-align: left; color: #ccc; font-size: 0.85rem; padding-left: 20px; margin: 15px 0; }
-  </style>
-</head>
-<body>
+    .page {
+      display: none;
+      padding: 30px 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="logo" id="logo-btn">🔥 SOULSMP</div>
-    <div class="nav-links">
-      <button class="nav-tab active" data-target="home">Home</button>
-      <button class="nav-tab" data-target="ranks">Ranks</button>
-      <button class="nav-tab" data-target="kits">Kits</button>
-      <button class="nav-tab" data-target="coins">Coins</button>
-      <button class="nav-tab" data-target="keys">Keys</button>
-      <button class="nav-tab" data-target="afk">AFK</button>
-      <button class="nav-tab" data-target="support">Support</button>
-      <button class="nav-tab" data-target="profile">Profile</button>
-    </div>
-    <div class="nav-right-area">
-      <div class="profile-pill" id="pill-profile">
-        <img id="nav-avatar" src="https://via.placeholder.com/150" alt="Avatar">
-        <span id="nav-username">Player</span>
-      </div>
-      <div class="coin-badge" id="open-coins-modal">🪙 <span id="user-coins">0</span></div>
-    </div>
-  </nav>
+    .page.active-page {
+      display: block !important;
+      animation: pageFade 0.2s ease;
+    }
 
-  <!-- HOME PAGE -->
-  <div id="home" class="page active-page">
-    <h1>WELCOME TO SOUL SMP STORE</h1>
-    <p class="subtitle">Server IP: <b>SoulSMP12.aternos.me:40740</b></p>
-    <div style="text-align: center; margin-top: 30px;">
-      <button class="btn" id="explore-store-btn" style="width: auto; padding: 12px 25px;">EXPLORE STORE (20% OFF)</button>
-    </div>
-  </div>
-
-  <!-- PROFILE PAGE -->
-  <div id="profile" class="page">
-    <h1>USER PROFILE</h1>
-    <p class="subtitle">Customize your profile name, email, and picture.</p>
-    <div class="profile-card">
-      <div class="profile-avatar-container">
-        <img id="profile-img-preview" src="https://via.placeholder.com/150" alt="Profile Picture">
-        <label for="avatar-input" class="upload-btn-label"><i class="fa-solid fa-camera"></i></label>
-        <input type="file" id="avatar-input" accept="image/*" style="display: none;">
-      </div>
-      <div style="margin-bottom: 15px; text-align: left;">
-        <label style="font-size: 0.8rem; color: #aaa;">Minecraft Username:</label>
-        <input type="text" id="input-username" placeholder="Enter username" style="width:100%; padding:10px; margin-top:5px; background:#000; border:1px solid #550000; color:#fff; border-radius:6px; box-sizing:border-box;">
-        <label style="font-size: 0.8rem; color: #aaa; display:block; margin-top:10px;">Email Address:</label>
-        <input type="email" id="input-email" placeholder="Enter email" style="width:100%; padding:10px; margin-top:5px; background:#000; border:1px solid #550000; color:#fff; border-radius:6px; box-sizing:border-box;">
-        <button class="btn" id="save-profile-btn" style="margin-top: 15px;">SAVE PROFILE</button>
-      </div>
-      <div class="profile-info">
-        <p><b>📧 Email:</b> <span id="profile-email">user@gmail.com</span></p>
-        <p><b>🎮 Username:</b> <span id="profile-mc">Player</span></p>
-        <p><b>🪙 AFK Coins:</b> <span id="profile-coins" style="color:#55ff55;">0</span></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUPPORT PAGE -->
-  <div id="support" class="page">
-    <h1>🛠️ CUSTOMER SUPPORT</h1>
-    <p class="subtitle">Need help with your purchase or rank? Contact us!</p>
-    <div class="profile-card" style="text-align: center;">
-      <h3 style="color: #ff5555; margin-top: 0;">Get Instant Help</h3>
-      <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 20px;">If you faced any issues with your payment, items not received, or want to report a bug, open a ticket on our official Discord server.</p>
-      <button class="btn discord-btn" style="background: #5865F2;"><i class="fa-brands fa-discord"></i> JOIN DISCORD SUPPORT</button>
-    </div>
-  </div>
-
-  <!-- RANKS PAGE -->
-  <div id="ranks" class="page">
-    <h1>👑 PREMIUM RANKS (20% OFF)</h1>
-    <p class="subtitle">Unlock exclusive in-game perks and commands at discounted rates.</p>
-    <div class="grid">
-      <div class="card"><h3>🟢 VIP</h3><div class="price"><span class="old-price">₹99</span>₹79</div><ul class="features-list"><li><b>Perk:</b> Emerald</li><li>VIP Prefix</li><li>3 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🟡 ELITE</h3><div class="price"><span class="old-price">₹149</span>₹119</div><ul class="features-list"><li><b>Perk:</b> Gold Ingot</li><li>ELITE Prefix</li><li>4 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🔵 HERO</h3><div class="price"><span class="old-price">₹199</span>₹159</div><ul class="features-list"><li><b>Perk:</b> Diamond</li><li>HERO Prefix</li><li>5 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>💎 LEGEND</h3><div class="price"><span class="old-price">₹299</span>₹239</div><ul class="features-list"><li><b>Perk:</b> Diamond Block</li><li>LEGEND Prefix</li><li>7 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>⚫ TITAN</h3><div class="price"><span class="old-price">₹399</span>₹319</div><ul class="features-list"><li><b>Perk:</b> Netherite Ingot</li><li>TITAN Prefix</li><li>9 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🌟 IMMORTAL</h3><div class="price"><span class="old-price">₹499</span>₹399</div><ul class="features-list"><li><b>Perk:</b> Nether Star</li><li>IMMORTAL Prefix</li><li>11 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🍎 MASTER</h3><div class="price"><span class="old-price">₹599</span>₹479</div><ul class="features-list"><li><b>Perk:</b> Enchanted G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>👑 KING</h3><div class="price"><span class="old-price">₹699</span>₹559</div><ul class="features-list"><li><b>Perk:</b> Netherite Helmet</li><li>KING Prefix</li><li>15 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🔮 CELESTIAL</h3><div class="price"><span class="old-price">₹799</span>₹639</div><ul class="features-list"><li><b>Perk:</b> End Crystal</li><li>CELESTIAL Prefix</li><li>18 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>⚔️ WARLORD</h3><div class="price"><span class="old-price">₹999</span>₹799</div><ul class="features-list"><li><b>Perk:</b> Netherite Sword</li><li>WARLORD Prefix</li><li>22 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>❇️ EMPEROR</h3><div class="price"><span class="old-price">₹1,299</span>₹1,039</div><ul class="features-list"><li><b>Perk:</b> Beacon</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-      <div class="card" style="border-color: #ffcc00;"><h3 style="color:#ffcc00;">🐉 SUPREME</h3><div class="price"><span class="old-price">₹1,499</span>₹1,199</div><ul class="features-list"><li><b>Perk:</b> Dragon Egg</li><li>SUPREME Prefix</li><li>30 Homes</li></ul><button class="btn discord-btn">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- KITS PAGE -->
-  <div id="kits" class="page">
-    <h1>⚔️ BATTLE KITS (20% OFF)</h1>
-    <p class="subtitle">Equip yourself with powerful PvP gear.</p>
-    <div class="grid">
-      <div class="card"><h3>⚔️ Warrior</h3><div class="price"><span class="old-price">₹59</span>₹47</div><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🏹 Archer</h3><div class="price"><span class="old-price">₹79</span>₹63</div><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🔥 Inferno</h3><div class="price"><span class="old-price">₹149</span>₹119</div><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🐉 Dragon</h3><div class="price"><span class="old-price">₹299</span>₹239</div><button class="btn discord-btn">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- COINS PAGE -->
-  <div id="coins" class="page">
-    <h1>🪙 COIN BUNDLES (20% OFF)</h1>
-    <p class="subtitle">Boost your in-game balance instantly.</p>
-    <div class="grid">
-      <div class="card"><h3>🪙 500 Coins</h3><div class="price"><span class="old-price">₹29</span>₹23</div><button class="btn modal-trigger" data-type="Purchased Coins">BUY</button></div>
-      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price"><span class="old-price">₹149</span>₹119</div><button class="btn modal-trigger" data-type="Purchased Coins">BUY</button></div>
-      <div class="card"><h3>🪙 15,000 Coins</h3><div class="price"><span class="old-price">₹299</span>₹239</div><button class="btn modal-trigger" data-type="Purchased Coins">BUY</button></div>
-      <div class="card"><h3>🪙 75,000 Coins</h3><div class="price"><span class="old-price">₹999</span>₹799</div><button class="btn modal-trigger" data-type="Purchased Coins">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- KEYS PAGE -->
-  <div id="keys" class="page">
-    <h1>🔑 CRATE KEYS (20% OFF)</h1>
-    <p class="subtitle">Open special crates to win rare rewards.</p>
-    <div class="grid">
-      <div class="card"><h3>🗝️ Common Key</h3><div class="price"><span class="old-price">₹20</span>₹16</div><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🗝️ Prime Key</h3><div class="price" style="color:#55ff55;"><span class="old-price" style="color:#888;">₹100</span>₹80</div><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🗝️ Xiavien Key</h3><div class="price"><span class="old-price">₹200</span>₹160</div><button class="btn discord-btn">BUY</button></div>
-      <div class="card"><h3>🗝️ Party Key</h3><div class="price"><span class="old-price">₹50</span>₹40</div><button class="btn discord-btn">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- AFK ZONE PAGE -->
-  <div id="afk" class="page">
-    <h1>⏳ AFK EARNING ZONE</h1>
-    <p class="subtitle">Stay on this page to earn free AFK coins!</p>
-    <div class="afk-container">
-      <h3 style="margin-top:0; color:#55ff55;">AFK Status</h3>
-      <p id="afk-status-text" style="color: #ccc; font-size:0.85rem;">Status: <b style="color: #ff5555;">Inactive</b></p>
-      <div class="afk-timer" id="afk-timer-display">00:00</div>
-      <p style="font-size: 0.8rem; color: #88ff88;">Rate: 1 Coin every 1 Minute!</p>
-      <button class="btn" id="afk-toggle-btn" style="background: #00aa00; margin-top: 10px;">START AFK</button>
-    </div>
-  </div>
-
-  <!-- CLAIM MODAL -->
-  <div id="claimModal" class="modal">
-    <div class="modal-content">
-      <h2 id="modalTitle" style="color:var(--accent); margin-top:0;">Claim Coins</h2>
-      <p style="font-size:0.85rem; color:#ccc;">To receive your coins, please follow these steps:</p>
-      <ol>
-        <li>Join our Discord server.</li>
-        <li>Open a support ticket.</li>
-        <li>Upload a screenshot of your payment.</li>
-        <li>Staff will add coins instantly!</li>
-      </ol>
-      <button class="btn discord-btn" style="margin-bottom: 8px;">JOIN DISCORD</button>
-      <button class="btn" id="close-modal-btn" style="background:#555;">Close</button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const navTabs = document.querySelectorAll('.nav-tab');
-      const pages = document.querySelectorAll('.page');
-
-      function switchPage(targetId) {
-        pages.forEach(p => p.classList.remove('active-page'));
-        const targetPage = document.getElementById(targetId);
-        if (targetPage) {
-          targetPage.classList.add('active-page');
-        }
-
-        navTabs.forEach(btn => {
-          if (btn.getAttribute('data-target') === targetId) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-        window.scrollTo(0, 0);
+    @keyframes pageFade {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
       }
 
-      navTabs.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const target = btn.getAttribute('data-target');
-          if (target) switchPage(target);
-        });
-      });
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-      document.getElementById('logo-btn').addEventListener('click', () => switchPage('home'));
-      document.getElementById('explore-store-btn').addEventListener('click', () => switchPage('ranks'));
-      document.getElementById('pill-profile').addEventListener('click', () => switchPage('profile'));
+    h1 {
+      color: var(--accent);
+      text-align: center;
+      text-shadow: var(--glow);
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
 
-      document.querySelectorAll('.discord-btn').forEach(b => {
-        b.addEventListener('click', () => {
-          window.open('https://discord.gg/BHHU8mDvh7', '_blank');
-        });
-      });
+    p.subtitle {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+    }
 
-      const claimModal = document.getElementById('claimModal');
-      document.getElementById('open-coins-modal').addEventListener('click', () => {
-        document.getElementById('modalTitle').innerText = "Claim AFK Coins";
-        claimModal.style.display = 'flex';
-      });
+    /* =========================
+       HOME
+    ========================= */
 
-      document.querySelectorAll('.modal-trigger').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const type = btn.getAttribute('data-type') || "Coins";
-          document.getElementById('modalTitle').innerText = "Claim " + type;
-          claimModal.style.display = 'flex';
-        });
-      });
+    .hero {
+      text-align: center;
+      padding: 60px 15px;
+    }
 
-      document.getElementById('close-modal-btn').addEventListener('click', () => {
-        claimModal.style.display = 'none';
-      });
+    .hero h1 {
+      font-size: 2.5rem;
+    }
 
-      const savedUser = localStorage.getItem('soul_user') || "Player";
-      const savedEmail = localStorage.getItem('soul_email') || "user@gmail.com";
-      const savedAvatar = localStorage.getItem('soul_avatar') || "https://via.placeholder.com/150";
-      const savedCoins = parseInt(localStorage.getItem('soul_coins')) || 0;
+    .server-ip {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
 
-      document.getElementById('nav-username').innerText = savedUser;
-      document.getElementById('profile-mc').innerText = savedUser;
-      document.getElementById('profile-email').innerText = savedEmail;
-      document.getElementById('nav-avatar').src = savedAvatar;
-      document.getElementById('profile-img-preview').src = savedAvatar;
-      document.getElementById('user-coins').innerText = savedCoins;
-      document.getElementById('profile-coins').innerText = savedCoins;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
 
-      if(savedUser !== "Player") document.getElementById('input-username').value = savedUser;
-      if(savedEmail !== "user@gmail.com") document.getElementById('input-email').value = savedEmail;
+      color: #fff;
+    }
 
-      document.getElementById('save-profile-btn').addEventListener('click', () => {
-        const username = document.getElementById('input-username').value.trim() || "Player";
-        const email = document.getElementById('input-email').value.trim() || "
+    .server-ip b {
+      color: var(--green);
+    }
+
+    .home-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    /* =========================
+       GRID / CARDS
+    ========================= */
+
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      border: 2px solid var(--border);
+      border-radius: 10px;
+
+      padding: 18px 12px;
+      text-align: center;
+
+      background: var(--card);
+
+      box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.5);
+
+      position: relative;
+
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: var(--glow);
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      font-size: 1.05rem;
+    }
+
+    .price {
+      font-size: 1.1rem;
+      color: var(--green);
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 0.85rem;
+      margin-right: 5px;
+    }
+
+    .features-list {
+      text-align: left;
+      color: #bbb;
+      font-size: 0.75rem;
+
+      margin: 8px 0;
+      padding-left: 12px;
+
+      list-style: none;
+    }
+
+    .features-list li {
+      margin: 4px 0;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .btn {
+      display: inline-block;
+
+      background: var(--accent);
+      color: #fff;
+
+      border: none;
+      padding: 12px;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      width: 100%;
+
+      font-weight: bold;
+      font-size: 0.9rem;
+
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-small {
+      width: auto;
+      padding: 12px 25px;
+    }
+
+    /* =========================
+       PROFILE
+    ========================= */
+
+    .profile-card {
+      border: 2px solid var(--accent);
+      border-radius: 15px;
+
+      padding: 25px;
+
+      max-width: 400px;
+      margin: auto;
+
+      text-align: center;
+
+      background: rgba(15, 0, 0, 0.9);
+
+      box-shadow: var(--glow);
+    }
+
+    .profile-avatar-container {
+      position: relative;
+
+      width: 90px;
+      height: 90px;
+
+      margin: 0 auto 15px auto;
+    }
+
+    .profile-avatar-container img {
+      width: 90px;
+      height: 90px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border: 3px solid var(--accent);
+    }
+
+    .upload-btn-label {
+      position: absolute;
+
+      bottom: 0;
+      right: 0;
+
+      background: var(--accent);
+      color: white;
+
+      border-radius: 50%;
+
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      font-size: 0.8rem;
+
+      border: 2px solid #000;
+    }
+
+    .input-label {
+      display: block;
+
+      font-size: 0.8rem;
+      color: #aaa;
+
+      margin-top: 10px;
+      margin-bottom: 5px;
+
+      text-align: left;
+    }
+
+    .profile-input {
+      width: 100%;
+
+      padding: 10px;
+
+      background: #000;
+
+      border: 1px solid var(--border);
+
+      color: #fff;
+
+      border-radius: 6px;
+
+      outline: none;
+    }
+
+    .profile-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(255, 51, 51, 0.3);
+    }
+
+    .profile-info {
+      text-align: left;
+
+      background: rgba(0, 0, 0, 0.6);
+
+      padding: 12px;
+
+      border-radius: 8px;
+
+      margin: 15px 0;
+
+      font-size: 0.9rem;
+    }
+
+    .profile-info p {
+      margin: 6px 0;
+    }
+
+    /* =========================
+       AFK
+    ========================= */
+
+    .afk-container {
+      border: 2px solid #00ff00;
+
+      padding: 30px 20px;
+
+      text-align: center;
+
+      border-radius: 15px;
+
+      max-width: 380px;
+
+      margin: 20px auto;
+
+      background: rgba(15, 0, 0, 0.9);
+
+      box-shadow:
+        0 0 20px rgba(0, 255, 0, 0.3);
+    }
+
+    .afk-timer {
+      font-size: 2.2rem;
+
+      font-weight: bold;
+
+      color: #ffff55;
+
+      margin: 15px 0;
+
+      font-family: monospace;
+    }
+
+    .afk-status-active {
+      color: #55ff55;
+    }
+
+    .afk-status-inactive {
+      color: #ff5555;
+    }
+
+    /* =========================
+       SUPPORT
+    ========================= */
+
+    .support-icon {
+      font-size: 3rem;
+      color: #5865F2;
+      margin-bottom: 10px;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      display: none;
+
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      background: rgba(0, 0, 0, 0.85);
+
+      justify-content: center;
+      align-items: center;
+
+      z-index: 99999;
+
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #1a0000;
+
+      border: 2px solid var(--accent);
+
+      padding: 25px;
+
+      border-radius: 12px;
+
+      text-align: center;
+
+      max-width: 340px;
+      width: 100%;
+
+      box-shadow: var(--glow);
+    }
+
+    .modal-content ol {
+      text-align: left;
+
+      color: #ccc;
+
+      font-size: 0.85rem;
+
+      padding-left: 20px;
+
+      margin: 15px 0;
+    }
+
+    .modal-content li {
+      margin: 8px 0;
+    }
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    #toast {
+      position: fixed;
+
+      bottom: 25px;
+      left: 50%;
+
+      transform: translateX(-50%) translateY(100px);
+
+      background: #160000;
+
+      border: 1px solid var(--accent);
+
+      color: #fff;
+
+      padding: 12px 20px;
+
+      border-radius: 8px;
+
+      z-index: 100000;
+
+      opacity: 0;
+
+      transition: 0.3s;
+
+      box-shadow: var(--glow);
+
+      font-size: 0.9rem;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+        justify-content: center;
+      }
+
+      .logo {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-right-area {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 40px 10px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      .nav-links button {
+        padding: 8px 9px;
+        font-size: 0.75rem;
+      }
+
+      .profile-pill span {
+        max-width: 70px;
+      }
+
+      .grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .card {
+        padding: 14px 9px;
+      }
+
+      .card h3 {
+        font-size: 0.9rem;
+      }
+
+      .price {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <nav>
+
+    <div class="logo" id="logo-btn">
+      🔥 SOULSMP
+    </div>
+
+    <div class="nav-links">
+
+      <button class="nav-tab active" data-target="home">
+        Home
+      </button>
+
+      <button class="nav-tab" data-target="ranks">
+        Ranks
+      </button>
+
+      <button class="nav-tab" data-target="kits">
+        Kits
+      </button>
+
+      <button class="nav-tab" data-target="coins">
+        Coins
+      </button>
+
+      <button class="nav-tab" data-target="keys">
+        Keys
+      </button>
+
+      <button class="nav-tab" data-target="afk">
+        AFK
+      </button>
+
+      <button class="nav-tab" data-target="support">
+        Support
+      </button>
+
+      <button class="nav-tab" data-target="profile">
+        Profile
+      </button>
+
+    </div>
+
+    <div class="nav-right-area">
+
+      <div class="profile-pill" id="pill-profile">
+
+        <img
+          id="nav-avatar"
+          src="https://via.placeholder.com/150"
+          alt="Avatar"
+        >
+
+        <span id="nav-username">
+          Player
+        </span>
+
+      </div>
+
+      <div class="coin-badge" id="open-coins-modal">
+        🪙
+        <span id="user-coins">0</span>
+      </div>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HOME
+  ========================== -->
+
+  <section id="home" class="page active-page">
+
+    <div class="hero">
+
+      <h1>
+        🔥 WELCOME TO SOUL SMP STORE
+      </h1>
+
+      <p class="subtitle">
+        Premium ranks, kits, coins and keys for Soul SMP.
+      </p>
+
+      <div class="server-ip">
+        Server IP:
+        <b>SoulSMP12.aternos.me:40740</b>
+      </div>
+
+      <div class="home-buttons">
+
+        <button
+          class="btn btn-small"
+          id="explore-store-btn"
+        >
+          🛒 EXPLORE STORE — 20% OFF
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       RANKS
+  ========================== -->
+
+  <section id="ranks" class="page">
+
+    <h1>👑 PREMIUM RANKS</h1>
+
+    <p class="subtitle">
+      Unlock exclusive in-game perks. Everything is 20% OFF!
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>🟢 VIP</h3>
+        <div class="price">
+          <span class="old-price">₹99</span>
+          ₹79
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Emerald</li>
+          <li>VIP Prefix</li>
+          <li>3 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🟡 ELITE</h3>
+        <div class="price">
+          <span class="old-price">₹149</span>
+          ₹119
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Gold Ingot</li>
+          <li>ELITE Prefix</li>
+          <li>4 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🔵 HERO</h3>
+        <div class="price">
+          <span class="old-price">₹199</span>
+          ₹159
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Diamond</li>
+          <li>HERO Prefix</li>
+          <li>5 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>💎 LEGEND</h3>
+        <div class="price">
+          <span class="old-price">₹299</span>
+          ₹239
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Diamond Block</li>
+          <li>LEGEND Prefix</li>
+          <li>7 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>⚫ TITAN</h3>
+        <div class="price">
+          <span class="old-price">₹399</span>
+          ₹319
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Netherite Ingot</li>
+          <li>TITAN Prefix</li>
+          <li>9 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🌟 IMMORTAL</h3>
+        <div class="price">
+          <span class="old-price">₹499</span>
+          ₹399
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Nether Star</li>
+          <li>IMMORTAL Prefix</li>
+          <li>11 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🍎 MASTER</h3>
+        <div class="price">
+          <span class="old-price">₹599</span>
+          ₹479
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Enchanted G-Apple</li>
+          <li>MASTER Prefix</li>
+          <li>13 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>👑 KING</h3>
+        <div class="price">
+          <span class="old-price">₹699</span>
+          ₹559
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Netherite Helmet</li>
+          <li>KING Prefix</li>
+          <li>15 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🔮 CELESTIAL</h3>
+        <div class="price">
+          <span class="old-price">₹799</span>
+          ₹639
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: End Crystal</li>
+          <li>CELESTIAL Prefix</li>
+          <li>18 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>⚔️ WARLORD</h3>
+        <div class="price">
+          <span class="old-price">₹999</span>
+          ₹799
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Netherite Sword</li>
+          <li>WARLORD Prefix</li>
+          <li>22 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>❇️ EMPEROR</h3>
+        <div class="price">
+          <span class="old-price">₹1,299</span>
+          ₹1,039
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Beacon</li>
+          <li>EMPEROR Prefix</li>
+          <li>26 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div
+        class="card"
+        style="border-color:#ffcc00;"
+      >
+
+        <h3 style="color:#ffcc00;">
+          🐉 SUPREME
+        </h3>
+
+        <div class="price">
+          <span class="old-price">₹1,499</span>
+          ₹1,199
+        </div>
+
+        <ul class="features-list">
+          <li>💎 Perk: Dragon Egg</li>
+          <li>SUPREME Prefix</li>
+          <li>30 Homes</li>
+        </ul>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       KITS
+  ========================== -->
+
+  <section id="kits" class="page">
+
+    <h1>⚔️ BATTLE KITS</h1>
+
+    <p class="subtitle">
+      Equip yourself with powerful PvP gear — 20% OFF.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>⚔️ Warrior</h3>
+
+        <div class="price">
+          <span class="old-price">₹59</span>
+          ₹47
+        </div>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🏹 Archer</h3>
+
+        <div class="price">
+          <span class="old-price">₹79</span>
+          ₹63
+        </div>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🔥 Inferno</h3>
+
+        <div class="price">
+          <span class="old-price">₹149</span>
+          ₹119
+        </div>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+
+      <div class="card">
+        <h3>🐉 Dragon</h3>
+
+        <div class="price">
+          <span class="old-price">₹299</span>
+          ₹239
+        </div>
+
+        <button class="btn discord-btn">
+          BUY
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       COINS
+  ========================== -->
+
+  <section id="coins" class="page">
+
+    <h1>🪙 COIN BUNDLES</h1>
+
+    <p class="subtitle">
+      Boost your in-game balance instantly — 20% OFF.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>🪙 500 Coins</h3>
+
+        <div cla
