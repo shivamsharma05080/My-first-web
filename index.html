@@ -15,7 +15,7 @@
       font-family: Arial, sans-serif; color: #fff; padding-bottom: 60px;
     }
 
-    .container, .store-container, .profile-card, .card, .afk-container { background: rgba(10, 0, 0, 0.8); backdrop-filter: blur(6px); }
+    .container, .store-container, .profile-card, .card, .afk-container { background: rgba(10, 0, 0, 0.85); backdrop-filter: blur(6px); }
     
     nav {
       display: flex; justify-content: space-between; align-items: center;
@@ -24,41 +24,38 @@
       flex-wrap: wrap; gap: 10px;
     }
     .logo {
-      font-size: 1.3rem; font-weight: 900; color: var(--accent);
-      text-shadow: var(--glow); cursor: pointer;
+      font-size: 1.2rem; font-weight: 900; color: var(--accent);
+      text-shadow: var(--glow); cursor: pointer; padding: 5px;
     }
     
-    .nav-links { display: flex; gap: 5px; overflow-x: auto; padding-bottom: 3px; }
-    .nav-links::-webkit-scrollbar { display: none; }
-    .nav-links a {
-      color: #fff; text-decoration: none; padding: 8px 12px;
-      background: rgba(255,255,255,0.06); border-radius: 4px;
-      font-weight: bold; cursor: pointer; font-size: 0.8rem; white-space: nowrap;
-      transition: 0.2s;
+    .nav-links { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+    .nav-links button {
+      color: #fff; border: none; padding: 8px 12px;
+      background: rgba(255,255,255,0.08); border-radius: 4px;
+      font-weight: bold; cursor: pointer; font-size: 0.8rem;
     }
-    .nav-links a.active { background: var(--accent); color: white; }
+    .nav-links button.active { background: var(--accent); color: white; }
     
-    .nav-right-area { display: flex; align-items: center; gap: 10px; }
+    .nav-right-area { display: flex; align-items: center; gap: 8px; }
     .profile-pill {
-      display: flex; align-items: center; gap: 8px;
+      display: flex; align-items: center; gap: 6px;
       background: rgba(40, 0, 0, 0.9); border: 1px solid var(--accent);
-      padding: 3px 10px 3px 3px; border-radius: 20px; cursor: pointer;
+      padding: 3px 8px 3px 3px; border-radius: 20px; cursor: pointer;
     }
-    .profile-pill img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
-    .profile-pill span { font-size: 0.8rem; font-weight: bold; color: #ff9999; }
-    .coin-badge { background: #000; border: 1px solid #55ff55; padding: 5px 12px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
+    .profile-pill img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
+    .profile-pill span { font-size: 0.75rem; font-weight: bold; color: #ff9999; }
+    .coin-badge { background: #000; border: 1px solid #55ff55; padding: 4px 10px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.75rem; cursor: pointer; }
 
-    /* Sabhi pages shuru mein hidden rahenge, active wala dikhega */
-    .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
-    .page.active-page { display: block !important; }
+    .page { display: none; padding: 25px 15px; max-width: 1000px; margin: auto; }
+    .page.active-page { display: block; }
     
-    h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
-    p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
+    h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 1.8rem; margin-bottom: 5px; }
+    p.subtitle { text-align: center; color: #ccc; margin-bottom: 20px; font-size: 0.85rem; }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
     .card {
       border: 2px solid #550000; border-radius: 10px; padding: 15px 10px;
-      text-align: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); background: rgba(10, 0, 0, 0.75);
+      text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); background: rgba(10, 0, 0, 0.8);
     }
     .card h3 { margin: 8px 0; font-size: 1.05rem; }
     .price { font-size: 1.1rem; color: #55ff55; font-weight: bold; margin: 10px 0; }
@@ -67,46 +64,46 @@
 
     .btn {
       background: var(--accent); color: #fff; border: none; padding: 10px;
-      border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 0.85rem; transition: 0.2s;
+      border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 0.85rem;
     }
     .btn:hover { background: #b30000; }
 
-    .profile-card { border: 2px solid var(--accent); border-radius: 15px; padding: 30px; max-width: 450px; margin: auto; text-align: center; box-shadow: var(--glow); }
-    .profile-avatar-container { position: relative; width: 100px; height: 100px; margin: 0 auto 15px auto; }
-    .profile-avatar-container img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+    .profile-card { border: 2px solid var(--accent); border-radius: 15px; padding: 25px; max-width: 400px; margin: auto; text-align: center; box-shadow: var(--glow); }
+    .profile-avatar-container { position: relative; width: 90px; height: 90px; margin: 0 auto 15px auto; }
+    .profile-avatar-container img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
     .upload-btn-label {
       position: absolute; bottom: 0; right: 0; background: var(--accent); color: white;
-      border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center;
-      justify-content: center; cursor: pointer; font-size: 0.8rem; border: 2px solid #000;
+      border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center;
+      justify-content: center; cursor: pointer; font-size: 0.75rem; border: 2px solid #000;
     }
-    .profile-info { text-align: left; background: rgba(0,0,0,0.5); padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 0.95rem; }
-    .profile-info p { margin: 8px 0; }
+    .profile-info { text-align: left; background: rgba(0,0,0,0.5); padding: 12px; border-radius: 8px; margin: 15px 0; font-size: 0.9rem; }
+    .profile-info p { margin: 6px 0; }
 
-    .afk-container { border: 2px solid #00ff00; padding: 30px 20px; text-align: center; border-radius: 15px; max-width: 400px; margin: 20px auto; box-shadow: 0 0 20px rgba(0,255,0,0.3); }
-    .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 15px 0; font-family: monospace; }
+    .afk-container { border: 2px solid #00ff00; padding: 25px 15px; text-align: center; border-radius: 15px; max-width: 350px; margin: 20px auto; box-shadow: 0 0 15px rgba(0,255,0,0.3); }
+    .afk-timer { font-size: 2rem; font-weight: bold; color: #ffff55; margin: 12px 0; font-family: monospace; }
 
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
-    .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; text-align: center; max-width: 350px; width: 100%; }
-    .modal-content ol { text-align: left; color: #ccc; font-size: 0.9rem; padding-left: 20px; margin: 15px 0; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000; padding: 15px; box-sizing: border-box; }
+    .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 20px; border-radius: 12px; text-align: center; max-width: 320px; width: 100%; }
+    .modal-content ol { text-align: left; color: #ccc; font-size: 0.85rem; padding-left: 18px; margin: 12px 0; }
   </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav>
-    <div class="logo" onclick="openPage('home', this)">🔥 SOULSMP</div>
+    <div class="logo" onclick="switchPage('home', document.getElementById('btn-home'))">🔥 SOULSMP</div>
     <div class="nav-links">
-      <a onclick="openPage('home', this)" class="active" id="default-btn">🏠 Home</a>
-      <a onclick="openPage('ranks', this)">👑 Ranks</a>
-      <a onclick="openPage('kits', this)">⚔️ Kits</a>
-      <a onclick="openPage('coins', this)">🪙 Coins</a>
-      <a onclick="openPage('keys', this)">🔑 Keys</a>
-      <a onclick="openPage('afk', this)">⏳ AFK</a>
-      <a onclick="openPage('support', this)">🛠️ Support</a>
-      <a onclick="openPage('profile', this)">👤 Profile</a>
+      <button onclick="switchPage('home', this)" class="active" id="btn-home">Home</button>
+      <button onclick="switchPage('ranks', this)" id="btn-ranks">Ranks</button>
+      <button onclick="switchPage('kits', this)" id="btn-kits">Kits</button>
+      <button onclick="switchPage('coins', this)" id="btn-coins">Coins</button>
+      <button onclick="switchPage('keys', this)" id="btn-keys">Keys</button>
+      <button onclick="switchPage('afk', this)" id="btn-afk">AFK</button>
+      <button onclick="switchPage('support', this)" id="btn-support">Support</button>
+      <button onclick="switchPage('profile', this)" id="btn-profile">Profile</button>
     </div>
     <div class="nav-right-area">
-      <div class="profile-pill" onclick="openPage('profile', null)">
+      <div class="profile-pill" onclick="switchPage('profile', document.getElementById('btn-profile'))">
         <img id="nav-avatar" src="https://via.placeholder.com/150" alt="Avatar">
         <span id="nav-username">Player</span>
       </div>
@@ -118,8 +115,8 @@
   <div id="home" class="page active-page container">
     <h1>WELCOME TO SOUL SMP STORE</h1>
     <p class="subtitle">Server IP: <b>SoulSMP12.aternos.me:40740</b></p>
-    <div style="text-align: center; margin-top: 30px;">
-      <button class="btn" style="width: auto; padding: 10px 25px;" onclick="openPage('ranks', null)">EXPLORE STORE</button>
+    <div style="text-align: center; margin-top: 25px;">
+      <button class="btn" style="width: auto; padding: 10px 20px;" onclick="switchPage('ranks', document.getElementById('btn-ranks'))">EXPLORE STORE</button>
     </div>
   </div>
 
@@ -133,12 +130,12 @@
         <label for="avatar-input" class="upload-btn-label"><i class="fa-solid fa-camera"></i></label>
         <input type="file" id="avatar-input" accept="image/*" style="display: none;" onchange="updateAvatar(event)">
       </div>
-      <div style="margin-bottom: 15px; text-align: left;">
-        <label style="font-size: 0.8rem; color: #aaa;">Minecraft Username:</label>
-        <input type="text" id="input-username" placeholder="Enter username" style="width:100%; padding:8px; margin-top:5px; background:#000; border:1px solid #550000; color:#fff; border-radius:4px; box-sizing:border-box;">
-        <label style="font-size: 0.8rem; color: #aaa; display:block; margin-top:10px;">Email Address:</label>
-        <input type="email" id="input-email" placeholder="Enter email" style="width:100%; padding:8px; margin-top:5px; background:#000; border:1px solid #550000; color:#fff; border-radius:4px; box-sizing:border-box;">
-        <button class="btn" style="margin-top: 15px;" onclick="saveProfileData()">SAVE PROFILE</button>
+      <div style="margin-bottom: 12px; text-align: left;">
+        <label style="font-size: 0.75rem; color: #aaa;">Minecraft Username:</label>
+        <input type="text" id="input-username" placeholder="Enter username" style="width:100%; padding:8px; margin-top:4px; background:#000; border:1px solid #550000; color:#fff; border-radius:4px; box-sizing:border-box;">
+        <label style="font-size: 0.75rem; color: #aaa; display:block; margin-top:8px;">Email Address:</label>
+        <input type="email" id="input-email" placeholder="Enter email" style="width:100%; padding:8px; margin-top:4px; background:#000; border:1px solid #550000; color:#fff; border-radius:4px; box-sizing:border-box;">
+        <button class="btn" style="margin-top: 12px;" onclick="saveProfileData()">SAVE PROFILE</button>
       </div>
       <div class="profile-info">
         <p><b>📧 Email:</b> <span id="profile-email">user@gmail.com</span></p>
@@ -154,8 +151,8 @@
     <p class="subtitle">Need help with your purchase or rank? Contact us!</p>
     <div class="profile-card" style="text-align: center;">
       <h3 style="color: #ff5555; margin-top: 0;">Get Instant Help</h3>
-      <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 20px;">If you faced any issues with your payment, items not received, or want to report a bug, open a ticket on our official Discord server.</p>
-      <button class="btn" style="background: #5865F2; margin-bottom: 15px;" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')"><i class="fa-brands fa-discord"></i> JOIN DISCORD SUPPORT</button>
+      <p style="color: #ccc; font-size: 0.85rem; margin-bottom: 15px;">If you faced any issues with your payment, items not received, or want to report a bug, open a ticket on our official Discord server.</p>
+      <button class="btn" style="background: #5865F2;" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')"><i class="fa-brands fa-discord"></i> JOIN DISCORD SUPPORT</button>
     </div>
   </div>
 
@@ -221,46 +218,41 @@
     <p class="subtitle">Stay on this page to earn free AFK coins!</p>
     <div class="afk-container">
       <h3 style="margin-top:0; color:#55ff55;">AFK Status</h3>
-      <p id="afk-status-text" style="color: #ccc; font-size:0.85rem;">Status: <b style="color: #ff5555;">Inactive</b></p>
+      <p id="afk-status-text" style="color: #ccc; font-size:0.8rem;">Status: <b style="color: #ff5555;">Inactive</b></p>
       <div class="afk-timer" id="afk-timer-display">00:00</div>
-      <p style="font-size: 0.8rem; color: #88ff88;">Rate: 1 Coin every 1 Minute!</p>
-      <button class="btn" style="background: #00aa00; margin-top: 10px;" id="afk-toggle-btn" onclick="toggleAfk()">START AFK</button>
+      <p style="font-size: 0.75rem; color: #88ff88;">Rate: 1 Coin every 1 Minute!</p>
+      <button class="btn" style="background: #00aa00; margin-top: 8px;" onclick="toggleAfk()">START AFK</button>
     </div>
   </div>
 
   <!-- CLAIM MODAL -->
   <div id="claimModal" class="modal">
     <div class="modal-content store-container">
-      <h2 id="modalTitle" style="color:var(--accent); margin-top:0;">Claim Coins</h2>
-      <p style="font-size:0.85rem; color:#ccc;">To receive your coins, please follow these steps:</p>
+      <h2 id="modalTitle" style="color:var(--accent); margin-top:0; font-size: 1.4rem;">Claim Coins</h2>
+      <p style="font-size:0.8rem; color:#ccc;">To receive your coins, please follow these steps:</p>
       <ol>
         <li>Join our Discord server.</li>
         <li>Open a support ticket.</li>
-        <li>Upload a screenshot of your payment or AFK time.</li>
+        <li>Upload a payment screenshot.</li>
         <li>Staff will add coins instantly!</li>
       </ol>
       <button class="btn" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">JOIN DISCORD</button>
-      <button class="btn" style="background:#555; margin-top:8px;" onclick="closeModal()">Close</button>
+      <button class="btn" style="background:#555; margin-top:6px;" onclick="closeModal()">Close</button>
     </div>
   </div>
 
   <script>
-    // Direct Page Switcher Function
-    function openPage(pageId, element) {
+    function switchPage(pageId, element) {
       let pages = document.querySelectorAll('.page');
-      pages.forEach(p => {
-        p.classList.remove('active-page');
-        p.style.display = 'none';
-      });
+      pages.forEach(p => p.classList.remove('active-page'));
 
       let target = document.getElementById(pageId);
       if (target) {
-        target.style.display = 'block';
         target.classList.add('active-page');
       }
 
-      let links = document.querySelectorAll('.nav-links a');
-      links.forEach(l => l.classList.remove('active'));
+      let buttons = document.querySelectorAll('.nav-links button');
+      buttons.forEach(b => b.classList.remove('active'));
       if (element) {
         element.classList.add('active');
       }
@@ -309,8 +301,8 @@
           img.onload = function() {
             let canvas = document.createElement('canvas');
             let ctx = canvas.getContext('2d');
-            let MAX_WIDTH = 250;
-            let MAX_HEIGHT = 250;
+            let MAX_WIDTH = 200;
+            let MAX_HEIGHT = 200;
             let width = img.width;
             let height = img.height;
 
@@ -319,4 +311,6 @@
             } else {
               if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; }
             }
-            canv
+            canvas.width = width;
+            canvas.height = height;
+    
