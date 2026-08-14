@@ -48,7 +48,6 @@
     .profile-pill span { font-size: 0.8rem; font-weight: bold; color: #ff9999; }
     .coin-badge { background: #000; border: 1px solid #55ff55; padding: 5px 12px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
 
-    /* Default sab pages hide rahenge, home wala dikhega */
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     
     h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; }
@@ -57,7 +56,7 @@
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; }
     .card {
       border: 2px solid #550000; border-radius: 10px; padding: 15px 10px;
-      text-align: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      text-align: center; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.5); background: rgba(10, 0, 0, 0.75);
     }
     .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--glow); }
     .card h3 { margin: 8px 0; font-size: 1.05rem; }
@@ -127,24 +126,19 @@
   <div id="profile" class="page store-container">
     <h1>USER PROFILE</h1>
     <p class="subtitle">Customize your profile name, email, and picture.</p>
-    
     <div class="profile-card">
       <div class="profile-avatar-container">
         <img id="profile-img-preview" src="https://via.placeholder.com/150" alt="Profile Picture">
         <label for="avatar-input" class="upload-btn-label"><i class="fa-solid fa-camera"></i></label>
         <input type="file" id="avatar-input" accept="image/*" style="display: none;" onchange="updateAvatar(event)">
       </div>
-      
       <div style="margin-bottom: 15px; text-align: left;">
         <label style="font-size: 0.8rem; color: #aaa;">Minecraft Username:</label>
         <input type="text" id="input-username" placeholder="Enter username" style="width:100%; padding:8px; margin-top:5px; background:#000; border:1px solid #550000; color:#fff; border-radius:4px; box-sizing:border-box;">
-        
         <label style="font-size: 0.8rem; color: #aaa; display:block; margin-top:10px;">Email Address:</label>
         <input type="email" id="input-email" placeholder="Enter email" style="width:100%; padding:8px; margin-top:5px; background:#000; border:1px solid #550000; color:#fff; border-radius:4px; box-sizing:border-box;">
-        
         <button class="btn" style="margin-top: 15px;" onclick="saveProfileData()">SAVE PROFILE</button>
       </div>
-
       <div class="profile-info">
         <p><b>📧 Email:</b> <span id="profile-email">user@gmail.com</span></p>
         <p><b>🎮 Username:</b> <span id="profile-mc">Player</span></p>
@@ -159,12 +153,8 @@
     <p class="subtitle">Need help with your purchase or rank? Contact us!</p>
     <div class="profile-card" style="text-align: center;">
       <h3 style="color: #ff5555; margin-top: 0;">Get Instant Help</h3>
-      <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 20px;">
-        If you faced any issues with your payment, items not received, or want to report a bug, open a ticket on our official Discord server.
-      </p>
-      <button class="btn" style="background: #5865F2; margin-bottom: 15px;" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')">
-        <i class="fa-brands fa-discord"></i> JOIN DISCORD SUPPORT
-      </button>
+      <p style="color: #ccc; font-size: 0.9rem; margin-bottom: 20px;">If you faced any issues with your payment, items not received, or want to report a bug, open a ticket on our official Discord server.</p>
+      <button class="btn" style="background: #5865F2; margin-bottom: 15px;" onclick="window.open('https://discord.gg/BHHU8mDvh7', '_blank')"><i class="fa-brands fa-discord"></i> JOIN DISCORD SUPPORT</button>
     </div>
   </div>
 
@@ -261,7 +251,7 @@
       let savedCoins = parseInt(localStorage.getItem('soul_coins')) || 0;
 
       document.getElementById('nav-username').innerText = savedUser;
-      document.getElementById('profile-name').innerText = savedUser;
+      if(document.getElementById('profile-name')) document.getElementById('profile-name').innerText = savedUser;
       document.getElementById('profile-mc').innerText = savedUser;
       document.getElementById('profile-email').innerText = savedEmail;
       document.getElementById('nav-avatar').src = savedAvatar;
@@ -282,7 +272,7 @@
       localStorage.setItem('soul_email', email);
 
       document.getElementById('nav-username').innerText = username;
-      document.getElementById('profile-name').innerText = username;
+      if(document.getElementById('profile-name')) document.getElementById('profile-name').innerText = username;
       document.getElementById('profile-mc').innerText = username;
       document.getElementById('profile-email').innerText = email;
 
@@ -311,4 +301,4 @@
             canvas.width = width;
             canvas.height = height;
             ctx.drawImage(img, 0, 0, width, height);
-            let compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8)
+            let compressedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
