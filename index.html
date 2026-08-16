@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOUL SMP | Official Premium Store</title>
+  <title>SOUL SMP | Official Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root { 
       --accent: #ff3333; 
       --accent-hover: #b30000;
-      --glow: 0 0 20px rgba(255, 51, 51, 0.6); 
-      --bg-dark: rgba(10, 2, 2, 0.9);
-      --border-color: rgba(255, 51, 51, 0.3);
+      --bg-dark: #110000;
+      --border-color: #550000;
     }
     
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     
     body {
       margin: 0; min-height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
-                  url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop") center center / cover no-repeat;
+      background: #000000;
       font-family: 'Poppins', sans-serif; color: #fff; padding-bottom: 80px;
     }
 
@@ -36,13 +34,13 @@
     /* NAVBAR STYLES */
     nav {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 20px; background: rgba(8, 2, 2, 0.98);
+      padding: 12px 20px; background: #080202;
       border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 99999;
-      flex-wrap: wrap; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      flex-wrap: wrap; gap: 10px;
     }
     .logo-area { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-    .logo-area i { font-size: 1.4rem; color: var(--accent); filter: drop-shadow(0 0 8px var(--accent)); }
-    .logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-shadow: var(--glow); letter-spacing: 1px; }
+    .logo-area i { font-size: 1.4rem; color: var(--accent); }
+    .logo { font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: 1px; }
     
     .nav-links { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
     .nav-links button {
@@ -51,12 +49,12 @@
       font-weight: 600; cursor: pointer; font-size: 0.8rem;
     }
     .nav-links button:hover { background: rgba(255,51,51,0.2); color: #fff; }
-    .nav-links button.active { background: var(--accent); color: white; box-shadow: var(--glow); }
+    .nav-links button.active { background: var(--accent); color: white; }
     
     .nav-right-area { display: flex; align-items: center; gap: 8px; }
     .profile-pill {
       display: flex; align-items: center; gap: 6px;
-      background: rgba(30, 0, 0, 0.9); border: 1px solid var(--accent);
+      background: #1f0000; border: 1px solid var(--accent);
       padding: 4px 10px 4px 4px; border-radius: 25px; cursor: pointer;
     }
     .profile-pill img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
@@ -67,32 +65,31 @@
     .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
     .page.active-page { display: block !important; }
     
-    h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; font-weight: 900; text-transform: uppercase; }
+    h1 { color: var(--accent); text-align: center; font-size: 2rem; margin-bottom: 5px; font-weight: 900; text-transform: uppercase; }
     p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
 
     /* HERO SECTION */
     .hero-banner {
-      background: linear-gradient(135deg, rgba(20,0,0,0.9), rgba(5,0,0,0.95)), url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop') center/cover;
+      background: #0f0000;
       border: 2px solid var(--border-color); border-radius: 14px; padding: 30px 15px; text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 25px;
+      margin-bottom: 25px;
     }
     .server-status-pill {
       display: inline-flex; align-items: center; gap: 8px; background: rgba(0,255,0,0.1); border: 1px solid #00ff00;
       padding: 5px 14px; border-radius: 20px; color: #55ff55; font-weight: 600; font-size: 0.8rem; margin-bottom: 15px;
     }
-    .status-dot { width: 9px; height: 9px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 8px #00ff00; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+    .status-dot { width: 9px; height: 9px; background: #00ff00; border-radius: 50%; }
 
     /* GRID & CARDS */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
     .card {
-      border: 2px solid #440000; border-radius: 12px; padding: 20px 12px;
+      border: 2px solid var(--border-color); border-radius: 12px; padding: 20px 12px;
       text-align: center; background: var(--bg-dark);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6); position: relative;
+      position: relative;
     }
     .card h3 { margin: 8px 0; font-size: 1.1rem; font-weight: 700; }
     .price-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
-    .price { font-size: 1.1rem; color: #55ff55; font-weight: 800; text-shadow: 0 0 8px rgba(85,255,85,0.3); }
+    .price { font-size: 1.1rem; color: #55ff55; font-weight: 800; }
     .coin-price { font-size: 0.9rem; color: #ffff55; font-weight: 700; background: rgba(255,255,0,0.1); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,0,0.3); }
     .old-price { text-decoration: line-through; color: #888; font-size: 0.8rem; margin-right: 3px; }
     .features-list { text-align: left; color: #ccc; font-size: 0.75rem; margin: 10px 0; padding-left: 12px; list-style: none; }
@@ -107,7 +104,7 @@
     .btn:hover { background: var(--accent-hover); }
 
     /* PROFILE & FAQ */
-    .profile-card { border: 2px solid var(--accent); border-radius: 14px; padding: 25px 20px; max-width: 400px; margin: auto; text-align: center; background: var(--bg-dark); box-shadow: var(--glow); }
+    .profile-card { border: 2px solid var(--accent); border-radius: 14px; padding: 25px 20px; max-width: 400px; margin: auto; text-align: center; background: var(--bg-dark); }
     .profile-avatar-container { position: relative; width: 90px; height: 90px; margin: 0 auto 15px auto; }
     .profile-avatar-container img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
     .upload-btn-label {
@@ -115,22 +112,23 @@
       border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center;
       justify-content: center; cursor: pointer; font-size: 0.8rem; border: 2px solid #000;
     }
-    .profile-info { text-align: left; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; margin: 15px 0; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.05); }
+    .profile-info { text-align: left; background: #000; padding: 12px; border-radius: 8px; margin: 15px 0; font-size: 0.85rem; border: 1px solid var(--border-color); }
     .profile-info p { margin: 6px 0; }
 
     .faq-container { max-width: 650px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
     .faq-item { background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
-    .faq-question { padding: 14px 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(20,0,0,0.5); font-size: 0.9rem; }
-    .faq-answer { padding: 14px 18px; color: #bbb; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); display: none; }
+    .faq-question { padding: 14px 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #1a0000; font-size: 0.9rem; }
+    .faq-answer { padding: 14px 18px; color: #bbb; font-size: 0.8rem; border-top: 1px solid var(--border-color); display: none; }
 
     /* AFK ZONE */
-    .afk-container { border: 2px solid #00ff00; padding: 30px 20px; text-align: center; border-radius: 14px; max-width: 380px; margin: 20px auto; background: var(--bg-dark); box-shadow: 0 0 20px rgba(0,255,0,0.2); }
-    .afk-timer { font-size: 2.3rem; font-weight: 800; color: #ffff55; margin: 12px 0; font-family: monospace; text-shadow: 0 0 10px rgba(255,255,85,0.4); }
+    .afk-container { border: 2px solid #00ff00; padding: 30px 20px; text-align: center; border-radius: 14px; max-width: 380px; margin: 20px auto; background: var(--bg-dark); }
+    .afk-timer { font-size: 2.3rem; font-weight: 800; color: #ffff55; margin: 12px 0; font-family: monospace; }
 
     /* MODAL */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 999999; padding: 20px; box-sizing: border-box; }
-    .modal-content { background: #150202; border: 2px solid var(--accent); padding: 22px; border-radius: 12px; text-align: center; max-width: 340px; width: 100%; box-shadow: var(--glow); }
+    .modal-content { background: #150202; border: 2px solid var(--accent); padding: 22px; border-radius: 12px; text-align: center; max-width: 340px; width: 100%; }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.8rem; padding-left: 18px; margin: 12px 0; }
+    input { width: 100%; padding: 8px; margin-top: 4px; background: #000; border: 1px solid var(--border-color); color: #fff; border-radius: 5px; box-sizing: border-box; }
   </style>
 </head>
 <body>
@@ -192,9 +190,9 @@
       </div>
       <div style="margin-bottom: 12px; text-align: left;">
         <label style="font-size: 0.75rem; color: #aaa;">Minecraft Username:</label>
-        <input type="text" id="input-username" placeholder="Enter username" style="width:100%; padding:8px; margin-top:4px; background:#000; border:1px solid #550000; color:#fff; border-radius:5px;">
+        <input type="text" id="input-username" placeholder="Enter username">
         <label style="font-size: 0.75rem; color: #aaa; display:block; margin-top:8px;">Email Address:</label>
-        <input type="email" id="input-email" placeholder="Enter email" style="width:100%; padding:8px; margin-top:4px; background:#000; border:1px solid #550000; color:#fff; border-radius:5px;">
+        <input type="email" id="input-email" placeholder="Enter email">
         <button class="btn" style="margin-top: 12px;" onclick="saveProfileData()">Save Profile Data</button>
       </div>
       <div class="profile-info">
@@ -362,4 +360,29 @@
         </div>
         <button class="btn" onclick="openDiscord()">Buy Kit</button>
       </div>
-      <div class="car
+      <div class="card">
+        <h3>🔥 Inferno</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹149</span>₹119</div>
+          <div class="coin-price">🪙 3,000 Coins</div>
+        </div>
+        <button class="btn" onclick="openDiscord()">Buy Kit</button>
+      </div>
+      <div class="card">
+        <h3>🐉 Dragon</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹299</span>₹239</div>
+          <div class="coin-price">🪙 6,000 Coins</div>
+        </div>
+        <button class="btn" onclick="openDiscord()">Buy Kit</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COINS PAGE -->
+  <div id="coins" class="page">
+    <h1>🪙 COIN BUNDLES (20% OFF)</h1>
+    <p class="subtitle">Boost your in-game balance instantly.</p>
+    <div class="grid">
+      <div class="card"><h3>🪙 500 Coins</h3><div class="price" style="margin:15px 0;"><span class="old-price">₹29</span>₹23</div><button class="btn" onclick="showClaimModal('Purchased Coins')">Buy Coins</button></div>
+      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price" style="margin:15px 0;"><span class="
