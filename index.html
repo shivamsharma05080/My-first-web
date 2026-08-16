@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOUL SMP | Official Store</title>
+  <title>SOUL SMP | Official Premium Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root { 
       --accent: #ff3333; 
-      --bg-dark: #0f0000;
-      --border-color: #550000;
+      --accent-hover: #b30000;
+      --glow: 0 0 20px rgba(255, 51, 51, 0.6); 
+      --bg-dark: rgba(10, 2, 2, 0.9);
+      --border-color: rgba(255, 51, 51, 0.3);
     }
     
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     
     body {
       margin: 0; min-height: 100vh;
-      background: #000000;
-      font-family: Arial, sans-serif; color: #fff; padding-bottom: 60px;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95)),
+                  url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop") center center / cover no-repeat;
+      font-family: 'Poppins', sans-serif; color: #fff; padding-bottom: 80px;
     }
 
-    /* TICKER BAR */
+    /* TOP LIVE TICKER BAR */
     .ticker-bar {
       background: #150000; border-bottom: 1px solid var(--border-color);
       color: #ff9999; font-size: 0.75rem; padding: 6px 15px; text-align: center;
@@ -29,79 +33,109 @@
     .ticker-content { display: inline-block; animation: marquee 25s linear infinite; }
     @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-    /* NAVBAR */
+    /* NAVBAR STYLES */
     nav {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 15px; background: #080202;
+      padding: 12px 20px; background: rgba(8, 2, 2, 0.98);
       border-bottom: 3px solid var(--accent); position: sticky; top: 0; z-index: 99999;
-      flex-wrap: wrap; gap: 8px;
+      flex-wrap: wrap; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.8);
     }
-    .logo { font-size: 1.2rem; font-weight: 900; color: var(--accent); cursor: pointer; }
+    .logo-area { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .logo-area i { font-size: 1.4rem; color: var(--accent); filter: drop-shadow(0 0 8px var(--accent)); }
+    .logo { font-size: 1.3rem; font-weight: 900; color: #fff; text-shadow: var(--glow); letter-spacing: 1px; }
     
-    .nav-links { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
     .nav-links button {
-      color: #fff; border: none; padding: 8px 12px;
-      background: rgba(255,255,255,0.08); border-radius: 5px;
-      font-weight: bold; cursor: pointer; font-size: 0.8rem;
+      color: #ddd; border: none; padding: 9px 12px;
+      background: rgba(255,255,255,0.08); border-radius: 6px;
+      font-weight: 600; cursor: pointer; font-size: 0.8rem;
     }
-    .nav-links button.active { background: var(--accent); color: white; }
+    .nav-links button:hover { background: rgba(255,51,51,0.2); color: #fff; }
+    .nav-links button.active { background: var(--accent); color: white; box-shadow: var(--glow); }
     
     .nav-right-area { display: flex; align-items: center; gap: 8px; }
     .profile-pill {
       display: flex; align-items: center; gap: 6px;
-      background: rgba(40, 0, 0, 0.9); border: 1px solid var(--accent);
-      padding: 3px 8px 3px 3px; border-radius: 20px; cursor: pointer;
+      background: rgba(30, 0, 0, 0.9); border: 1px solid var(--accent);
+      padding: 4px 10px 4px 4px; border-radius: 25px; cursor: pointer;
     }
     .profile-pill img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid #fff; }
-    .profile-pill span { font-size: 0.75rem; font-weight: bold; color: #ff9999; }
-    .coin-badge { background: #000; border: 1px solid #55ff55; padding: 5px 10px; border-radius: 15px; color: #55ff55; font-weight: bold; font-size: 0.75rem; cursor: pointer; }
+    .profile-pill span { font-size: 0.75rem; font-weight: 700; color: #ffcccc; }
+    .coin-badge { background: #000; border: 1px solid #55ff55; padding: 5px 12px; border-radius: 20px; color: #55ff55; font-weight: 700; font-size: 0.75rem; cursor: pointer; }
 
-    /* PAGES */
-    .page { display: none; padding: 25px 15px; max-width: 900px; margin: auto; }
-    .page.active-page { display: block; }
+    /* PAGE SYSTEM */
+    .page { display: none; padding: 30px 15px; max-width: 1000px; margin: auto; }
+    .page.active-page { display: block !important; }
     
-    h1 { color: var(--accent); text-align: center; font-size: 1.8rem; margin-bottom: 5px; text-transform: uppercase; }
-    p.subtitle { text-align: center; color: #ccc; margin-bottom: 20px; font-size: 0.85rem; }
+    h1 { color: var(--accent); text-align: center; text-shadow: var(--glow); font-size: 2rem; margin-bottom: 5px; font-weight: 900; text-transform: uppercase; }
+    p.subtitle { text-align: center; color: #ccc; margin-bottom: 25px; font-size: 0.9rem; }
+
+    /* HERO SECTION */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(20,0,0,0.9), rgba(5,0,0,0.95)), url('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1000&auto=format&fit=crop') center/cover;
+      border: 2px solid var(--border-color); border-radius: 14px; padding: 30px 15px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8); margin-bottom: 25px;
+    }
+    .server-status-pill {
+      display: inline-flex; align-items: center; gap: 8px; background: rgba(0,255,0,0.1); border: 1px solid #00ff00;
+      padding: 5px 14px; border-radius: 20px; color: #55ff55; font-weight: 600; font-size: 0.8rem; margin-bottom: 15px;
+    }
+    .status-dot { width: 9px; height: 9px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 8px #00ff00; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
     /* GRID & CARDS */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
     .card {
-      border: 2px solid var(--border-color); border-radius: 8px; padding: 15px 10px;
+      border: 2px solid #440000; border-radius: 12px; padding: 20px 12px;
       text-align: center; background: var(--bg-dark);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6); position: relative;
     }
-    .card h3 { margin: 6px 0; font-size: 1rem; }
-    .price { font-size: 1.1rem; color: #55ff55; font-weight: bold; margin: 8px 0; }
-    .old-price { text-decoration: line-through; color: #888; font-size: 0.8rem; margin-right: 5px; }
-    .features-list { text-align: left; color: #bbb; font-size: 0.7rem; margin: 8px 0; padding-left: 10px; list-style: none; }
-    .features-list li { margin: 3px 0; }
+    .card h3 { margin: 8px 0; font-size: 1.1rem; font-weight: 700; }
+    .price-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 10px 0; flex-wrap: wrap; }
+    .price { font-size: 1.1rem; color: #55ff55; font-weight: 800; text-shadow: 0 0 8px rgba(85,255,85,0.3); }
+    .coin-price { font-size: 0.9rem; color: #ffff55; font-weight: 700; background: rgba(255,255,0,0.1); padding: 3px 8px; border-radius: 6px; border: 1px solid rgba(255,255,0,0.3); }
+    .old-price { text-decoration: line-through; color: #888; font-size: 0.8rem; margin-right: 3px; }
+    .features-list { text-align: left; color: #ccc; font-size: 0.75rem; margin: 10px 0; padding-left: 12px; list-style: none; }
+    .features-list li { margin: 5px 0; position: relative; }
+    .features-list li::before { content: '✔'; color: var(--accent); position: absolute; left: -12px; font-weight: bold; }
 
     .btn {
       background: var(--accent); color: #fff; border: none; padding: 10px;
-      border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; font-size: 0.85rem;
+      border-radius: 6px; cursor: pointer; width: 100%; font-weight: 700; font-size: 0.85rem;
+      text-transform: uppercase; margin-top: 8px;
     }
-    .btn:hover { background: #b30000; }
+    .btn:hover { background: var(--accent-hover); }
 
-    /* PROFILE & AFK */
-    .profile-card, .afk-container { border: 2px solid var(--accent); border-radius: 12px; padding: 20px; max-width: 380px; margin: auto; background: var(--bg-dark); text-align: center; }
-    .afk-container { border-color: #00ff00; }
-    .afk-timer { font-size: 2.2rem; font-weight: bold; color: #ffff55; margin: 12px 0; font-family: monospace; }
-    input { width: 100%; padding: 8px; margin-top: 5px; background: #000; border: 1px solid var(--border-color); color: #fff; border-radius: 4px; box-sizing: border-box; }
+    /* PROFILE & FAQ */
+    .profile-card { border: 2px solid var(--accent); border-radius: 14px; padding: 25px 20px; max-width: 400px; margin: auto; text-align: center; background: var(--bg-dark); box-shadow: var(--glow); }
+    .profile-avatar-container { position: relative; width: 90px; height: 90px; margin: 0 auto 15px auto; }
+    .profile-avatar-container img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); }
+    .upload-btn-label {
+      position: absolute; bottom: 0; right: 0; background: var(--accent); color: white;
+      border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center;
+      justify-content: center; cursor: pointer; font-size: 0.8rem; border: 2px solid #000;
+    }
+    .profile-info { text-align: left; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; margin: 15px 0; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.05); }
+    .profile-info p { margin: 6px 0; }
 
-    /* FAQ */
     .faq-container { max-width: 650px; margin: auto; display: flex; flex-direction: column; gap: 10px; }
     .faq-item { background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; }
-    .faq-question { padding: 12px 15px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: #150000; font-size: 0.85rem; }
-    .faq-answer { padding: 12px 15px; color: #bbb; font-size: 0.8rem; border-top: 1px solid var(--border-color); display: none; }
+    .faq-question { padding: 14px 18px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: rgba(20,0,0,0.5); font-size: 0.9rem; }
+    .faq-answer { padding: 14px 18px; color: #bbb; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); display: none; }
+
+    /* AFK ZONE */
+    .afk-container { border: 2px solid #00ff00; padding: 30px 20px; text-align: center; border-radius: 14px; max-width: 380px; margin: 20px auto; background: var(--bg-dark); box-shadow: 0 0 20px rgba(0,255,0,0.2); }
+    .afk-timer { font-size: 2.3rem; font-weight: 800; color: #ffff55; margin: 12px 0; font-family: monospace; text-shadow: 0 0 10px rgba(255,255,85,0.4); }
 
     /* MODAL */
-    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 99999; padding: 15px; box-sizing: border-box; }
-    .modal-content { background: #1a0000; border: 2px solid var(--accent); padding: 20px; border-radius: 10px; text-align: center; max-width: 320px; width: 100%; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 999999; padding: 20px; box-sizing: border-box; }
+    .modal-content { background: #150202; border: 2px solid var(--accent); padding: 22px; border-radius: 12px; text-align: center; max-width: 340px; width: 100%; box-shadow: var(--glow); }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.8rem; padding-left: 18px; margin: 12px 0; }
   </style>
 </head>
 <body>
 
-  <!-- TICKER -->
+  <!-- LIVE TICKER -->
   <div class="ticker-bar">
     <div class="ticker-content">
       🔥 Welcome to Soul SMP Official Store! Server IP: <b>SoulSMP12.aternos.me:40740</b> &nbsp;&nbsp;|&nbsp;&nbsp; 🚀 Special 20% Off on all Ranks via Discord Support! &nbsp;&nbsp;|&nbsp;&nbsp; 🪙 Earn Free Coins in the AFK Zone!
@@ -110,7 +144,10 @@
 
   <!-- NAVBAR -->
   <nav>
-    <div class="logo" onclick="switchPage('home', document.querySelectorAll('.nav-links button')[0])">🔥 SOULSMP</div>
+    <div class="logo-area" onclick="switchPage('home', document.querySelectorAll('.nav-links button')[0])">
+      <i class="fa-solid fa-fire-flame-curved"></i>
+      <div class="logo">SOUL SMP</div>
+    </div>
     <div class="nav-links">
       <button onclick="switchPage('home', this)" class="active">Home</button>
       <button onclick="switchPage('ranks', this)">Ranks</button>
@@ -130,206 +167,199 @@
     </div>
   </nav>
 
-  <!-- HOME -->
+  <!-- HOME PAGE -->
   <div id="home" class="page active-page">
-    <h1>WELCOME TO SOUL SMP</h1>
-    <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience.</p>
-    <div class="card" style="max-width: 450px; margin: 20px auto; text-align: center;">
-      <p style="color:#ff9999;">Server IP:</p>
-      <b style="background:#000; padding:8px 12px; border-radius:5px; border:1px solid var(--border-color); display:inline-block; margin-bottom:15px;">SoulSMP12.aternos.me:40740</b>
-      <br>
-      <button class="btn" onclick="switchPage('ranks', document.querySelectorAll('.nav-links button')[1])">EXPLORE RANKS (20% OFF)</button>
+    <div class="hero-banner">
+      <div class="server-status-pill">
+        <div class="status-dot"></div> Server Online & Ready
+      </div>
+      <h1>WELCOME TO SOUL SMP STORE</h1>
+      <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience. Choose your rank or gear up to rule the arena!</p>
+      <p style="color: #ff9999; font-size: 0.9rem; margin-bottom: 20px;">Server IP: <b style="color:#fff; background:rgba(0,0,0,0.5); padding:4px 8px; border-radius:5px; border:1px solid var(--border-color);">SoulSMP12.aternos.me:40740</b></p>
+      <button class="btn" style="width: auto; padding: 11px 25px; display: inline-block;" onclick="switchPage('ranks', document.querySelectorAll('.nav-links button')[1])">Explore Ranks Now (20% OFF)</button>
     </div>
   </div>
 
-  <!-- RANKS -->
+  <!-- PROFILE PAGE -->
+  <div id="profile" class="page">
+    <h1>USER PROFILE</h1>
+    <p class="subtitle">Customize your profile credentials and avatar.</p>
+    <div class="profile-card">
+      <div class="profile-avatar-container">
+        <img id="profile-img-preview" src="https://via.placeholder.com/150" alt="Profile Picture">
+        <label for="avatar-input" class="upload-btn-label"><i class="fa-solid fa-camera"></i></label>
+        <input type="file" id="avatar-input" accept="image/*" style="display: none;" onchange="updateAvatar(event)">
+      </div>
+      <div style="margin-bottom: 12px; text-align: left;">
+        <label style="font-size: 0.75rem; color: #aaa;">Minecraft Username:</label>
+        <input type="text" id="input-username" placeholder="Enter username" style="width:100%; padding:8px; margin-top:4px; background:#000; border:1px solid #550000; color:#fff; border-radius:5px;">
+        <label style="font-size: 0.75rem; color: #aaa; display:block; margin-top:8px;">Email Address:</label>
+        <input type="email" id="input-email" placeholder="Enter email" style="width:100%; padding:8px; margin-top:4px; background:#000; border:1px solid #550000; color:#fff; border-radius:5px;">
+        <button class="btn" style="margin-top: 12px;" onclick="saveProfileData()">Save Profile Data</button>
+      </div>
+      <div class="profile-info">
+        <p><b>📧 Email:</b> <span id="profile-email">user@gmail.com</span></p>
+        <p><b>🎮 Username:</b> <span id="profile-mc">Player</span></p>
+        <p><b>🪙 AFK Coins:</b> <span id="profile-coins" style="color:#55ff55;">0</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ PAGE -->
+  <div id="faq" class="page">
+    <h1>Frequently Asked Questions</h1>
+    <p class="subtitle">Got questions about purchases or delivery? Find answers here.</p>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">How long does rank delivery take? <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-answer">Ranks are delivered automatically within 2 to 5 minutes after payment verification via Discord support ticket.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Are purchases refundable? <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-answer">Due to the digital nature of in-game items and ranks, all sales are final and non-refundable.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">How do I claim my AFK coins? <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="faq-answer">Stay active on the AFK zone page to accumulate coins, then open a ticket on our Discord server with your timer screenshot to claim them.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RANKS PAGE -->
   <div id="ranks" class="page">
     <h1>👑 PREMIUM RANKS (20% OFF)</h1>
     <p class="subtitle">Unlock powerful commands and special perks.</p>
     <div class="grid">
-      <div class="card"><h3>VIP</h3><div class="price"><span class="old-price">₹99</span>₹79</div><ul class="features-list"><li>Emerald Perk</li><li>VIP Prefix</li><li>3 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>ELITE</h3><div class="price"><span class="old-price">₹149</span>₹119</div><ul class="features-list"><li>Gold Perk</li><li>ELITE Prefix</li><li>4 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>HERO</h3><div class="price"><span class="old-price">₹199</span>₹159</div><ul class="features-list"><li>Diamond Perk</li><li>HERO Prefix</li><li>5 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>LEGEND</h3><div class="price"><span class="old-price">₹299</span>₹239</div><ul class="features-list"><li>Block Perk</li><li>LEGEND Prefix</li><li>7 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>TITAN</h3><div class="price"><span class="old-price">₹399</span>₹319</div><ul class="features-list"><li>Netherite Ingot</li><li>TITAN Prefix</li><li>9 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>IMMORTAL</h3><div class="price"><span class="old-price">₹499</span>₹399</div><ul class="features-list"><li>Nether Star</li><li>IMMORTAL Prefix</li><li>11 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>MASTER</h3><div class="price"><span class="old-price">₹599</span>₹479</div><ul class="features-list"><li>G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>KING</h3><div class="price"><span class="old-price">₹699</span>₹559</div><ul class="features-list"><li>Helmet Perk</li><li>KING Prefix</li><li>15 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>CELESTIAL</h3><div class="price"><span class="old-price">₹799</span>₹639</div><ul class="features-list"><li>End Crystal</li><li>CELESTIAL Prefix</li><li>18 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>WARLORD</h3><div class="price"><span class="old-price">₹999</span>₹799</div><ul class="features-list"><li>Sword Perk</li><li>WARLORD Prefix</li><li>22 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>EMPEROR</h3><div class="price"><span class="old-price">₹1,299</span>₹1,039</div><ul class="features-list"><li>Beacon Perk</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card" style="border-color:#ffcc00;"><h3 style="color:#ffcc00;">SUPREME</h3><div class="price"><span class="old-price">₹1,499</span>₹1,199</div><ul class="features-list"><li>Dragon Egg</li><li>SUPREME Prefix</li><li>30 Homes</li></ul><button class="btn" onclick="openDiscord()">BUY</button></div>
+      <div class="card">
+        <h3>🟢 VIP</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹99</span>₹79</div>
+          <div class="coin-price">🪙 1,500 Coins</div>
+        </div>
+        <ul class="features-list"><li>Emerald Perk</li><li>VIP Prefix</li><li>3 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>🟡 ELITE</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹149</span>₹119</div>
+          <div class="coin-price">🪙 2,500 Coins</div>
+        </div>
+        <ul class="features-list"><li>Gold Ingot Perk</li><li>ELITE Prefix</li><li>4 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>🔵 HERO</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹199</span>₹159</div>
+          <div class="coin-price">🪙 4,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Diamond Perk</li><li>HERO Prefix</li><li>5 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>💎 LEGEND</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹299</span>₹239</div>
+          <div class="coin-price">🪙 6,500 Coins</div>
+        </div>
+        <ul class="features-list"><li>Diamond Block Perk</li><li>LEGEND Prefix</li><li>7 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>⚫ TITAN</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹399</span>₹319</div>
+          <div class="coin-price">🪙 10,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Netherite Ingot</li><li>TITAN Prefix</li><li>9 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>🌟 IMMORTAL</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹499</span>₹399</div>
+          <div class="coin-price">🪙 15,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Nether Star</li><li>IMMORTAL Prefix</li><li>11 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>🍎 MASTER</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹599</span>₹479</div>
+          <div class="coin-price">🪙 20,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Enchanted G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>👑 KING</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹699</span>₹559</div>
+          <div class="coin-price">🪙 28,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Netherite Helmet</li><li>KING Prefix</li><li>15 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>🔮 CELESTIAL</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹799</span>₹639</div>
+          <div class="coin-price">🪙 38,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>End Crystal</li><li>CELESTIAL Prefix</li><li>18 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>⚔️ WARLORD</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹999</span>₹799</div>
+          <div class="coin-price">🪙 50,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Netherite Sword</li><li>WARLORD Prefix</li><li>22 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card">
+        <h3>❇️ EMPEROR</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹1,299</span>₹1,039</div>
+          <div class="coin-price">🪙 70,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Beacon Perk</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
+      <div class="card" style="border-color: #ffcc00;">
+        <h3 style="color:#ffcc00;">🐉 SUPREME</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹1,499</span>₹1,199</div>
+          <div class="coin-price">🪙 95,000 Coins</div>
+        </div>
+        <ul class="features-list"><li>Dragon Egg Perk</li><li>SUPREME Prefix</li><li>30 Homes</li></ul>
+        <button class="btn" onclick="openDiscord()">Buy Rank</button>
+      </div>
     </div>
   </div>
 
-  <!-- KITS -->
+  <!-- KITS PAGE -->
   <div id="kits" class="page">
-    <h1>⚔️ BATTLE KITS</h1>
+    <h1>⚔️ BATTLE KITS (20% OFF)</h1>
     <p class="subtitle">Equip powerful weapons and armor.</p>
     <div class="grid">
-      <div class="card"><h3>Warrior</h3><div class="price"><span class="old-price">₹59</span>₹47</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Archer</h3><div class="price"><span class="old-price">₹79</span>₹63</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Inferno</h3><div class="price"><span class="old-price">₹149</span>₹119</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Dragon</h3><div class="price"><span class="old-price">₹299</span>₹239</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- COINS -->
-  <div id="coins" class="page">
-    <h1>🪙 COIN BUNDLES</h1>
-    <p class="subtitle">Boost your balance instantly.</p>
-    <div class="grid">
-      <div class="card"><h3>500 Coins</h3><div class="price"><span class="old-price">₹29</span>₹23</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
-      <div class="card"><h3>6,000 Coins</h3><div class="price"><span class="old-price">₹149</span>₹119</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
-      <div class="card"><h3>15,000 Coins</h3><div class="price"><span class="old-price">₹299</span>₹239</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
-      <div class="card"><h3>75,000 Coins</h3><div class="price"><span class="old-price">₹999</span>₹799</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- KEYS -->
-  <div id="keys" class="page">
-    <h1>🔑 CRATE KEYS</h1>
-    <p class="subtitle">Open crates for rare rewards.</p>
-    <div class="grid">
-      <div class="card"><h3>Common</h3><div class="price"><span class="old-price">₹20</span>₹16</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Prime</h3><div class="price"><span class="old-price">₹100</span>₹80</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Xiavien</h3><div class="price"><span class="old-price">₹200</span>₹160</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Party</h3><div class="price"><span class="old-price">₹50</span>₹40</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-    </div>
-  </div>
-
-  <!-- AFK -->
-  <div id="afk" class="page">
-    <h1>⏳ AFK ZONE</h1>
-    <p class="subtitle">Stay on this page to earn free coins!</p>
-    <div class="afk-container">
-      <h3 style="color:#55ff55; margin-top:0;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
-      <div class="afk-timer" id="timer">00:00</div>
-      <button class="btn" id="afk-btn" onclick="toggleAfk()" style="background:#00aa00;">START AFK</button>
-    </div>
-  </div>
-
-  <!-- FAQ -->
-  <div id="faq" class="page">
-    <h1>FAQ</h1>
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">How long does delivery take? <span>▼</span></div>
-        <div class="faq-answer">Ranks are delivered automatically within 2 to 5 minutes after verification.</div>
+      <div class="card">
+        <h3>⚔️ Warrior</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹59</span>₹47</div>
+          <div class="coin-price">🪙 1,000 Coins</div>
+        </div>
+        <button class="btn" onclick="openDiscord()">Buy Kit</button>
       </div>
-      <div class="faq-item">
-        <div class="faq-question" onclick="toggleFaq(this)">Are purchases refundable? <span>▼</span></div>
-        <div class="faq-answer">All digital purchases are final and non-refundable.</div>
+      <div class="card">
+        <h3>🏹 Archer</h3>
+        <div class="price-row">
+          <div class="price"><span class="old-price">₹79</span>₹63</div>
+          <div class="coin-price">🪙 1,500 Coins</div>
+        </div>
+        <button class="btn" onclick="openDiscord()">Buy Kit</button>
       </div>
-    </div>
-  </div>
-
-  <!-- PROFILE -->
-  <div id="profile" class="page">
-    <h1>PROFILE</h1>
-    <div class="profile-card" style="text-align:left;">
-      <label style="font-size:0.75rem; color:#aaa;">Minecraft Username:</label>
-      <input type="text" id="uname" placeholder="Enter name">
-      <label style="font-size:0.75rem; color:#aaa; display:block; margin-top:10px;">Email:</label>
-      <input type="email" id="uemail" placeholder="Enter email">
-      <button class="btn" onclick="saveProfile()" style="margin-top:15px;">SAVE PROFILE</button>
-    </div>
-  </div>
-
-  <!-- MODAL -->
-  <div id="claimModal" class="modal">
-    <div class="modal-content">
-      <h2 id="modalTitle" style="color:var(--accent); margin-top:0; font-size:1.2rem;">Claim</h2>
-      <ol>
-        <li>Join our Discord server.</li>
-        <li>Open a support ticket.</li>
-        <li>Provide payment proof.</li>
-      </ol>
-      <button class="btn" onclick="openDiscord()" style="margin-top:10px;">JOIN DISCORD</button>
-      <button class="btn" onclick="closeModal()" style="background:#444; margin-top:6px;">CLOSE</button>
-    </div>
-  </div>
-
-  <script>
-    function switchPage(pageId, btn) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
-      document.getElementById(pageId).classList.add('active-page');
-      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-      if(btn) btn.classList.add('active');
-      window.scrollTo(0,0);
-    }
-
-    function toggleFaq(el) {
-      let ans = el.nextElementSibling;
-      ans.style.display = (ans.style.display === 'block') ? 'none' : 'block';
-    }
-
-    function openDiscord() {
-      window.open('https://discord.gg/BHHU8mDvh7', '_blank');
-    }
-
-    function showClaimModal(type) {
-      document.getElementById('modalTitle').innerText = "Claim " + type;
-      document.getElementById('claimModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('claimModal').style.display = 'none';
-    }
-
-    let active = false, s = 0, timerObj;
-    function toggleAfk() {
-      let btn = document.getElementById('afk-btn');
-      let status = document.getElementById('afk-status');
-      if(!active) {
-        active = true;
-        btn.innerText = "STOP AFK";
-        btn.style.background = "#cc0000";
-        status.innerText = "Active";
-        status.style.color = "#55ff55";
-        timerObj = setInterval(() => {
-          s++;
-          let m = Math.floor(s/60), sec = s%60;
-          document.getElementById('timer').innerText = (m<10?"0":"")+m + ":" + (sec<10?"0":"")+sec;
-          if(s % 60 === 0) {
-            let coins = parseInt(localStorage.getItem('soul_coins') || "0") + 1;
-            localStorage.setItem('soul_coins', coins);
-            document.getElementById('user-coins').innerText = coins;
-          }
-        }, 1000);
-      } else {
-        active = false;
-        clearInterval(timerObj);
-        btn.innerText = "START AFK";
-        btn.style.background = "#00aa00";
-        status.innerText = "Inactive";
-        status.style.color = "#ff5555";
-      }
-    }
-
-    function saveProfile() {
-      let name = document.getElementById('uname').value.trim();
-      let email = document.getElementById('uemail').value.trim();
-      if(name) {
-        localStorage.setItem('soul_user', name);
-        localStorage.setItem('soul_email', email);
-        document.getElementById('nav-username').innerText = name;
-        alert("Saved successfully!");
-      }
-    }
-
-    window.onload = function() {
-      let savedUser = localStorage.getItem('soul_user');
-      let savedEmail = localStorage.getItem('soul_email');
-      let coins = localStorage.getItem('soul_coins') || "0";
-      if(savedUser) {
-        document.getElementById('uname').value = savedUser;
-        document.getElementById('nav-username').innerText = savedUser;
-      }
-      if(savedEmail) document.getElementById('uemail').value = savedEmail;
-      document.getElementById('user-coins').innerText = coins;
-    }
-  </script>
-</body>
-      </html>
-  
+      <div class="car
