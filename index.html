@@ -6,18 +6,12 @@
   <title>SOUL SMP | Minecraft Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    :root { 
-      --accent: #ff3333; 
-      --accent-hover: #b30000;
-      --panel: #1a1a1a; 
-      --border: #444; 
-    }
-    
+    :for { --accent: #ff3333; }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     
     body {
-      background: #000;
-      color: #fff;
+      background: #000000;
+      color: #ffffff;
       font-family: 'Press Start 2P', cursive;
       margin: 0;
       padding-bottom: 80px;
@@ -25,7 +19,7 @@
 
     /* TICKER BAR */
     .ticker-bar {
-      background: #150000; border-bottom: 2px solid var(--accent);
+      background: #150000; border-bottom: 2px solid #ff3333;
       color: #ff9999; font-size: 0.5rem; padding: 10px; text-align: center;
       white-space: nowrap; overflow: hidden; position: relative;
     }
@@ -35,26 +29,26 @@
     /* NAVBAR */
     nav { 
       display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; 
-      background: #111; padding: 15px; border-bottom: 4px solid var(--accent);
-      position: sticky; top: 0; z-index: 100;
+      background: #111111; padding: 15px; border-bottom: 4px solid #ff3333;
+      position: sticky; top: 0; z-index: 999999;
     }
     nav button { 
-      background: #222; color: #fff; border: 3px solid #555; 
+      background: #222222; color: #fff; border: 3px solid #555555; 
       padding: 12px 14px; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.55rem;
     }
-    nav button:hover { background: #333; }
-    nav button.active { background: var(--accent); border-color: #fff; }
+    nav button:hover { background: #333333; }
+    nav button.active { background: #ff3333; border-color: #fff; }
 
     /* PAGES */
     .page { display: none; padding: 25px 15px; max-width: 900px; margin: auto; }
     .page.active-page { display: block !important; }
     
-    h1 { color: var(--accent); font-size: 0.95rem; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px #000; }
+    h1 { color: #ff3333; font-size: 0.95rem; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px #000; }
     p.subtitle { text-align: center; color: #aaa; font-size: 0.5rem; margin-bottom: 20px; line-height: 1.6; }
 
     /* GRID & CARDS */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .card { background: var(--panel); border: 4px solid var(--border); padding: 20px; text-align: center; }
+    .card { background: #1a1a1a; border: 4px solid #444444; padding: 20px; text-align: center; }
     .card h3 { margin: 8px 0; font-size: 0.65rem; color: #fff; }
     
     .price-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
@@ -63,18 +57,18 @@
     .old-price { text-decoration: line-through; color: #888; font-size: 0.45rem; margin-right: 4px; }
     
     .features-list { text-align: left; color: #bbb; font-size: 0.4rem; margin: 12px 0; padding-left: 10px; list-style: none; line-height: 1.8; }
-    .features-list li::before { content: '>'; color: var(--accent); margin-right: 6px; }
+    .features-list li::before { content: '>'; color: #ff3333; margin-right: 6px; }
 
     .btn { 
-      background: var(--accent); color: #fff; border: 3px solid #fff; 
+      background: #ff3333; color: #fff; border: 3px solid #fff; 
       padding: 14px; width: 100%; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; 
       text-transform: uppercase; margin-top: 12px;
     }
-    .btn:hover { background: var(--accent-hover); }
-    .btn-inv { background: #333; border-color: #777; font-size: 0.45rem; padding: 10px; margin-top: 8px; }
+    .btn:hover { background: #b30000; }
+    .btn-inv { background: #333333; border-color: #777777; font-size: 0.45rem; padding: 10px; margin-top: 8px; }
 
     /* PROFILE & AFK */
-    .profile-card, .afk-container { border: 4px solid var(--accent); padding: 25px; max-width: 400px; margin: auto; background: var(--panel); text-align: center; }
+    .profile-card, .afk-container { border: 4px solid #ff3333; padding: 25px; max-width: 400px; margin: auto; background: #1a1a1a; text-align: center; }
     .afk-container { border-color: #00ff00; }
     .afk-timer { font-size: 1.8rem; color: #ffff55; margin: 15px 0; }
     input { width: 100%; padding: 12px; margin-top: 8px; background: #000; border: 2px solid #555; color: #fff; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; box-sizing: border-box; }
@@ -91,7 +85,7 @@
     .inv-item-name { font-size: 0.42rem; color: #ffff55; font-weight: bold; text-shadow: 1px 1px #000; }
     .inv-item-ench { font-size: 0.35rem; color: #fff; margin-top: 3px; }
 
-    .modal-content { background: var(--panel); border: 4px solid var(--accent); padding: 20px; text-align: center; max-width: 320px; width: 100%; }
+    .modal-content { background: #1a1a1a; border: 4px solid #ff3333; padding: 20px; text-align: center; max-width: 320px; width: 100%; }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.45rem; padding-left: 15px; margin: 12px 0; line-height: 1.8; }
   </style>
 </head>
@@ -121,7 +115,7 @@
     <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience.</p>
     <div class="card" style="max-width: 450px; margin: auto;">
       <p style="color:#ff9999; font-size:0.5rem; margin-bottom:10px;">🌐 Server IP:</p>
-      <b style="background:#000; padding:12px; border:2px solid var(--accent); display:inline-block; margin-bottom:15px; font-size:0.5rem;">SoulSMP12.aternos.me:40740</b>
+      <b style="background:#000; padding:12px; border:2px solid #ff3333; display:inline-block; margin-bottom:15px; font-size:0.5rem;">SoulSMP12.aternos.me:40740</b>
       <br>
       <button class="btn" onclick="switchPage('ranks', document.querySelectorAll('nav button')[1])">EXPLORE RANKS</button>
     </div>
@@ -207,27 +201,56 @@
     </div>
   </div>
 
-  <!-- KITS PAGE -->
+  <!-- KITS PAGE (5 CUSTOM KITS WITH PNG INVENTORIES) -->
   <div id="kits" class="page">
     <h1>⚔️ EXCLUSIVE KITS</h1>
     <p class="subtitle">Check full gear and tool enchantments in inventory.</p>
     <div class="grid">
-      <!-- KING KIT -->
+      <!-- 1. WARRIOR KIT -->
       <div class="card">
-        <h3>👑 KING KIT</h3>
-        <div class="price-row"><div class="price">₹599</div><div class="coin-price">🪙 15,000</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('👑 King Kit Inventory', [
-          {name: 'Netherite Helmet', ench: 'Protection VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Netherite_Helmet_JE2_BE2.png'},
-          {name: 'Netherite Chestplate', ench: 'Protection VI, Mending', icon: 'https://minecraft.wiki/images/Netherite_Chestplate_JE2_BE2.png'},
-          {name: 'Netherite Leggings', ench: 'Protection VI, Thorns III', icon: 'https://minecraft.wiki/images/Netherite_Leggings_JE2_BE2.png'},
-          {name: 'Netherite Boots', ench: 'Protection VI, Feather Falling IV', icon: 'https://minecraft.wiki/images/Netherite_Boots_JE2_BE2.png'},
-          {name: 'King Axe', ench: 'Sharpness VII, Looting IV', icon: 'https://minecraft.wiki/images/Netherite_Axe_JE2_BE2.png'},
-          {name: 'Totem of Undying', ench: 'Prevents Death', icon: 'https://minecraft.wiki/images/Totem_of_Undying_JE2_BE2.png'}
+        <h3>🛡️ WARRIOR KIT</h3>
+        <div class="price-row"><div class="price">₹49</div><div class="coin-price">🪙 800</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('🛡️ Warrior Kit Inventory', [
+          {name: 'Iron Helmet', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Helmet_JE2_BE2.png'},
+          {name: 'Iron Chestplate', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Chestplate_JE2_BE2.png'},
+          {name: 'Iron Leggings', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Leggings_JE2_BE2.png'},
+          {name: 'Iron Boots', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Boots_JE2_BE2.png'},
+          {name: 'Iron Sword', ench: 'Sharpness III', icon: 'https://minecraft.wiki/images/Iron_Sword_JE2_BE2.png'}
         ])">📦 OPEN INVENTORY</button>
         <button class="btn" onclick="openDiscord()">BUY KIT</button>
       </div>
 
-      <!-- GOD KIT -->
+      <!-- 2. ARCHER KIT -->
+      <div class="card">
+        <h3>🏹 ARCHER KIT</h3>
+        <div class="price-row"><div class="price">₹99</div><div class="coin-price">🪙 1,800</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('🏹 Archer Kit Inventory', [
+          {name: 'Leather Cap', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Cap_JE2_BE2.png'},
+          {name: 'Leather Tunic', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Tunic_JE2_BE2.png'},
+          {name: 'Leather Pants', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Pants_JE2_BE2.png'},
+          {name: 'Leather Boots', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Boots_JE2_BE2.png'},
+          {name: 'Bow', ench: 'Power IV, Flame I, Punch II', icon: 'https://minecraft.wiki/images/Bow_JE3_BE3.png'},
+          {name: 'Arrow', ench: 'Standard Ammunition x64', icon: 'https://minecraft.wiki/images/Arrow_JE1_BE1.png'}
+        ])">📦 OPEN INVENTORY</button>
+        <button class="btn" onclick="openDiscord()">BUY KIT</button>
+      </div>
+
+      <!-- 3. XAVIEN KIT -->
+      <div class="card">
+        <h3>🔥 XAVIEN KIT</h3>
+        <div class="price-row"><div class="price">₹199</div><div class="coin-price">🪙 4,000</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('🔥 Xavien Kit Inventory', [
+          {name: 'Diamond Helmet', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Helmet_JE2_BE2.png'},
+          {name: 'Diamond Chestplate', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Chestplate_JE2_BE2.png'},
+          {name: 'Diamond Leggings', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Leggings_JE2_BE2.png'},
+          {name: 'Diamond Boots', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Boots_JE2_BE2.png'},
+          {name: 'Xavien Sword', ench: 'Sharpness VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Sword_JE2_BE2.png'},
+          {name: 'Golden Apple', ench: 'Absorption & Regen', icon: 'https://minecraft.wiki/images/Golden_Apple_JE2_BE2.png'}
+        ])">📦 OPEN INVENTORY</button>
+        <button class="btn" onclick="openDiscord()">BUY KIT</button>
+      </div>
+
+      <!-- 4. GOD KIT -->
       <div class="card">
         <h3>⚡ GOD KIT</h3>
         <div class="price-row"><div class="price">₹399</div><div class="coin-price">🪙 8,000</div></div>
@@ -242,17 +265,17 @@
         <button class="btn" onclick="openDiscord()">BUY KIT</button>
       </div>
 
-      <!-- XAVIEN KIT -->
+      <!-- 5. KING KIT -->
       <div class="card">
-        <h3>🔥 XAVIEN KIT</h3>
-        <div class="price-row"><div class="price">₹199</div><div class="coin-price">🪙 4,000</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('🔥 Xavien Kit Inventory', [
-          {name: 'Diamond Helmet', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Helmet_JE2_BE2.png'},
-          {name: 'Diamond Chestplate', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Chestplate_JE2_BE2.png'},
-          {name: 'Diamond Leggings', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Leggings_JE2_BE2.png'},
-          {name: 'Diamond Boots', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Boots_JE2_BE2.png'},
-          {name: 'Xavien Sword', ench: 'Sharpness VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Sword_JE2_BE2.png'},
-          {name: 'Golden Apple', ench: 'Absorption & Regen', icon: 'https://minecraft.wiki/images/Golden_Apple_JE2_BE2.png'}
+        <h3>👑 KING KIT</h3>
+        <div class="price-row"><div class="price">₹599</div><div class="coin-price">🪙 15,000</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('👑 King Kit Inventory', [
+          {name: 'Netherite Helmet', ench: 'Protection VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Netherite_Helmet_JE2_BE2.png'},
+          {name: 'Netherite Chestplate', ench: 'Protection VI, Mending', icon: 'https://minecraft.wiki/images/Netherite_Chestplate_JE2_BE2.png'},
+          {name: 'Netherite Leggings', ench: 'Protection VI, Thorns III', icon: 'https://minecraft.wiki/images/Netherite_Leggings_JE2_BE2.png'},
+          {name: 'Netherite Boots', ench: 'Protection VI, Feather Falling IV', icon: 'https://minecraft.wiki/images/Netherite_Boots_JE2_BE2.png'},
+          {name: 'King Axe', ench: 'Sharpness VII, Looting IV', icon: 'https://minecraft.wiki/images/Netherite_Axe_JE2_BE2.png'},
+          {name: 'Totem of Undying', ench: 'Prevents Death', icon: 'https://minecraft.wiki/images/Totem_of_Undying_JE2_BE2.png'}
         ])">📦 OPEN INVENTORY</button>
         <button class="btn" onclick="openDiscord()">BUY KIT</button>
       </div>
@@ -304,45 +327,4 @@
     <h1>⏳ AFK ZONE</h1>
     <p class="subtitle">Stay on this page to earn free coins!</p>
     <div class="afk-container">
-      <h3 style="color:#55ff55; margin-top:0; font-size:0.5rem;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
-      <div class="afk-timer" id="timer">00:00</div>
-      <p style="font-size: 0.4rem; color: #88ff88; margin-bottom: 15px;">+1 Coin every minute</p>
-      <button class="btn" id="afk-btn" onclick="toggleAfk()" style="background:#00aa00;">START AFK</button>
-    </div>
-  </div>
-
-  <!-- PROFILE -->
-  <div id="profile" class="page">
-    <h1>👤 PROFILE</h1>
-    <p class="subtitle">Save your game username and check balance.</p>
-    <div class="profile-card" style="text-align: left;">
-      <p style="font-size: 0.5rem; color: #55ff55; margin-bottom: 15px;">🪙 Total Coins: <span id="user-coins">0</span></p>
-      <label style="font-size: 0.45rem; color: #aaa;">Minecraft Username:</label>
-      <input type="text" id="uname" placeholder="Enter name">
-      <button class="btn" onclick="saveProfile()" style="margin-top: 15px;">SAVE</button>
-    </div>
-  </div>
-
-  <!-- MINECRAFT INVENTORY GUI MODAL -->
-  <div id="kitModal" class="modal" onclick="closeKitInv()">
-    <div class="mc-gui" onclick="event.stopPropagation()">
-      <div class="mc-gui-header">
-        <span id="mcGuiTitle">Inventory</span>
-        <span style="cursor:pointer; background:#555; padding:0 4px;" onclick="closeKitInv()">X</span>
-      </div>
-      <div class="inv-grid" id="mcGuiItems"></div>
-      <button class="btn" onclick="closeKitInv()" style="margin-top: 10px; font-size: 0.45rem; padding: 8px;">CLOSE</button>
-    </div>
-  </div>
-
-  <!-- CLAIM MODAL -->
-  <div id="claimModal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <h2 id="modalTitle" style="color:var(--accent); margin-top:0; font-size:0.6rem;">Claim</h2>
-      <ol>
-        <li>Join our Discord server.</li>
-        <li>Open a support ticket.</li>
-        <li>Provide payment proof.</li>
-      </ol>
-      <button class="btn" onclick="openDiscord()" style="margin-top:10px;">JOIN DISCORD</button>
-      <button class="btn" onclick="closeModal()" style="background:
+      <h3 style="color:#55ff55; margin-top:0; font-size:0.5rem;">Status: <span id=
