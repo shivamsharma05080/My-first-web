@@ -3,294 +3,346 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOUL SMP | Official Panel</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>SOUL SMP | Minecraft Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #121212; --panel: #1e1e1e; --accent: #ff3333; --text: #e0e0e0; --gold: #ffcc00; }
-    body { background: var(--bg); color: var(--text); font-family: 'Roboto', sans-serif; margin: 0; padding-bottom: 80px; }
-    
-    /* NAV */
-    nav { background: #1a1a1a; padding: 15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; border-bottom: 2px solid var(--accent); position: sticky; top: 0; z-index: 100; }
-    nav button { background: #333; color: white; border: none; padding: 12px 18px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
-    nav button.active { background: var(--accent); }
-
-    /* LAYOUT */
-    .page { display: none; padding: 20px; max-width: 900px; margin: auto; }
-    .page.active-page { display: block; }
-    h1 { color: var(--accent); text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px; }
-    p.subtitle { text-align: center; color: #aaa; font-size: 0.9rem; margin-bottom: 20px; }
-    
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .card { background: var(--panel); padding: 20px; border-radius: 8px; border-left: 5px solid var(--accent); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-    .card h3 { margin-top: 0; }
-
-    .price-row { display: flex; justify-content: space-between; align-items: center; margin: 12px 0; }
-    .price { color: #55ff55; font-weight: bold; }
-    .old-price { text-decoration: line-through; color: #888; font-size: 0.8rem; margin-right: 5px; }
-
-    /* TOOLTIP PILLS */
-    .item-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-    .item-pill { 
-      background: #2a2a2a; padding: 10px 14px; border-radius: 4px; font-size: 0.75rem; 
-      cursor: pointer; border: 1px solid #444; color: #fff; user-select: none;
+    :root { 
+      --accent: #ff3333; 
+      --accent-hover: #b30000;
+      --panel: #1a1a1a; 
+      --border: #444; 
     }
-    .item-pill:active { border-color: var(--gold); }
     
-    /* TOOLTIP BOX */
-    .tooltip { 
-      display: none; position: fixed; bottom: 20px; left: 5%; width: 90%; 
-      background: #000; border: 2px solid var(--accent); padding: 15px; 
-      border-radius: 8px; color: var(--gold); font-size: 0.85rem; z-index: 200;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Press Start 2P', cursive;
+      margin: 0;
+      padding-bottom: 80px;
     }
 
-    .btn { background: var(--accent); color: white; border: none; padding: 15px; width: 100%; margin-top: 15px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 1rem; }
-    .btn:hover { background: #b30000; }
-    .coin-tag { color: var(--gold); font-weight: bold; }
+    /* TICKER BAR */
+    .ticker-bar {
+      background: #150000; border-bottom: 2px solid var(--accent);
+      color: #ff9999; font-size: 0.5rem; padding: 10px; text-align: center;
+      white-space: nowrap; overflow: hidden; position: relative;
+    }
+    .ticker-content { display: inline-block; animation: marquee 25s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-    input { width: 100%; padding: 12px; margin-top: 8px; background: #000; border: 2px solid #555; color: #fff; border-radius: 4px; box-sizing: border-box; }
+    /* NAVBAR */
+    nav { 
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; 
+      background: #111; padding: 15px; border-bottom: 4px solid var(--accent);
+      position: sticky; top: 0; z-index: 100;
+    }
+    nav button { 
+      background: #222; color: #fff; border: 3px solid #555; 
+      padding: 12px 14px; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.55rem;
+    }
+    nav button:hover { background: #333; }
+    nav button.active { background: var(--accent); border-color: #fff; }
+
+    /* PAGES */
+    .page { display: none; padding: 25px 15px; max-width: 900px; margin: auto; }
+    .page.active-page { display: block !important; }
+    
+    h1 { color: var(--accent); font-size: 0.95rem; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px #000; }
+    p.subtitle { text-align: center; color: #aaa; font-size: 0.5rem; margin-bottom: 20px; line-height: 1.6; }
+
+    /* GRID & CARDS */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+    .card { background: var(--panel); border: 4px solid var(--border); padding: 20px; text-align: center; }
+    .card h3 { margin: 8px 0; font-size: 0.65rem; color: #fff; }
+    
+    .price-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
+    .price { font-size: 0.55rem; color: #55ff55; font-weight: bold; }
+    .coin-price { font-size: 0.45rem; color: #ffff55; background: rgba(255,255,0,0.1); padding: 5px 8px; border: 1px dashed #ffff55; }
+    .old-price { text-decoration: line-through; color: #888; font-size: 0.45rem; margin-right: 4px; }
+    
+    .features-list { text-align: left; color: #bbb; font-size: 0.4rem; margin: 12px 0; padding-left: 10px; list-style: none; line-height: 1.8; }
+    .features-list li::before { content: '>'; color: var(--accent); margin-right: 6px; }
+
+    .btn { 
+      background: var(--accent); color: #fff; border: 3px solid #fff; 
+      padding: 14px; width: 100%; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; 
+      text-transform: uppercase; margin-top: 12px;
+    }
+    .btn:hover { background: var(--accent-hover); }
+    .btn-inv { background: #333; border-color: #777; font-size: 0.45rem; padding: 10px; margin-top: 8px; }
+
+    /* PROFILE & AFK */
+    .profile-card, .afk-container { border: 4px solid var(--accent); padding: 25px; max-width: 400px; margin: auto; background: var(--panel); text-align: center; }
+    .afk-container { border-color: #00ff00; }
+    .afk-timer { font-size: 1.8rem; color: #ffff55; margin: 15px 0; }
+    input { width: 100%; padding: 12px; margin-top: 8px; background: #000; border: 2px solid #555; color: #fff; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; box-sizing: border-box; }
+
+    /* MODAL (MINECRAFT GUI STYLE) */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 999999; padding: 15px; box-sizing: border-box; }
+    .mc-gui { background: #c6c6c6; border: 4px solid #373737; padding: 15px; width: 100%; max-width: 340px; box-shadow: 0 10px 25px rgba(0,0,0,0.9); color: #000; }
+    .mc-gui-header { display: flex; justify-content: space-between; align-items: center; background: #8b8b8b; padding: 8px; border: 2px solid #373737; margin-bottom: 12px; font-size: 0.5rem; color: #fff; }
+    
+    .inv-grid { display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; }
+    .inv-slot { display: flex; align-items: center; gap: 10px; background: #8b8b8b; border: 2px solid #373737; padding: 8px; }
+    .inv-slot img { width: 32px; height: 32px; image-rendering: pixelated; background: #8b8b8b; border: 2px solid #555; }
+    .inv-info { text-align: left; }
+    .inv-item-name { font-size: 0.42rem; color: #ffff55; font-weight: bold; text-shadow: 1px 1px #000; }
+    .inv-item-ench { font-size: 0.35rem; color: #fff; margin-top: 3px; }
+
+    .modal-content { background: var(--panel); border: 4px solid var(--accent); padding: 20px; text-align: center; max-width: 320px; width: 100%; }
+    .modal-content ol { text-align: left; color: #ccc; font-size: 0.45rem; padding-left: 15px; margin: 12px 0; line-height: 1.8; }
   </style>
 </head>
 <body>
 
-  <nav>
-    <button onclick="switchPage('home', this)" class="active">HOME</button>
-    <button onclick="switchPage('ranks', this)">RANKS</button>
-    <button onclick="switchPage('kits', this)">KITS</button>
-    <button onclick="switchPage('coins', this)">COINS</button>
-    <button onclick="switchPage('keys', this)">KEYS</button>
-    <button onclick="switchPage('afk', this)">AFK</button>
-    <button onclick="switchPage('profile', this)">PROFILE</button>
-  </nav>
-
-  <div id="home" class="page active-page">
-    <h1>SOUL SMP</h1>
-    <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience</p>
-    <div class="card" style="text-align: center;">
-      <p>Server IP: <b style="color:var(--accent);">SoulSMP12.aternos.me:40740</b></p>
-      <button class="btn" onclick="switchPage('ranks', document.querySelectorAll('nav button')[1])">EXPLORE STORE</button>
+  <!-- TICKER BAR -->
+  <div class="ticker-bar">
+    <div class="ticker-content">
+      🔥 Welcome to Soul SMP Official Store! Server IP: SoulSMP12.aternos.me:40740 &nbsp;&nbsp;|&nbsp;&nbsp; 🚀 20% Off via Discord! &nbsp;&nbsp;|&nbsp;&nbsp; 🪙 Earn Free Coins in AFK Zone!
     </div>
   </div>
 
+  <!-- NAVBAR -->
+  <nav>
+    <button onclick="switchPage('home', this)" class="active">🏠 HOME</button>
+    <button onclick="switchPage('ranks', this)">👑 RANKS</button>
+    <button onclick="switchPage('kits', this)">⚔️ KITS</button>
+    <button onclick="switchPage('coins', this)">🪙 COINS</button>
+    <button onclick="switchPage('keys', this)">🔑 KEYS</button>
+    <button onclick="switchPage('afk', this)">⏳ AFK</button>
+    <button onclick="switchPage('profile', this)">👤 PROFILE</button>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div id="home" class="page active-page">
+    <h1>🔥 WELCOME TO SOUL SMP</h1>
+    <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience.</p>
+    <div class="card" style="max-width: 450px; margin: auto;">
+      <p style="color:#ff9999; font-size:0.5rem; margin-bottom:10px;">🌐 Server IP:</p>
+      <b style="background:#000; padding:12px; border:2px solid var(--accent); display:inline-block; margin-bottom:15px; font-size:0.5rem;">SoulSMP12.aternos.me:40740</b>
+      <br>
+      <button class="btn" onclick="switchPage('ranks', document.querySelectorAll('nav button')[1])">EXPLORE RANKS</button>
+    </div>
+  </div>
+
+  <!-- RANKS PAGE -->
   <div id="ranks" class="page">
-    <h1>👑 PREMIUM RANKS</h1>
-    <p class="subtitle">Unlock powerful commands, custom prefixes, and homes.</p>
+    <h1>👑 PREMIUM RANKS (20% OFF)</h1>
+    <p class="subtitle">Unlock powerful commands and special perks.</p>
     <div class="grid">
       <div class="card">
         <h3>🟢 VIP</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹99</span>₹79</span><span class="coin-tag">🪙 1,500 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹99</span>₹79</div><div class="coin-price">🪙 1,500</div></div>
+        <ul class="features-list"><li>Emerald Perk</li><li>VIP Prefix</li><li>3 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>🟡 ELITE</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹149</span>₹119</span><span class="coin-tag">🪙 2,500 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹149</span>₹119</div><div class="coin-price">🪙 2,500</div></div>
+        <ul class="features-list"><li>Gold Perk</li><li>ELITE Prefix</li><li>4 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>🔵 HERO</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹199</span>₹159</span><span class="coin-tag">🪙 4,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹199</span>₹159</div><div class="coin-price">🪙 4,000</div></div>
+        <ul class="features-list"><li>Diamond Perk</li><li>HERO Prefix</li><li>5 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>💎 LEGEND</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹299</span>₹239</span><span class="coin-tag">🪙 6,500 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹299</span>₹239</div><div class="coin-price">🪙 6,500</div></div>
+        <ul class="features-list"><li>Block Perk</li><li>LEGEND Prefix</li><li>7 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>⚫ TITAN</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹399</span>₹319</span><span class="coin-tag">🪙 10,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹399</span>₹319</div><div class="coin-price">🪙 10,000</div></div>
+        <ul class="features-list"><li>Netherite Ingot</li><li>TITAN Prefix</li><li>9 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>🌟 IMMORTAL</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹499</span>₹399</span><span class="coin-tag">🪙 15,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹499</span>₹399</div><div class="coin-price">🪙 15,000</div></div>
+        <ul class="features-list"><li>Nether Star</li><li>IMMORTAL Prefix</li><li>11 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>🍎 MASTER</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹599</span>₹479</span><span class="coin-tag">🪙 20,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹599</span>₹479</div><div class="coin-price">🪙 20,000</div></div>
+        <ul class="features-list"><li>G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>👑 KING</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹699</span>₹559</span><span class="coin-tag">🪙 28,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹699</span>₹559</div><div class="coin-price">🪙 28,000</div></div>
+        <ul class="features-list"><li>Helmet Perk</li><li>KING Prefix</li><li>15 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>🔮 CELESTIAL</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹799</span>₹639</span><span class="coin-tag">🪙 38,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹799</span>₹639</div><div class="coin-price">🪙 38,000</div></div>
+        <ul class="features-list"><li>End Crystal</li><li>CELESTIAL Prefix</li><li>18 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>⚔️ WARLORD</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹999</span>₹799</span><span class="coin-tag">🪙 50,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹999</span>₹799</div><div class="coin-price">🪙 50,000</div></div>
+        <ul class="features-list"><li>Sword Perk</li><li>WARLORD Prefix</li><li>22 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>❇️ EMPEROR</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹1,299</span>₹1,039</span><span class="coin-tag">🪙 70,000 Coins</span></div>
+        <div class="price-row"><div class="price"><span class="old-price">₹1,299</span>₹1,039</div><div class="coin-price">🪙 70,000</div></div>
+        <ul class="features-list"><li>Beacon Perk</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
-      <div class="card" style="border-left-color: var(--gold);">
-        <h3 style="color: var(--gold);">🐉 SUPREME</h3>
-        <div class="price-row"><span class="price"><span class="old-price">₹1,499</span>₹1,199</span><span class="coin-tag">🪙 95,000 Coins</span></div>
+      <div class="card" style="border-color:#ffcc00;">
+        <h3 style="color:#ffcc00;">🐉 SUPREME</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹1,499</span>₹1,199</div><div class="coin-price">🪙 95,000</div></div>
+        <ul class="features-list"><li>Dragon Egg</li><li>SUPREME Prefix</li><li>30 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
     </div>
   </div>
 
+  <!-- KITS PAGE -->
   <div id="kits" class="page">
     <h1>⚔️ EXCLUSIVE KITS</h1>
-    <p class="subtitle">Tap items to check enchantments and custom stats.</p>
+    <p class="subtitle">Check full gear and tool enchantments in inventory.</p>
     <div class="grid">
+      <!-- KING KIT -->
       <div class="card">
         <h3>👑 KING KIT</h3>
-        <div class="price-row"><span class="price">₹599</span><span class="coin-tag">🪙 15,000 Coins</span></div>
-        <div class="item-list">
-          <div class="item-pill" onclick="showTip('King Axe', 'Sharpness VII, Unbreaking III, Looting IV')">⚔️ King Axe</div>
-          <div class="item-pill" onclick="showTip('King Armor', 'Protection VI, Mending, Thorns III')">🛡️ King Armor</div>
-          <div class="item-pill" onclick="showTip('Totem', 'Rare Event Item - Prevents Death')">🌟 Totem x3</div>
-          <div class="item-pill" onclick="showTip('Beacon', 'Unlimited Power & Status Buffs')">🧱 Beacon</div>
-        </div>
+        <div class="price-row"><div class="price">₹599</div><div class="coin-price">🪙 15,000</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('👑 King Kit Inventory', [
+          {name: 'Netherite Helmet', ench: 'Protection VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Netherite_Helmet_JE2_BE2.png'},
+          {name: 'Netherite Chestplate', ench: 'Protection VI, Mending', icon: 'https://minecraft.wiki/images/Netherite_Chestplate_JE2_BE2.png'},
+          {name: 'Netherite Leggings', ench: 'Protection VI, Thorns III', icon: 'https://minecraft.wiki/images/Netherite_Leggings_JE2_BE2.png'},
+          {name: 'Netherite Boots', ench: 'Protection VI, Feather Falling IV', icon: 'https://minecraft.wiki/images/Netherite_Boots_JE2_BE2.png'},
+          {name: 'King Axe', ench: 'Sharpness VII, Looting IV', icon: 'https://minecraft.wiki/images/Netherite_Axe_JE2_BE2.png'},
+          {name: 'Totem of Undying', ench: 'Prevents Death', icon: 'https://minecraft.wiki/images/Totem_of_Undying_JE2_BE2.png'}
+        ])">📦 OPEN INVENTORY</button>
         <button class="btn" onclick="openDiscord()">BUY KIT</button>
       </div>
 
+      <!-- GOD KIT -->
       <div class="card">
         <h3>⚡ GOD KIT</h3>
-        <div class="price-row"><span class="price">₹399</span><span class="coin-tag">🪙 8,000 Coins</span></div>
-        <div class="item-list">
-          <div class="item-pill" onclick="showTip('God Sword', 'Sharpness X, Fire Aspect III')">⚔️ God Sword</div>
-          <div class="item-pill" onclick="showTip('God Armor', 'Protection V, Unbreaking III')">🛡️ God Armor</div>
-          <div class="item-pill" onclick="showTip('Enchanted G-Apple', 'Regeneration IV, Absorption IV')">🍎 G-Apple x5</div>
-        </div>
+        <div class="price-row"><div class="price">₹399</div><div class="coin-price">🪙 8,000</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('⚡ God Kit Inventory', [
+          {name: 'Diamond Helmet', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Helmet_JE2_BE2.png'},
+          {name: 'Diamond Chestplate', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Chestplate_JE2_BE2.png'},
+          {name: 'Diamond Leggings', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Leggings_JE2_BE2.png'},
+          {name: 'Diamond Boots', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Boots_JE2_BE2.png'},
+          {name: 'God Sword', ench: 'Sharpness X, Fire Aspect III', icon: 'https://minecraft.wiki/images/Netherite_Sword_JE2_BE2.png'},
+          {name: 'Enchanted Golden Apple', ench: 'Regeneration IV', icon: 'https://minecraft.wiki/images/Enchanted_Golden_Apple_JE2_BE2.png'}
+        ])">📦 OPEN INVENTORY</button>
         <button class="btn" onclick="openDiscord()">BUY KIT</button>
       </div>
 
+      <!-- XAVIEN KIT -->
       <div class="card">
         <h3>🔥 XAVIEN KIT</h3>
-        <div class="price-row"><span class="price">₹199</span><span class="coin-tag">🪙 4,000 Coins</span></div>
-        <div class="item-list">
-          <div class="item-pill" onclick="showTip('Xavien Blade', 'Sharpness VI, Unbreaking III')">🗡️ Xavien Sword</div>
-          <div class="item-pill" onclick="showTip('Xavien Armor', 'Protection IV')">🛡️ Xavien Armor</div>
-        </div>
+        <div class="price-row"><div class="price">₹199</div><div class="coin-price">🪙 4,000</div></div>
+        <button class="btn btn-inv" onclick="openKitInv('🔥 Xavien Kit Inventory', [
+          {name: 'Diamond Helmet', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Helmet_JE2_BE2.png'},
+          {name: 'Diamond Chestplate', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Chestplate_JE2_BE2.png'},
+          {name: 'Diamond Leggings', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Leggings_JE2_BE2.png'},
+          {name: 'Diamond Boots', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Boots_JE2_BE2.png'},
+          {name: 'Xavien Sword', ench: 'Sharpness VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Sword_JE2_BE2.png'},
+          {name: 'Golden Apple', ench: 'Absorption & Regen', icon: 'https://minecraft.wiki/images/Golden_Apple_JE2_BE2.png'}
+        ])">📦 OPEN INVENTORY</button>
         <button class="btn" onclick="openDiscord()">BUY KIT</button>
       </div>
     </div>
   </div>
 
+  <!-- COINS PAGE -->
   <div id="coins" class="page">
     <h1>🪙 COIN BUNDLES</h1>
-    <p class="subtitle">Boost your in-game balance instantly.</p>
+    <p class="subtitle">Boost your balance instantly.</p>
     <div class="grid">
-      <div class="card"><h3>500 Coins</h3><div class="price-row"><span class="price">₹23</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>6,000 Coins</h3><div class="price-row"><span class="price">₹119</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>15,000 Coins</h3><div class="price-row"><span class="price">₹239</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>75,000 Coins</h3><div class="price-row"><span class="price">₹799</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
+      <div class="card"><h3>🪙 500 Coins</h3><div class="price" style="margin:12px 0;"><span class="old-price">₹29</span>₹23</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
+      <div class="card"><h3>🪙 6,000 Coins</h3><div class="price" style="margin:12px 0;"><span class="old-price">₹149</span>₹119</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
+      <div class="card"><h3>🪙 15,000 Coins</h3><div class="price" style="margin:12px 0;"><span class="old-price">₹299</span>₹239</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
+      <div class="card"><h3>🪙 75,000 Coins</h3><div class="price" style="margin:12px 0;"><span class="old-price">₹999</span>₹799</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
     </div>
   </div>
 
+  <!-- KEYS PAGE -->
   <div id="keys" class="page">
     <h1>🔑 CRATE KEYS</h1>
-    <p class="subtitle">Open mysterious crates for legendary rewards.</p>
+    <p class="subtitle">Open crates for rare rewards.</p>
     <div class="grid">
-      <div class="card"><h3>Common Key</h3><div class="price-row"><span class="price">₹16</span><span class="coin-tag">🪙 400 Coins</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Prime Key</h3><div class="price-row"><span class="price">₹80</span><span class="coin-tag">🪙 2,000 Coins</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Xiavien Key</h3><div class="price-row"><span class="price">₹160</span><span class="coin-tag">🪙 4,000 Coins</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>Party Key</h3><div class="price-row"><span class="price">₹40</span><span class="coin-tag">🪙 1,000 Coins</span></div><button class="btn" onclick="openDiscord()">BUY</button></div>
+      <div class="card">
+        <h3>🗝️ Common</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹20</span>₹16</div><div class="coin-price">🪙 400</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
+      </div>
+      <div class="card">
+        <h3>🗝️ Prime</h3>
+        <div class="price-row"><div class="price" style="color:#55ff55;"><span class="old-price" style="color:#888;">₹100</span>₹80</div><div class="coin-price">🪙 2,000</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
+      </div>
+      <div class="card">
+        <h3>🗝️ Xiavien</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹200</span>₹160</div><div class="coin-price">🪙 4,000</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
+      </div>
+      <div class="card">
+        <h3>🗝️ Party</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹50</span>₹40</div><div class="coin-price">🪙 1,000</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
+      </div>
     </div>
   </div>
 
+  <!-- AFK ZONE -->
   <div id="afk" class="page">
     <h1>⏳ AFK ZONE</h1>
-    <p class="subtitle">Stay active on this tab to earn free server coins!</p>
-    <div class="card" style="text-align: center; max-width: 400px; margin: auto;">
-      <h3 style="color:#55ff55;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
-      <h2 id="timer" style="font-size: 2.5rem; color: var(--gold); margin: 20px 0;">00:00</h2>
-      <p style="font-size: 0.8rem; color: #88ff88;">+1 Coin earned every 1 Minute</p>
+    <p class="subtitle">Stay on this page to earn free coins!</p>
+    <div class="afk-container">
+      <h3 style="color:#55ff55; margin-top:0; font-size:0.5rem;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
+      <div class="afk-timer" id="timer">00:00</div>
+      <p style="font-size: 0.4rem; color: #88ff88; margin-bottom: 15px;">+1 Coin every minute</p>
       <button class="btn" id="afk-btn" onclick="toggleAfk()" style="background:#00aa00;">START AFK</button>
     </div>
   </div>
 
+  <!-- PROFILE -->
   <div id="profile" class="page">
-    <h1>👤 USER PROFILE</h1>
-    <p class="subtitle">Manage your credentials and view total balance.</p>
-    <div class="card" style="max-width: 400px; margin: auto; text-align: left;">
-      <p>🪙 Total Coins: <span id="user-coins" class="coin-tag">0</span></p>
-      <label style="font-size: 0.85rem; color: #aaa;">Minecraft Username:</label>
-      <input type="text" id="uname" placeholder="Enter your username">
-      <button class="btn" onclick="saveProfile()" style="margin-top: 15px;">SAVE PROFILE</button>
+    <h1>👤 PROFILE</h1>
+    <p class="subtitle">Save your game username and check balance.</p>
+    <div class="profile-card" style="text-align: left;">
+      <p style="font-size: 0.5rem; color: #55ff55; margin-bottom: 15px;">🪙 Total Coins: <span id="user-coins">0</span></p>
+      <label style="font-size: 0.45rem; color: #aaa;">Minecraft Username:</label>
+      <input type="text" id="uname" placeholder="Enter name">
+      <button class="btn" onclick="saveProfile()" style="margin-top: 15px;">SAVE</button>
     </div>
   </div>
 
-  <!-- TOOLTIP BOX -->
-  <div id="tooltip" class="tooltip" onclick="this.style.display='none'">
-    <strong id="tip-title" style="color:#fff; display:block; margin-bottom:5px;"></strong>
-    <p id="tip-desc" style="margin:0;"></p>
-    <small style="color:#888; display:block; margin-top:8px;">(Tap anywhere to close)</small>
+  <!-- MINECRAFT INVENTORY GUI MODAL -->
+  <div id="kitModal" class="modal" onclick="closeKitInv()">
+    <div class="mc-gui" onclick="event.stopPropagation()">
+      <div class="mc-gui-header">
+        <span id="mcGuiTitle">Inventory</span>
+        <span style="cursor:pointer; background:#555; padding:0 4px;" onclick="closeKitInv()">X</span>
+      </div>
+      <div class="inv-grid" id="mcGuiItems"></div>
+      <button class="btn" onclick="closeKitInv()" style="margin-top: 10px; font-size: 0.45rem; padding: 8px;">CLOSE</button>
+    </div>
   </div>
 
-  <script>
-    function switchPage(p, btn) {
-      document.querySelectorAll('.page').forEach(e => e.classList.remove('active-page'));
-      document.getElementById(p).classList.add('active-page');
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      window.scrollTo(0,0);
-    }
-    
-    function showTip(title, desc) {
-      const tip = document.getElementById('tooltip');
-      document.getElementById('tip-title').innerText = "📦 " + title;
-      document.getElementById('tip-desc').innerText = "Enchantments/Stats: " + desc;
-      tip.style.display = 'block';
-    }
-
-    function openDiscord() { window.open('https://discord.gg/BHHU8mDvh7', '_blank'); }
-
-    function saveProfile() {
-      let name = document.getElementById('uname').value.trim();
-      if(name) {
-        localStorage.setItem('soul_user', name);
-        alert("Profile Saved Successfully!");
-      }
-    }
-
-    let active = false, s = 0, t;
-    function toggleAfk() {
-      let btn = document.getElementById('afk-btn');
-      let status = document.getElementById('afk-status');
-      if(!active) {
-        active = true; 
-        btn.innerText = "STOP AFK"; 
-        btn.style.background = "#cc0000";
-        status.innerText = "Active (Earning)";
-        status.style.color = "#55ff55";
-        t = setInterval(() => { 
-          s++; 
-          let m = Math.floor(s/60), sec = s%60; 
-          document.getElementById('timer').innerText = (m<10?'0':'')+m + ':' + (sec<10?'0':'')+sec; 
-          if(s % 60 === 0) {
-            let coins = parseInt(localStorage.getItem('soul_coins') || "0") + 1;
-            localStorage.setItem('soul_coins', coins);
-            document.getElementById('user-coins').innerText = coins;
-          }
-        }, 1000);
-      } else {
-        active = false; 
-        clearInterval(t); 
-        btn.innerText = "START AFK"; 
-        btn.style.background = "#00aa00";
-        status.innerText = "Inactive";
-        status.style.color = "#ff5555";
-      }
-    }
-
-    window.onload = function() {
-      let savedUser = localStorage.getItem('soul_user');
-      let coins = localStorage.getItem('soul_coins') || "0";
-      if(savedUser) document.getElementById('uname').value = savedUser;
-      document.getElementById('user-coins').innerText = coins;
-    }
-  </script>
-</body>
-</html>
+  <!-- CLAIM MODAL -->
+  <div id="claimModal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <h2 id="modalTitle" style="color:var(--accent); margin-top:0; font-size:0.6rem;">Claim</h2>
+      <ol>
+        <li>Join our Discord server.</li>
+        <li>Open a support ticket.</li>
+        <li>Provide payment proof.</li>
+      </ol>
+      <button class="btn" onclick="openDiscord()" style="margin-top:10px;">JOIN DISCORD</button>
+      <button class="btn" onclick="closeModal()" style="background:
