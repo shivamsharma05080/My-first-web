@@ -3,176 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOUL SMP | Official Store</title>
+  <title>SOUL SMP | Minecraft Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --mc-bg: #111111;
+      --mc-panel: #1c1c1c;
+      --mc-border: #383838;
+      --accent: #ff3333;
+      --accent-hover: #b30000;
+    }
+    
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    
     body {
-      background: #000000;
+      background: var(--mc-bg);
       color: #ffffff;
-      font-family: Arial, sans-serif;
+      font-family: 'Press Start 2P', cursive;
       margin: 0;
-      padding: 0;
-      padding-bottom: 50px;
+      padding-bottom: 60px;
     }
+
+    /* TOP LIVE TICKER BAR */
+    .ticker-bar {
+      background: #1a0000; border-bottom: 2px solid var(--accent);
+      color: #ff9999; font-size: 0.45rem; padding: 8px 10px; text-align: center;
+      white-space: nowrap; overflow: hidden; position: relative;
+    }
+    .ticker-content { display: inline-block; animation: marquee 25s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+    /* NAVBAR STYLES */
     nav {
-      display: flex;
-      justify-content: space-around;
-      background: #111111;
-      padding: 12px;
-      position: sticky;
-      top: 0;
-      border-bottom: 2px solid #ff3333;
-      z-index: 9999;
-      flex-wrap: wrap;
-      gap: 5px;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 15px; background: var(--mc-panel);
+      border-bottom: 4px solid var(--accent); position: sticky; top: 0; z-index: 99999;
+      flex-wrap: wrap; gap: 8px;
     }
-    nav button {
-      background: #222222;
-      color: #ffffff;
-      border: 1px solid #444;
-      padding: 8px 12px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 0.8rem;
+    .logo { font-size: 0.65rem; color: var(--accent); cursor: pointer; text-shadow: 2px 2px #000; }
+    
+    .nav-links { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
+    .nav-links button {
+      color: #ccc; border: 2px solid #555; padding: 8px 10px;
+      background: #2b2b2b; font-weight: bold; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.4rem;
     }
-    nav button.active {
-      background: #ff3333;
-      border-color: #ff3333;
+    .nav-links button:hover { background: #444; color: #fff; }
+    .nav-links button.active { background: var(--accent); color: white; border-color: #fff; }
+    
+    .nav-right-area { display: flex; align-items: center; gap: 6px; }
+    .profile-pill {
+      display: flex; align-items: center; gap: 4px;
+      background: #2b2b2b; border: 2px solid var(--accent);
+      padding: 4px 8px; cursor: pointer; font-size: 0.4rem;
     }
-    .page {
-      display: none;
-      padding: 20px;
-      text-align: center;
-    }
-    .page.active-page {
-      display: block;
-    }
-    h1 {
-      color: #ff3333;
-      font-size: 1.6rem;
-      margin-bottom: 5px;
-    }
-    p.subtitle {
-      color: #ccc;
-      font-size: 0.85rem;
-      margin-bottom: 20px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .profile-pill span { color: #ffcccc; }
+    .coin-badge { background: #000; border: 2px solid #55ff55; padding: 5px 8px; color: #55ff55; font-size: 0.4rem; cursor: pointer; }
+
+    /* PAGE SYSTEM */
+    .page { display: none; padding: 25px 15px; max-width: 950px; margin: auto; }
+    .page.active-page { display: block !important; }
+    
+    h1 { color: var(--accent); text-align: center; font-size: 0.9rem; margin-bottom: 5px; text-transform: uppercase; text-shadow: 2px 2px #000; }
+    p.subtitle { text-align: center; color: #aaa; margin-bottom: 25px; font-size: 0.45rem; line-height: 1.6; }
+
+    /* GRID & CARDS */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 15px; }
     .card {
-      background: #111111;
-      border: 1px solid #333;
-      padding: 15px;
-      border-radius: 8px;
-      text-align: center;
+      border: 3px solid var(--mc-border); border-radius: 4px; padding: 18px 12px;
+      text-align: center; background: var(--mc-panel);
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
     }
-    .card h3 {
-      margin: 5px 0;
-      font-size: 1rem;
-    }
-    .price-row {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin: 8px 0;
-      flex-wrap: wrap;
-    }
-    .price {
-      color: #55ff55;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .coin-price {
-      color: #ffff55;
-      font-size: 0.8rem;
-      background: rgba(255,255,0,0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid rgba(255,255,0,0.3);
-    }
-    .old-price {
-      text-decoration: line-through;
-      color: #888;
-      font-size: 0.75rem;
-      margin-right: 3px;
-    }
-    .features-list {
-      text-align: left;
-      color: #bbb;
-      font-size: 0.7rem;
-      margin: 8px 0;
-      padding-left: 12px;
-      list-style: none;
-    }
-    .features-list li {
-      margin: 3px 0;
-    }
+    .card h3 { margin: 8px 0; font-size: 0.6rem; color: #fff; }
+    
+    .price-row { display: flex; justify-content: center; align-items: center; gap: 8px; margin: 10px 0; flex-wrap: wrap; }
+    .price { font-size: 0.55rem; color: #55ff55; font-weight: bold; }
+    .coin-price { font-size: 0.42rem; color: #ffff55; background: rgba(255,255,0,0.1); padding: 4px 6px; border: 1px dashed #ffff55; }
+    .old-price { text-decoration: line-through; color: #888; font-size: 0.4rem; margin-right: 3px; }
+    
+    .features-list { text-align: left; color: #bbb; font-size: 0.4rem; margin: 10px 0; padding-left: 12px; list-style: none; line-height: 1.8; }
+    .features-list li::before { content: '>'; color: var(--accent); margin-right: 4px; }
+
     .btn {
-      background: #ff3333;
-      color: #ffffff;
-      border: none;
-      padding: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 4px;
-      width: 100%;
-      font-size: 0.8rem;
-      margin-top: 5px;
+      background: var(--accent); color: #fff; border: 2px solid #fff; padding: 10px;
+      cursor: pointer; width: 100%; font-family: 'Press Start 2P', cursive; font-size: 0.45rem;
+      text-transform: uppercase; margin-top: 8px;
     }
-    .btn:hover {
-      background: #b30000;
-    }
-    input {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
-      background: #000;
-      border: 1px solid #555;
-      color: #fff;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    .afk-box, .profile-box {
-      background: #111;
-      border: 1px solid #333;
-      padding: 20px;
-      max-width: 350px;
-      margin: 0 auto;
-      border-radius: 10px;
-    }
+    .btn:hover { background: var(--accent-hover); }
+
+    /* PROFILE & AFK */
+    .profile-card, .afk-container { border: 3px solid var(--accent); padding: 20px; max-width: 380px; margin: auto; background: var(--mc-panel); text-align: center; }
+    .afk-container { border-color: #00ff00; }
+    .afk-timer { font-size: 1.2rem; color: #ffff55; margin: 15px 0; }
+    input { width: 100%; padding: 10px; margin-top: 6px; background: #000; border: 2px solid #555; color: #fff; font-family: 'Press Start 2P', cursive; font-size: 0.45rem; box-sizing: border-box; }
+
+    /* MODAL */
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 999999; padding: 15px; box-sizing: border-box; }
+    .modal-content { background: var(--mc-panel); border: 3px solid var(--accent); padding: 20px; border-radius: 4px; text-align: center; max-width: 320px; width: 100%; }
+    .modal-content ol { text-align: left; color: #ccc; font-size: 0.4rem; padding-left: 15px; margin: 12px 0; line-height: 1.8; }
   </style>
 </head>
 <body>
 
+  <!-- LIVE TICKER -->
+  <div class="ticker-bar">
+    <div class="ticker-content">
+      🔥 Welcome to Soul SMP Official Store! Server IP: SoulSMP12.aternos.me:40740 &nbsp;&nbsp;|&nbsp;&nbsp; 🚀 20% Off via Discord! &nbsp;&nbsp;|&nbsp;&nbsp; 🪙 Earn Free Coins in AFK Zone!
+    </div>
+  </div>
+
   <!-- NAVBAR -->
   <nav>
-    <button onclick="switchPage('home', this)" class="active">Home</button>
-    <button onclick="switchPage('ranks', this)">Ranks</button>
-    <button onclick="switchPage('kits', this)">Kits</button>
-    <button onclick="switchPage('coins', this)">Coins</button>
-    <button onclick="switchPage('keys', this)">Keys</button>
-    <button onclick="switchPage('afk', this)">AFK</button>
-    <button onclick="switchPage('profile', this)">Profile</button>
+    <div class="logo" onclick="switchPage('home', document.querySelectorAll('.nav-links button')[0])">🔥 SOULSMP</div>
+    <div class="nav-links">
+      <button onclick="switchPage('home', this)" class="active">Home</button>
+      <button onclick="switchPage('ranks', this)">Ranks</button>
+      <button onclick="switchPage('kits', this)">Kits</button>
+      <button onclick="switchPage('coins', this)">Coins</button>
+      <button onclick="switchPage('keys', this)">Keys</button>
+      <button onclick="switchPage('afk', this)">AFK</button>
+      <button onclick="switchPage('profile', this)">Profile</button>
+    </div>
+    <div class="nav-right-area">
+      <div class="profile-pill" onclick="switchPage('profile', document.querySelectorAll('.nav-links button')[6])">
+        <span id="nav-username">Player</span>
+      </div>
+      <div class="coin-badge" onclick="showClaimModal('AFK Coins')">🪙 <span id="user-coins">0</span></div>
+    </div>
   </nav>
 
   <!-- HOME PAGE -->
   <div id="home" class="page active-page">
-    <h1>SOUL SMP STORE</h1>
-    <p class="subtitle">Server IP: SoulSMP12.aternos.me:40740</p>
-    <button class="btn" style="width: auto; padding: 10px 20px;" onclick="switchPage('ranks', document.querySelectorAll('nav button')[1])">EXPLORE RANKS</button>
+    <h1>WELCOME TO SOUL SMP</h1>
+    <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience.</p>
+    <div class="card" style="max-width: 450px; margin: 20px auto;">
+      <p style="color:#ff9999; font-size:0.45rem; margin-bottom:10px;">Server IP:</p>
+      <b style="background:#000; padding:8px 10px; border:2px solid var(--accent); display:inline-block; margin-bottom:15px; font-size:0.45rem;">SoulSMP12.aternos.me:40740</b>
+      <br>
+      <button class="btn" onclick="switchPage('ranks', document.querySelectorAll('.nav-links button')[1])">EXPLORE RANKS</button>
+    </div>
   </div>
 
   <!-- RANKS PAGE -->
   <div id="ranks" class="page">
     <h1>👑 PREMIUM RANKS (20% OFF)</h1>
-    <p class="subtitle">Unlock powerful commands and custom prefixes.</p>
+    <p class="subtitle">Unlock powerful commands and special perks.</p>
     <div class="grid">
       <div class="card">
         <h3>🟢 VIP</h3>
@@ -183,7 +158,7 @@
       <div class="card">
         <h3>🟡 ELITE</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹149</span>₹119</div><div class="coin-price">🪙 2,500</div></div>
-        <ul class="features-list"><li>Gold Ingot Perk</li><li>ELITE Prefix</li><li>4 Homes</li></ul>
+        <ul class="features-list"><li>Gold Perk</li><li>ELITE Prefix</li><li>4 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
@@ -195,7 +170,7 @@
       <div class="card">
         <h3>💎 LEGEND</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹299</span>₹239</div><div class="coin-price">🪙 6,500</div></div>
-        <ul class="features-list"><li>Diamond Block</li><li>LEGEND Prefix</li><li>7 Homes</li></ul>
+        <ul class="features-list"><li>Block Perk</li><li>LEGEND Prefix</li><li>7 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
@@ -213,13 +188,13 @@
       <div class="card">
         <h3>🍎 MASTER</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹599</span>₹479</div><div class="coin-price">🪙 20,000</div></div>
-        <ul class="features-list"><li>Enchanted G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul>
+        <ul class="features-list"><li>G-Apple</li><li>MASTER Prefix</li><li>13 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
         <h3>👑 KING</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹699</span>₹559</div><div class="coin-price">🪙 28,000</div></div>
-        <ul class="features-list"><li>Netherite Helmet</li><li>KING Prefix</li><li>15 Homes</li></ul>
+        <ul class="features-list"><li>Helmet Perk</li><li>KING Prefix</li><li>15 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
@@ -231,7 +206,7 @@
       <div class="card">
         <h3>⚔️ WARLORD</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹999</span>₹799</div><div class="coin-price">🪙 50,000</div></div>
-        <ul class="features-list"><li>Netherite Sword</li><li>WARLORD Prefix</li><li>22 Homes</li></ul>
+        <ul class="features-list"><li>Sword Perk</li><li>WARLORD Prefix</li><li>22 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
@@ -240,8 +215,8 @@
         <ul class="features-list"><li>Beacon Perk</li><li>EMPEROR Prefix</li><li>26 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
-      <div class="card" style="border-color: #ffcc00;">
-        <h3 style="color: #ffcc00;">🐉 SUPREME</h3>
+      <div class="card" style="border-color:#ffcc00;">
+        <h3 style="color:#ffcc00;">🐉 SUPREME</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹1,499</span>₹1,199</div><div class="coin-price">🪙 95,000</div></div>
         <ul class="features-list"><li>Dragon Egg</li><li>SUPREME Prefix</li><li>30 Homes</li></ul>
         <button class="btn" onclick="openDiscord()">BUY</button>
@@ -252,25 +227,25 @@
   <!-- KITS PAGE -->
   <div id="kits" class="page">
     <h1>⚔️ BATTLE KITS</h1>
-    <p class="subtitle">Equip powerful weapons and gear.</p>
+    <p class="subtitle">Equip powerful weapons and armor.</p>
     <div class="grid">
       <div class="card">
-        <h3>⚔️ Warrior</h3>
+        <h3>Warrior</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹59</span>₹47</div><div class="coin-price">🪙 1,000</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
-        <h3>🏹 Archer</h3>
+        <h3>Archer</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹79</span>₹63</div><div class="coin-price">🪙 1,500</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
-        <h3>🔥 Inferno</h3>
+        <h3>Inferno</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹149</span>₹119</div><div class="coin-price">🪙 3,000</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
-        <h3>🐉 Dragon</h3>
+        <h3>Dragon</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹299</span>₹239</div><div class="coin-price">🪙 6,000</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
@@ -282,35 +257,35 @@
     <h1>🪙 COIN BUNDLES</h1>
     <p class="subtitle">Boost your balance instantly.</p>
     <div class="grid">
-      <div class="card"><h3>500 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹29</span>₹23</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>6,000 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹149</span>₹119</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>15,000 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹299</span>₹239</div><button class="btn" onclick="openDiscord()">BUY</button></div>
-      <div class="card"><h3>75,000 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹999</span>₹799</div><button class="btn" onclick="openDiscord()">BUY</button></div>
+      <div class="card"><h3>500 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹29</span>₹23</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
+      <div class="card"><h3>6,000 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹149</span>₹119</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
+      <div class="card"><h3>15,000 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹299</span>₹239</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
+      <div class="card"><h3>75,000 Coins</h3><div class="price" style="margin:10px 0;"><span class="old-price">₹999</span>₹799</div><button class="btn" onclick="showClaimModal('Coins')">BUY</button></div>
     </div>
   </div>
 
   <!-- KEYS PAGE -->
   <div id="keys" class="page">
     <h1>🔑 CRATE KEYS</h1>
-    <p class="subtitle">Open mystery crates for rare rewards.</p>
+    <p class="subtitle">Open crates for rare rewards.</p>
     <div class="grid">
       <div class="card">
-        <h3>🗝️ Common Key</h3>
+        <h3>Common</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹20</span>₹16</div><div class="coin-price">🪙 400</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
-        <h3>🗝️ Prime Key</h3>
+        <h3>Prime</h3>
         <div class="price-row"><div class="price" style="color:#55ff55;"><span class="old-price" style="color:#888;">₹100</span>₹80</div><div class="coin-price">🪙 2,000</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
-        <h3>🗝️ Xiavien Key</h3>
+        <h3>Xiavien</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹200</span>₹160</div><div class="coin-price">🪙 4,000</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
       <div class="card">
-        <h3>🗝️ Party Key</h3>
+        <h3>Party</h3>
         <div class="price-row"><div class="price"><span class="old-price">₹50</span>₹40</div><div class="coin-price">🪙 1,000</div></div>
         <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
@@ -321,9 +296,9 @@
   <div id="afk" class="page">
     <h1>⏳ AFK ZONE</h1>
     <p class="subtitle">Stay on this page to earn free coins!</p>
-    <div class="afk-box">
-      <h3 style="color:#55ff55; margin-top:0;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
-      <h2 id="timer" style="font-size: 2rem; color: #ffff55; margin: 10px 0;">00:00</h2>
+    <div class="afk-container">
+      <h3 style="color:#55ff55; margin-top:0; font-size:0.5rem;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
+      <div class="afk-timer" id="timer">00:00</div>
       <button class="btn" id="afk-btn" onclick="toggleAfk()" style="background:#00aa00;">START AFK</button>
     </div>
   </div>
@@ -332,10 +307,24 @@
   <div id="profile" class="page">
     <h1>👤 PROFILE</h1>
     <p class="subtitle">Save your game username.</p>
-    <div class="profile-box" style="text-align: left;">
-      <label style="font-size: 0.75rem; color: #aaa;">Minecraft Username:</label>
-      <input type="text" id="uname" placeholder="Enter Name">
-      <button class="btn" onclick="saveProfile()" style="margin-top: 10px;">SAVE</button>
+    <div class="profile-card" style="text-align: left;">
+      <label style="font-size: 0.4rem; color: #aaa;">Minecraft Username:</label>
+      <input type="text" id="uname" placeholder="Enter name">
+      <button class="btn" onclick="saveProfile()" style="margin-top: 15px;">SAVE</button>
+    </div>
+  </div>
+
+  <!-- CLAIM MODAL -->
+  <div id="claimModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle" style="color:var(--accent); margin-top:0; font-size:0.6rem;">Claim</h2>
+      <ol>
+        <li>Join our Discord server.</li>
+        <li>Open a support ticket.</li>
+        <li>Provide payment proof.</li>
+      </ol>
+      <button class="btn" onclick="openDiscord()" style="margin-top:10px;">JOIN DISCORD</button>
+      <button class="btn" onclick="closeModal()" style="background:#444; margin-top:6px;">CLOSE</button>
     </div>
   </div>
 
@@ -343,14 +332,22 @@
     function switchPage(pageId, btn) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
       document.getElementById(pageId).classList.add('active-page');
-
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
       if(btn) btn.classList.add('active');
-      window.scrollTo(0, 0);
+      window.scrollTo(0,0);
     }
 
     function openDiscord() {
       window.open('https://discord.gg/BHHU8mDvh7', '_blank');
+    }
+
+    function showClaimModal(type) {
+      document.getElementById('modalTitle').innerText = "Claim " + type;
+      document.getElementById('claimModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('claimModal').style.display = 'none';
     }
 
     let active = false, s = 0, timerObj;
@@ -367,6 +364,11 @@
           s++;
           let m = Math.floor(s/60), sec = s%60;
           document.getElementById('timer').innerText = (m<10?"0":"")+m + ":" + (sec<10?"0":"")+sec;
+          if(s % 60 === 0) {
+            let coins = parseInt(localStorage.getItem('soul_coins') || "0") + 1;
+            localStorage.setItem('soul_coins', coins);
+            document.getElementById('user-coins').innerText = coins;
+          }
         }, 1000);
       } else {
         active = false;
@@ -379,18 +381,24 @@
     }
 
     function saveProfile() {
-      let val = document.getElementById('uname').value.trim();
-      if(val) {
-        localStorage.setItem('soul_user', val);
-        alert("Saved: " + val);
+      let name = document.getElementById('uname').value.trim();
+      if(name) {
+        localStorage.setItem('soul_user', name);
+        document.getElementById('nav-username').innerText = name;
+        alert("Saved successfully!");
       }
     }
 
     window.onload = function() {
-      let saved = localStorage.getItem('soul_user');
-      if(saved) document.getElementById('uname').value = saved;
+      let savedUser = localStorage.getItem('soul_user');
+      let coins = localStorage.getItem('soul_coins') || "0";
+      if(savedUser) {
+        document.getElementById('uname').value = savedUser;
+        document.getElementById('nav-username').innerText = savedUser;
+      }
+      document.getElementById('user-coins').innerText = coins;
     }
   </script>
 </body>
-                                            </html>
-        
+  </html>
+  
