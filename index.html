@@ -6,12 +6,18 @@
   <title>SOUL SMP | Minecraft Store</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    :for { --accent: #ff3333; }
+    :root { 
+      --accent: #ff3333; 
+      --accent-hover: #b30000;
+      --panel: #1a1a1a; 
+      --border: #444; 
+    }
+    
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     
     body {
-      background: #000000;
-      color: #ffffff;
+      background: #000;
+      color: #fff;
       font-family: 'Press Start 2P', cursive;
       margin: 0;
       padding-bottom: 80px;
@@ -19,73 +25,63 @@
 
     /* TICKER BAR */
     .ticker-bar {
-      background: #150000; border-bottom: 2px solid #ff3333;
+      background: #150000; border-bottom: 2px solid var(--accent);
       color: #ff9999; font-size: 0.5rem; padding: 10px; text-align: center;
       white-space: nowrap; overflow: hidden; position: relative;
     }
     .ticker-content { display: inline-block; animation: marquee 25s linear infinite; }
     @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-    /* NAVBAR */
+    /* TOUCH-FRIENDLY NAVBAR */
     nav { 
       display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; 
-      background: #111111; padding: 15px; border-bottom: 4px solid #ff3333;
-      position: sticky; top: 0; z-index: 999999;
+      background: #111; padding: 15px; border-bottom: 4px solid var(--accent);
+      position: sticky; top: 0; z-index: 100;
     }
     nav button { 
-      background: #222222; color: #fff; border: 3px solid #555555; 
+      background: #222; color: #fff; border: 3px solid #555; 
       padding: 12px 14px; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.55rem;
     }
-    nav button:hover { background: #333333; }
-    nav button.active { background: #ff3333; border-color: #fff; }
+    nav button:hover { background: #333; }
+    nav button.active { background: var(--accent); border-color: #fff; }
 
     /* PAGES */
     .page { display: none; padding: 25px 15px; max-width: 900px; margin: auto; }
     .page.active-page { display: block !important; }
     
-    h1 { color: #ff3333; font-size: 0.95rem; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px #000; }
+    h1 { color: var(--accent); font-size: 0.95rem; text-align: center; margin-bottom: 20px; text-shadow: 2px 2px #000; }
     p.subtitle { text-align: center; color: #aaa; font-size: 0.5rem; margin-bottom: 20px; line-height: 1.6; }
 
     /* GRID & CARDS */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-    .card { background: #1a1a1a; border: 4px solid #444444; padding: 20px; text-align: center; }
-    .card h3 { margin: 8px 0; font-size: 0.65rem; color: #fff; }
+    .card { background: var(--panel); border: 4px solid var(--border); padding: 20px; text-align: center; }
+    .card h3 { margin: 8px 0; font-size: 0.7rem; color: #fff; }
     
     .price-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 12px 0; flex-wrap: wrap; }
-    .price { font-size: 0.55rem; color: #55ff55; font-weight: bold; }
-    .coin-price { font-size: 0.45rem; color: #ffff55; background: rgba(255,255,0,0.1); padding: 5px 8px; border: 1px dashed #ffff55; }
-    .old-price { text-decoration: line-through; color: #888; font-size: 0.45rem; margin-right: 4px; }
+    .price { font-size: 0.65rem; color: #55ff55; font-weight: bold; }
+    .coin-price { font-size: 0.5rem; color: #ffff55; background: rgba(255,255,0,0.1); padding: 5px 8px; border: 1px dashed #ffff55; }
+    .old-price { text-decoration: line-through; color: #888; font-size: 0.5rem; margin-right: 4px; }
     
-    .features-list { text-align: left; color: #bbb; font-size: 0.4rem; margin: 12px 0; padding-left: 10px; list-style: none; line-height: 1.8; }
-    .features-list li::before { content: '>'; color: #ff3333; margin-right: 6px; }
+    .features-list { text-align: left; color: #bbb; font-size: 0.45rem; margin: 12px 0; padding-left: 12px; list-style: none; line-height: 1.8; }
+    .features-list li::before { content: '>'; color: var(--accent); margin-right: 6px; }
 
+    /* BIG TOUCH BUTTONS */
     .btn { 
-      background: #ff3333; color: #fff; border: 3px solid #fff; 
-      padding: 14px; width: 100%; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; 
+      background: var(--accent); color: #fff; border: 3px solid #fff; 
+      padding: 15px; width: 100%; cursor: pointer; font-family: 'Press Start 2P', cursive; font-size: 0.55rem; 
       text-transform: uppercase; margin-top: 12px;
     }
-    .btn:hover { background: #b30000; }
-    .btn-inv { background: #333333; border-color: #777777; font-size: 0.45rem; padding: 10px; margin-top: 8px; }
+    .btn:hover { background: var(--accent-hover); }
 
     /* PROFILE & AFK */
-    .profile-card, .afk-container { border: 4px solid #ff3333; padding: 25px; max-width: 400px; margin: auto; background: #1a1a1a; text-align: center; }
+    .profile-card, .afk-container { border: 4px solid var(--accent); padding: 25px; max-width: 400px; margin: auto; background: var(--panel); text-align: center; }
     .afk-container { border-color: #00ff00; }
     .afk-timer { font-size: 1.8rem; color: #ffff55; margin: 15px 0; }
     input { width: 100%; padding: 12px; margin-top: 8px; background: #000; border: 2px solid #555; color: #fff; font-family: 'Press Start 2P', cursive; font-size: 0.5rem; box-sizing: border-box; }
 
-    /* MODAL (MINECRAFT GUI STYLE) */
+    /* MODAL */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 999999; padding: 15px; box-sizing: border-box; }
-    .mc-gui { background: #c6c6c6; border: 4px solid #373737; padding: 15px; width: 100%; max-width: 340px; box-shadow: 0 10px 25px rgba(0,0,0,0.9); color: #000; }
-    .mc-gui-header { display: flex; justify-content: space-between; align-items: center; background: #8b8b8b; padding: 8px; border: 2px solid #373737; margin-bottom: 12px; font-size: 0.5rem; color: #fff; }
-    
-    .inv-grid { display: flex; flex-direction: column; gap: 8px; max-height: 250px; overflow-y: auto; }
-    .inv-slot { display: flex; align-items: center; gap: 10px; background: #8b8b8b; border: 2px solid #373737; padding: 8px; }
-    .inv-slot img { width: 32px; height: 32px; image-rendering: pixelated; background: #8b8b8b; border: 2px solid #555; }
-    .inv-info { text-align: left; }
-    .inv-item-name { font-size: 0.42rem; color: #ffff55; font-weight: bold; text-shadow: 1px 1px #000; }
-    .inv-item-ench { font-size: 0.35rem; color: #fff; margin-top: 3px; }
-
-    .modal-content { background: #1a1a1a; border: 4px solid #ff3333; padding: 20px; text-align: center; max-width: 320px; width: 100%; }
+    .modal-content { background: var(--panel); border: 4px solid var(--accent); padding: 20px; text-align: center; max-width: 320px; width: 100%; }
     .modal-content ol { text-align: left; color: #ccc; font-size: 0.45rem; padding-left: 15px; margin: 12px 0; line-height: 1.8; }
   </style>
 </head>
@@ -115,7 +111,7 @@
     <p class="subtitle">The Ultimate Minecraft PvP & Survival Experience.</p>
     <div class="card" style="max-width: 450px; margin: auto;">
       <p style="color:#ff9999; font-size:0.5rem; margin-bottom:10px;">🌐 Server IP:</p>
-      <b style="background:#000; padding:12px; border:2px solid #ff3333; display:inline-block; margin-bottom:15px; font-size:0.5rem;">SoulSMP12.aternos.me:40740</b>
+      <b style="background:#000; padding:12px; border:2px solid var(--accent); display:inline-block; margin-bottom:15px; font-size:0.5rem;">SoulSMP12.aternos.me:40740</b>
       <br>
       <button class="btn" onclick="switchPage('ranks', document.querySelectorAll('nav button')[1])">EXPLORE RANKS</button>
     </div>
@@ -201,83 +197,30 @@
     </div>
   </div>
 
-  <!-- KITS PAGE (5 CUSTOM KITS WITH PNG INVENTORIES) -->
+  <!-- KITS PAGE -->
   <div id="kits" class="page">
-    <h1>⚔️ EXCLUSIVE KITS</h1>
-    <p class="subtitle">Check full gear and tool enchantments in inventory.</p>
+    <h1>⚔️ BATTLE KITS</h1>
+    <p class="subtitle">Equip powerful weapons and armor.</p>
     <div class="grid">
-      <!-- 1. WARRIOR KIT -->
       <div class="card">
-        <h3>🛡️ WARRIOR KIT</h3>
-        <div class="price-row"><div class="price">₹49</div><div class="coin-price">🪙 800</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('🛡️ Warrior Kit Inventory', [
-          {name: 'Iron Helmet', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Helmet_JE2_BE2.png'},
-          {name: 'Iron Chestplate', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Chestplate_JE2_BE2.png'},
-          {name: 'Iron Leggings', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Leggings_JE2_BE2.png'},
-          {name: 'Iron Boots', ench: 'Protection II', icon: 'https://minecraft.wiki/images/Iron_Boots_JE2_BE2.png'},
-          {name: 'Iron Sword', ench: 'Sharpness III', icon: 'https://minecraft.wiki/images/Iron_Sword_JE2_BE2.png'}
-        ])">📦 OPEN INVENTORY</button>
-        <button class="btn" onclick="openDiscord()">BUY KIT</button>
+        <h3>⚔️ Warrior</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹59</span>₹47</div><div class="coin-price">🪙 1,000</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
-
-      <!-- 2. ARCHER KIT -->
       <div class="card">
-        <h3>🏹 ARCHER KIT</h3>
-        <div class="price-row"><div class="price">₹99</div><div class="coin-price">🪙 1,800</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('🏹 Archer Kit Inventory', [
-          {name: 'Leather Cap', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Cap_JE2_BE2.png'},
-          {name: 'Leather Tunic', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Tunic_JE2_BE2.png'},
-          {name: 'Leather Pants', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Pants_JE2_BE2.png'},
-          {name: 'Leather Boots', ench: 'Projectile Prot III', icon: 'https://minecraft.wiki/images/Leather_Boots_JE2_BE2.png'},
-          {name: 'Bow', ench: 'Power IV, Flame I, Punch II', icon: 'https://minecraft.wiki/images/Bow_JE3_BE3.png'},
-          {name: 'Arrow', ench: 'Standard Ammunition x64', icon: 'https://minecraft.wiki/images/Arrow_JE1_BE1.png'}
-        ])">📦 OPEN INVENTORY</button>
-        <button class="btn" onclick="openDiscord()">BUY KIT</button>
+        <h3>🏹 Archer</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹79</span>₹63</div><div class="coin-price">🪙 1,500</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
-
-      <!-- 3. XAVIEN KIT -->
       <div class="card">
-        <h3>🔥 XAVIEN KIT</h3>
-        <div class="price-row"><div class="price">₹199</div><div class="coin-price">🪙 4,000</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('🔥 Xavien Kit Inventory', [
-          {name: 'Diamond Helmet', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Helmet_JE2_BE2.png'},
-          {name: 'Diamond Chestplate', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Chestplate_JE2_BE2.png'},
-          {name: 'Diamond Leggings', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Leggings_JE2_BE2.png'},
-          {name: 'Diamond Boots', ench: 'Protection IV', icon: 'https://minecraft.wiki/images/Diamond_Boots_JE2_BE2.png'},
-          {name: 'Xavien Sword', ench: 'Sharpness VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Sword_JE2_BE2.png'},
-          {name: 'Golden Apple', ench: 'Absorption & Regen', icon: 'https://minecraft.wiki/images/Golden_Apple_JE2_BE2.png'}
-        ])">📦 OPEN INVENTORY</button>
-        <button class="btn" onclick="openDiscord()">BUY KIT</button>
+        <h3>🔥 Inferno</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹149</span>₹119</div><div class="coin-price">🪙 3,000</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
-
-      <!-- 4. GOD KIT -->
       <div class="card">
-        <h3>⚡ GOD KIT</h3>
-        <div class="price-row"><div class="price">₹399</div><div class="coin-price">🪙 8,000</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('⚡ God Kit Inventory', [
-          {name: 'Diamond Helmet', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Helmet_JE2_BE2.png'},
-          {name: 'Diamond Chestplate', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Chestplate_JE2_BE2.png'},
-          {name: 'Diamond Leggings', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Leggings_JE2_BE2.png'},
-          {name: 'Diamond Boots', ench: 'Protection V, Unbreaking III', icon: 'https://minecraft.wiki/images/Diamond_Boots_JE2_BE2.png'},
-          {name: 'God Sword', ench: 'Sharpness X, Fire Aspect III', icon: 'https://minecraft.wiki/images/Netherite_Sword_JE2_BE2.png'},
-          {name: 'Enchanted Golden Apple', ench: 'Regeneration IV', icon: 'https://minecraft.wiki/images/Enchanted_Golden_Apple_JE2_BE2.png'}
-        ])">📦 OPEN INVENTORY</button>
-        <button class="btn" onclick="openDiscord()">BUY KIT</button>
-      </div>
-
-      <!-- 5. KING KIT -->
-      <div class="card">
-        <h3>👑 KING KIT</h3>
-        <div class="price-row"><div class="price">₹599</div><div class="coin-price">🪙 15,000</div></div>
-        <button class="btn btn-inv" onclick="openKitInv('👑 King Kit Inventory', [
-          {name: 'Netherite Helmet', ench: 'Protection VI, Unbreaking III', icon: 'https://minecraft.wiki/images/Netherite_Helmet_JE2_BE2.png'},
-          {name: 'Netherite Chestplate', ench: 'Protection VI, Mending', icon: 'https://minecraft.wiki/images/Netherite_Chestplate_JE2_BE2.png'},
-          {name: 'Netherite Leggings', ench: 'Protection VI, Thorns III', icon: 'https://minecraft.wiki/images/Netherite_Leggings_JE2_BE2.png'},
-          {name: 'Netherite Boots', ench: 'Protection VI, Feather Falling IV', icon: 'https://minecraft.wiki/images/Netherite_Boots_JE2_BE2.png'},
-          {name: 'King Axe', ench: 'Sharpness VII, Looting IV', icon: 'https://minecraft.wiki/images/Netherite_Axe_JE2_BE2.png'},
-          {name: 'Totem of Undying', ench: 'Prevents Death', icon: 'https://minecraft.wiki/images/Totem_of_Undying_JE2_BE2.png'}
-        ])">📦 OPEN INVENTORY</button>
-        <button class="btn" onclick="openDiscord()">BUY KIT</button>
+        <h3>🐉 Dragon</h3>
+        <div class="price-row"><div class="price"><span class="old-price">₹299</span>₹239</div><div class="coin-price">🪙 6,000</div></div>
+        <button class="btn" onclick="openDiscord()">BUY</button>
       </div>
     </div>
   </div>
@@ -327,4 +270,108 @@
     <h1>⏳ AFK ZONE</h1>
     <p class="subtitle">Stay on this page to earn free coins!</p>
     <div class="afk-container">
-      <h3 style="color:#55ff55; margin-top:0; font-size:0.5rem;">Status: <span id=
+      <h3 style="color:#55ff55; margin-top:0; font-size:0.5rem;">Status: <span id="afk-status" style="color:#ff5555;">Inactive</span></h3>
+      <div class="afk-timer" id="timer">00:00</div>
+      <p style="font-size: 0.4rem; color: #88ff88; margin-bottom: 15px;">+1 Coin every minute</p>
+      <button class="btn" id="afk-btn" onclick="toggleAfk()" style="background:#00aa00;">START AFK</button>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div id="profile" class="page">
+    <h1>👤 PROFILE</h1>
+    <p class="subtitle">Save your game username and check balance.</p>
+    <div class="profile-card" style="text-align: left;">
+      <p style="font-size: 0.5rem; color: #55ff55; margin-bottom: 15px;">🪙 Total Coins: <span id="user-coins">0</span></p>
+      <label style="font-size: 0.45rem; color: #aaa;">Minecraft Username:</label>
+      <input type="text" id="uname" placeholder="Enter name">
+      <button class="btn" onclick="saveProfile()" style="margin-top: 15px;">SAVE</button>
+    </div>
+  </div>
+
+  <!-- CLAIM MODAL -->
+  <div id="claimModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle" style="color:var(--accent); margin-top:0; font-size:0.6rem;">Claim</h2>
+      <ol>
+        <li>Join our Discord server.</li>
+        <li>Open a support ticket.</li>
+        <li>Provide payment proof.</li>
+      </ol>
+      <button class="btn" onclick="openDiscord()" style="margin-top:10px;">JOIN DISCORD</button>
+      <button class="btn" onclick="closeModal()" style="background:#444; margin-top:8px;">CLOSE</button>
+    </div>
+  </div>
+
+  <script>
+    function switchPage(pageId, btn) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+      document.getElementById(pageId).classList.add('active-page');
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      if(btn) btn.classList.add('active');
+      window.scrollTo(0,0);
+    }
+
+    function openDiscord() {
+      window.open('https://discord.gg/BHHU8mDvh7', '_blank');
+    }
+
+    function showClaimModal(type) {
+      document.getElementById('modalTitle').innerText = "Claim " + type;
+      document.getElementById('claimModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('claimModal').style.display = 'none';
+    }
+
+    let active = false, s = 0, timerObj;
+    function toggleAfk() {
+      let btn = document.getElementById('afk-btn');
+      let status = document.getElementById('afk-status');
+      if(!active) {
+        active = true;
+        btn.innerText = "STOP AFK";
+        btn.style.background = "#cc0000";
+        status.innerText = "Active";
+        status.style.color = "#55ff55";
+        timerObj = setInterval(() => {
+          s++;
+          let m = Math.floor(s/60), sec = s%60;
+          document.getElementById('timer').innerText = (m<10?"0":"")+m + ":" + (sec<10?"0":"")+sec;
+          if(s % 60 === 0) {
+            let coins = parseInt(localStorage.getItem('soul_coins') || "0") + 1;
+            localStorage.setItem('soul_coins', coins);
+            document.getElementById('user-coins').innerText = coins;
+          }
+        }, 1000);
+      } else {
+        active = false;
+        clearInterval(timerObj);
+        btn.innerText = "START AFK";
+        btn.style.background = "#00aa00";
+        status.innerText = "Inactive";
+        status.style.color = "#ff5555";
+      }
+    }
+
+    function saveProfile() {
+      let name = document.getElementById('uname').value.trim();
+      if(name) {
+        localStorage.setItem('soul_user', name);
+        alert("Saved successfully!");
+      }
+    }
+
+    window.onload = function() {
+      let savedUser = localStorage.getItem('soul_user');
+      let coins = localStorage.getItem('soul_coins') || "0";
+      if(savedUser) {
+        document.getElementById('uname').value = savedUser;
+      }
+      document.getElementById('user-coins').innerText = coins;
+    }
+  </script>
+</body>
+          </html>
+  
